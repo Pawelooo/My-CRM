@@ -9,7 +9,7 @@ def main() -> None:
 
 
 if __name__ == '__main__':
-    # with open('test.txt', 'wb') as handle:
+    # with open('test.pickle', 'wb') as handle:
     #     pickle.dump([Test('a', 'b')], handle, protocol=pickle.HIGHEST_PROTOCOL)
 
     main()

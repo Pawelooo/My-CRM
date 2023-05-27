@@ -6,27 +6,19 @@ from src.model.test import Test
 
 class Model:
     def __init__(self):
-        self.file_name = 'test.txt'
+        self.file_name = 'test.pkl'
 
     def save_to_file(self, test):
-        data_tmp = []
-        try:
-            open(self.file_name, 'wb')
-        except IOError:
-            open(self.file_name, 'w+')
-
-        else:
-            data_tmp.append(test)
-            data_tmp.append(self.get_from_file())
-            print(data_tmp)
-        with open(self.file_name, 'wb') as handle:
-            pickle.dump(data_tmp, handle, protocol=pickle.HIGHEST_PROTOCOL)
-
+        data_tmp = [element for element in self.get_from_file()]
+        data_tmp.insert(0, test)
+        with open(self.file_name, 'wb+') as handle:
+            pickle.dump(data_tmp, handle)
 
     def get_from_file(self):
-        with open(self.file_name, 'rb') as handle:
+        with open(self.file_name, "rb+") as f:
             try:
-                return pickle.load(handle)
+                data = pickle.load(f, encoding='utf-8')
             except EOFError:
-                pass
-            return None
+                data = []
+        return data
+
