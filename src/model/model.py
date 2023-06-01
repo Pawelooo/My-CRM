@@ -1,8 +1,6 @@
 import os
 import pickle
 
-from src.model.test import Test
-
 
 class Model:
     def __init__(self):

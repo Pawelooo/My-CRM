@@ -1,5 +1,3 @@
-import pickle
-
 from src.controller.controller import Controller
 
 
