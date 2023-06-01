@@ -1,7 +1,6 @@
 import pickle
 
 from src.controller.controller import Controller
-from src.model.test import Test
 
 
 def main() -> None:
@@ -9,7 +8,4 @@ def main() -> None:
 
 
 if __name__ == '__main__':
-    # with open('test.pickle', 'wb') as handle:
-    #     pickle.dump([Test('a', 'b')], handle, protocol=pickle.HIGHEST_PROTOCOL)
-
     main()
