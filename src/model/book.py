@@ -1,5 +1,6 @@
 from src.model.author import Author
 from src.category.category import Category
+from src.model.generator import Generator
 
 
 class Book:
@@ -7,6 +8,7 @@ class Book:
     def __init__(self, name: str, category: Category, author: Author,
                  link: str = None, topic: str = None, version: str = None,
                  page_count: str = None, date_publish: str = None):
+        self.id = Generator().generate_number()
         self.name = name
         self.category = category
         self.author = author
