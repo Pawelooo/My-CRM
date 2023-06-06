@@ -1,4 +1,4 @@
-from src.author.author import Author
+from src.model.author import Author
 from src.category.category import Category
 
 

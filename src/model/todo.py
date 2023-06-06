@@ -1,7 +1,7 @@
-from src.book.book import Book
+from src.model.book import Book
 from src.course.course import Course
-from src.user.user import User
-from src.video.video import Video
+from src.model.user import User
+from src.model.video import Video
 
 
 class ToDo:
