@@ -1,5 +1,5 @@
 from src.model.book import Book
-from src.course.course import Course
+from src.model.course import Course
 from src.model.generator import Generator
 from src.model.user import User
 from src.model.video import Video

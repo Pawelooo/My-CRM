@@ -1,5 +1,5 @@
 from src.model.author import Author
-from src.category.category import Category
+from src.model.category import Category
 from src.model.generator import Generator
 
 
