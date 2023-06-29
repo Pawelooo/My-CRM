@@ -1,3 +1,5 @@
+import json
+
 from src.model.generator import Generator
 
 
@@ -10,4 +12,4 @@ class Author:
         self.website = website
         self.country = country
         self.topic = topic
-        
+
