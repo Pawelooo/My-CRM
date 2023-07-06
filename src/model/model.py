@@ -6,8 +6,6 @@ from src.model.config import FILE_ENCODING, FILE_MODEL
 
 
 class Model:
-    def __init__(self):
-        logging.basicConfig(level=logging.INFO)
 
     def save_to_file(self, test):
         self.check_file_is_exist()
@@ -27,7 +25,6 @@ class Model:
             return data
         else:
             return data
-
 
     def check_file_is_exist(self):
         if FILE_MODEL not in os.listdir():
