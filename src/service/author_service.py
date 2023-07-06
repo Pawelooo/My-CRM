@@ -15,7 +15,7 @@ class AuthorService:
         self.repository.update(f'{FILE_LOCATION}{FILE_AUTHOR_NAME}', obj, key)
 
     def read(self, file_path: str):
-        return self.repository.get_all(file_path)
+        return self.repository.find_all(file_path)
 
     def delete(self, key: str):
         self.repository.delete(f'{FILE_LOCATION}{FILE_USER_NAME}', key)
