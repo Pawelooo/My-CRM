@@ -7,9 +7,17 @@ from src.model.video import Video
 
 class ToDo:
 
-    def __init__(self, user: User, video: Video, course: Course, book: Book):
+    def __init__(self, user: User, video: Video = None, course: Course = None, book: Book = None):
         self.id = Generator().generate_number()
         self.user = user
         self.video = video
         self.course = course
         self.book = book
+
+    def __repr__(self):
+        return {
+            'user': self.user if self.user else '',
+            'video': self.video if self.video else '',
+            'course': self.course if self.course else '',
+            'book': self.book if self.book else ''
+        }

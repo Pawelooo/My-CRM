@@ -1,29 +1,23 @@
-from datetime import datetime
-
-from src.model.author import Author
-from src.model.category import Category
+from src.model.config import FILE_LOCATION, FILE_VIDEO_NAME
+from src.model.respository import Repository
 from src.model.video import Video
 
 
 class VideoService:
 
     def __init__(self):
-        self.video = None
+        self.repository = Repository()
 
-    def create_video(self, name: str, category: Category, author: Author, link: str = None,
-                     topic: str = None, version: str = None, date_publication: datetime = None):
-        self.video = Video(name, category, author, link, topic, version, date_publication)
+    def create(self, obj: Video):
+        self.repository.create(f'{FILE_LOCATION}{FILE_VIDEO_NAME}', obj)
 
-    def read_video(self):
-        return f'Name: {self.video.name}, Category: {self.video.category}, Author: {self.video.author}, ' \
-               f'Link: {self.video.link}, Topic: {self.video.topic}, Version: {self.video.version},' \
-               f'Date publication: {self.video.date_publication}'
+    def read(self, file_path: str):
+        return self.repository.find_all(file_path)
 
-    def update_video(self, key: str, new_value: str):
-        video = vars(self.video)
-        video[key] = new_value
+    def update(self, obj: Video, key: str):
+        self.repository.update(f'{FILE_LOCATION}{FILE_VIDEO_NAME}', obj, key)
 
-    def delete_video(self):
-        del self.video
+    def delete(self, key: str):
+        self.repository.delete(f'{FILE_LOCATION}{FILE_VIDEO_NAME}', key)
 
 

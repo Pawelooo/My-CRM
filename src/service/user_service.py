@@ -1,23 +1,23 @@
+from src.model.config import FILE_LOCATION, FILE_USER_NAME
+from src.model.respository import Repository
 from src.model.user import User
 
 
 class UserService:
 
     def __init__(self):
-        self.user = None
+        self.repository = Repository()
 
-    def create_user(self, name: str, password: str, email: str, full_name: str = None):
-        self.user = User(name, password, email, full_name)
+    def create(self, obj: User):
+        self.repository.create(f'{FILE_LOCATION}{FILE_USER_NAME}', obj)
 
-    def read_user(self):
-        return f'Name: {self.user.name}, Password: {self.user.password}, E-mail: {self.user.email}, ' \
-               f'Full name: {self.user.full_name}'
+    def read(self, file_path: str):
+        return self.repository.find_all(file_path)
 
-    def update_user(self, key: str, new_value: str):
-        user = vars(self.user)
-        user[key] = new_value
+    def update(self, obj: User, key: str):
+        self.repository.update(f'{FILE_LOCATION}{FILE_USER_NAME}', obj, key)
 
-    def delete_user(self):
-        del self.user
+    def delete(self, key: str):
+        self.repository.delete(f'{FILE_LOCATION}{FILE_USER_NAME}', key)
 
 

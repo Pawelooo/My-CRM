@@ -1,23 +1,22 @@
 from src.model.author import Author
+from src.model.config import FILE_USER_NAME, FILE_LOCATION, FILE_AUTHOR_NAME
+from src.model.respository import Repository
 
 
 class AuthorService:
 
     def __init__(self):
-        self.author = None
+        self.repository = Repository()
 
-    def create_author(self, name: str, surname: str, website: str = None, country: str = None, topic: str = None):
-        self.author = Author(name, surname, website, country, topic)
+    def create(self, obj: Author):
+        self.repository.create(f'{FILE_LOCATION}{FILE_AUTHOR_NAME}', obj)
 
-    def read_author(self):
-        return f'Name: {self.author.name}, Surname: {self.author.surname}, Website: {self.author.website}, ' \
-               f'Country: {self.author.country}, Topic: {self.author.topic}'
+    def update(self, obj: Author, key: str):
+        self.repository.update(f'{FILE_LOCATION}{FILE_AUTHOR_NAME}', obj, key)
 
-    def update_author(self, key: str, new_value: str):
-        author = vars(self.author)
-        author[key] = new_value
+    def read(self, file_path: str):
+        return self.repository.get_all(file_path)
 
-    def delete_object(self):
-        del self.author
-
+    def delete(self, key: str):
+        self.repository.delete(f'{FILE_LOCATION}{FILE_USER_NAME}', key)
 

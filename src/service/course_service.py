@@ -1,25 +1,23 @@
-from src.model.author import Author
-from src.model.category import Category
+from src.model.config import FILE_LOCATION, FILE_COURSE_NAME
 from src.model.course import Course
+from src.model.respository import Repository
 
 
 class CourseService:
 
     def __init__(self):
-        self.course = None
+        self.repository = Repository()
 
-    def create_course(self, name: str, category: Category, author: Author, link: str = None, topic: str = None,):
-        self.course = Course(name, category, author, link, topic)
+    def create(self, obj: Course):
+        self.repository.create(f'{FILE_LOCATION}{FILE_COURSE_NAME}', obj)
 
-    def read_course(self):
-        return f'Name: {self.course.name}, Category: {self.course.category}, Author: {self.course.author}, ' \
-               f'Topic: {self.course.topic}'
+    def read(self, file_path: str):
+        return self.repository.find_all(file_path)
 
-    def update_course(self, key: str, new_value: str):
-        course = vars(self.course)
-        course[key] = new_value
+    def update(self, obj: Course, key: str):
+        self.repository.update(f'{FILE_LOCATION}{FILE_COURSE_NAME}', obj, key)
 
-    def delete_course(self):
-        del self.course
+    def delete(self, key: str):
+        self.repository.delete(f'{FILE_LOCATION}{FILE_COURSE_NAME}', key)
 
 

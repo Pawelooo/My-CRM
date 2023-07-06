@@ -1,22 +1,23 @@
+from src.model.config import FILE_LOCATION, FILE_STATUS_NAME
+from src.model.respository import Repository
 from src.model.status import Status
 
 
 class StatusService:
 
     def __init__(self):
-        self.status = None
+        self.repository = Repository()
 
-    def create_status(self, name: str):
-        self.status = Status(name)
+    def create(self, obj: Status):
+        self.repository.create(f'{FILE_LOCATION}{FILE_STATUS_NAME}', obj)
 
-    def read_status(self):
-        return f'Name: {self.status.name}'
+    def read(self, file_path: str):
+        return self.repository.find_all(file_path)
 
-    def update_status(self, key: str, new_value: str):
-        status = vars(self.status)
-        status[key] = new_value
+    def update(self, obj: Status, key: str):
+        self.repository.update(f'{FILE_LOCATION}{FILE_STATUS_NAME}', obj, key)
 
-    def delete_status(self):
-        del self.status
+    def delete(self, key: str):
+        self.repository.delete(f'{FILE_LOCATION}{FILE_STATUS_NAME}', key)
 
 

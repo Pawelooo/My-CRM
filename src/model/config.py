@@ -1,0 +1,12 @@
+FILE_AUTHOR_NAME = 'db_author.json'
+FILE_BOOK_NAME = 'db_book.json'
+FILE_CATEGORY_NAME = 'db_category.json'
+FILE_COURSE_NAME = 'db_course.json'
+FILE_USER_NAME = 'db_user.db'
+FILE_STATUS_NAME = 'db_status.json'
+FILE_TODO_NAME = 'db_todo.json'
+FILE_VIDEO_NAME = 'db_video.json'
+# FILE_COURSE_NAME = 'db_course.db'
+FILE_LOCATION = '../../resources/data/'
+FILE_ENCODING = 'UTF-8'
+FILE_INDEX = 54

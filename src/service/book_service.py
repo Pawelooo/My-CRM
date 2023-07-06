@@ -1,27 +1,24 @@
-from src.model.author import Author
+
 from src.model.book import Book
-from src.model.category import Category
+from src.model.config import FILE_LOCATION, FILE_BOOK_NAME
+from src.model.respository import Repository
 
 
 class BookService:
 
     def __init__(self):
-        self.book = None
+        self.repository = Repository()
 
-    def create_book(self, name: str, category: Category, author: Author, link: str = None, topic: str = None,
-                      version: str = None, page_count: str = None, date_publish: str = None):
-        self.book = Book(name, category, author, link, topic, version, page_count, date_publish)
+    def create(self, obj: Book):
+        self.repository.create(f'{FILE_LOCATION}{FILE_BOOK_NAME}', obj)
 
-    def read_book(self):
-        return f'Name: {self.book.name}, Category: {self.book.category}, Author: {self.book.author}, ' \
-               f'Topic: {self.book.topic}, Version: {self.book.version}, Page Count: {self.book.page_count}, ' \
-               f'Date publish: {self.book.date_publish}'
+    def read_book(self, file_path: str):
+        return self.repository.find_all(file_path)
 
-    def update_book(self, key: str, new_value: str):
-        book = vars(self.book)
-        book[key] = new_value
+    def update(self, obj: Book, key: str):
+        self.repository.update(f'{FILE_LOCATION}{FILE_BOOK_NAME}', obj, key)
 
-    def delete_book(self):
-        del self.book
+    def delete(self, key: str):
+        self.repository.delete(f'{FILE_LOCATION}{FILE_BOOK_NAME}', key)
 
 

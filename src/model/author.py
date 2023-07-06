@@ -13,3 +13,23 @@ class Author:
         self.country = country
         self.topic = topic
 
+    def __repr__(self):
+        return {
+            'name': self.name if self.name is not None else '',
+            'surname': self.surname if self.surname is not None else '',
+            'website': self.website if self.website is not None else '',
+            'country': self.country if self.country is not None else '',
+            'topic': self.topic if self.topic is not None else '',
+            'id': str(self.id)
+        }
+
+
+
+# return '{ ' + \
+#     (' "name": "' + self.name + '",' if self.name is not None else '') + \
+#     (' "surname": "' + self.surname + '",' if self.surname is not None else '') + \
+#     (' "website": "' + self.website + '",' if self.website is not None else '') + \
+#     (' "country": "' + self.country + '",' if self.country is not None else '') + \
+#     (' "topic": "' + self.topic + '",' if self.topic is not None else '') + \
+#     '"id": ' + str(self.id) + \
+#     ' }'

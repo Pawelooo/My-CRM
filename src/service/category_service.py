@@ -1,21 +1,23 @@
 from src.model.category import Category
+from src.model.config import FILE_LOCATION, FILE_CATEGORY_NAME
+from src.model.respository import Repository
 
 
 class CategoryService:
 
     def __init__(self):
-        self.category = None
+        self.repository = Repository()
 
-    def create_category(self, name: str):
-        self.category = Category(name)
+    def create(self, obj: Category):
+        self.repository.create(f'{FILE_LOCATION}{FILE_CATEGORY_NAME}', obj)
 
-    def read_category(self):
-        return f'Name: {self.category.name}'
+    def read(self, file_path: str):
+        return self.repository.find_all(file_path)
 
-    def update_category(self, key: str, new_value: str):
-        book = vars(self.category)
-        book[key] = new_value
+    def update(self, obj: Category, key: str):
+        self.repository.update(f'{FILE_LOCATION}{FILE_CATEGORY_NAME}', obj, key)
 
-    def delete_category(self):
-        del self.category
+    def delete(self, key: str):
+        self.repository.delete(f'{FILE_LOCATION}{FILE_CATEGORY_NAME}', key)
+
 
