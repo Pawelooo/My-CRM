@@ -9,4 +9,13 @@ class User:
         self.password = password
         self.email = email
         self.full_name = full_name
+
+    def __repr__(self):
+        return {
+            'name': self.name,
+            'password': self.password,
+            'email': self.email,
+            'full name': self.full_name if self.full_name else '',
+            'id': self.id
+        }
     

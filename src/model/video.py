@@ -17,4 +17,16 @@ class Video:
         self.topic = topic
         self.version = version
         self.date_publication = date_publication
+
+    def __repr__(self):
+        return {
+            'name': self.name,
+            'category': self.category,
+            'author': self.author,
+            'link': self.link if self.link else '',
+            'topic': self.topic if self.topic else '',
+            'version': self.version if self.version else '',
+            'date publication': self.date_publication if self.date_publication else '',
+            'id': self.id
+        }
         

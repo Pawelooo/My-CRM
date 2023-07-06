@@ -12,4 +12,12 @@ class Course:
         self.author = author
         self.link = link
         self.topic = topic
-        
+
+    def __repr__(self):
+        return {
+            'name': self.name,
+            'category': self.category,
+            'author': self.author,
+            'link': self.link if self.topic else '',
+            'topic': self.topic if self.topic else ''
+        }
