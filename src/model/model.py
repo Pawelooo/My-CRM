@@ -1,3 +1,4 @@
+import logging
 import os
 import pickle
 
@@ -14,11 +15,14 @@ class Model:
             pickle.dump(data_tmp, handle)
 
     def get_from_file(self):
+        logging.basicConfig(filename='test.pkl', level=logging.INFO)
         self.check_file_is_exist()
         with open(self.file_name, "rb+") as f:
             try:
                 data = pickle.load(f, encoding='utf-8')
-            except EOFError:
+            except EOFError as err:
+                logging.error(EOFError)
+                print(err)
                 data = []
         return data
 
@@ -26,3 +30,11 @@ class Model:
         if self.file_name not in os.listdir():
             with open(self.file_name, 'wb+') as handle:
                 pickle.dump([], handle)
+
+def main() -> None:
+    m1 = Model()
+    m1.get_from_file()
+
+
+if __name__ == '__main__':
+    main()
