@@ -8,6 +8,7 @@ FILE_USER_NAME = 'db_user' + FILE_FORMAT
 FILE_STATUS_NAME = 'db_status' + FILE_FORMAT
 FILE_TODO_NAME = 'db_todo' + FILE_FORMAT
 FILE_VIDEO_NAME = 'db_video' + FILE_FORMAT
+FILE_MODEL = 'db_model' + FILE_FORMAT
 FILE_LOCATION = '../../resources/data/'
 FILE_ENCODING = 'UTF-8'
 FILE_INDEX = 54
