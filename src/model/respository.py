@@ -1,15 +1,10 @@
 import json
 
 from src.model.author import Author
-from src.model.config import FILE_USER_NAME, FILE_LOCATION, FILE_ENCODING, FILE_AUTHOR_NAME
+from src.model.config import FILE_USER_NAME, FILE_LOCATION, FILE_ENCODING, FILE_AUTHOR_NAME, IDENTIFIER
 
 
 class Repository:
-
-    def __init__(self):
-        pass
-        # Czy powinnienem tutaj zdefinować zmienna klasową ?
-        # self.file_content = self.find_all()
 
     def create(self, file_path: str, obj):
         file_content = self.find_all(file_path)
@@ -23,14 +18,14 @@ class Repository:
     def update(self, file_path: str, obj_new, key: str):
         file_content = self.find_all(file_path)
         for idx, obj in enumerate(file_content):
-            if obj['id'] == key:
+            if obj[IDENTIFIER] == key:
                 file_content[idx] = obj_new.__repr__()
         self.save_all(file_path, file_content)
 
     def delete(self, file_path: str, key: str):
         file_content = self.find_all(file_path)
         for idx, obj in enumerate(file_content):
-            if obj['id'] == key:
+            if obj[IDENTIFIER] == key:
                 del file_content[idx]
         self.save_all(file_path, file_content)
 
@@ -45,4 +40,3 @@ class Repository:
             json.dumps(file_content, indent=4)
             f.seek(0)
             json.dump(file_content, f)
-

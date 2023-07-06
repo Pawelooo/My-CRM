@@ -1,12 +1,14 @@
-FILE_AUTHOR_NAME = 'db_author.json'
-FILE_BOOK_NAME = 'db_book.json'
-FILE_CATEGORY_NAME = 'db_category.json'
-FILE_COURSE_NAME = 'db_course.json'
-FILE_USER_NAME = 'db_user.db'
-FILE_STATUS_NAME = 'db_status.json'
-FILE_TODO_NAME = 'db_todo.json'
-FILE_VIDEO_NAME = 'db_video.json'
-# FILE_COURSE_NAME = 'db_course.db'
+
+FILE_FORMAT = '.json'
+FILE_AUTHOR_NAME = 'db_author' + FILE_FORMAT
+FILE_BOOK_NAME = 'db_book' + FILE_FORMAT
+FILE_CATEGORY_NAME = 'db_category' + FILE_FORMAT
+FILE_COURSE_NAME = 'db_course' + FILE_FORMAT
+FILE_USER_NAME = 'db_user' + FILE_FORMAT
+FILE_STATUS_NAME = 'db_status' + FILE_FORMAT
+FILE_TODO_NAME = 'db_todo' + FILE_FORMAT
+FILE_VIDEO_NAME = 'db_video' + FILE_FORMAT
 FILE_LOCATION = '../../resources/data/'
 FILE_ENCODING = 'UTF-8'
 FILE_INDEX = 54
+IDENTIFIER = 'id'

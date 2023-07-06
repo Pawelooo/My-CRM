@@ -20,9 +20,9 @@ class Book:
 
     def __repr__(self):
         return {
-            'name': self.name if self.name is not None else '',
-            'category': self.category if self.category is not None else '',
-            'author': self.author if self.author is not None else '',
+            'name': self.name,
+            'category': self.category,
+            'author': self.author,
             'link': self.link if self.link is not None else '',
             'topic': self.topic if self.topic is not None else '',
             'version': self.version if self.version is not None else '',

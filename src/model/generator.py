@@ -1,7 +1,7 @@
 """
 Once data with present should be found
 """
-from src.model.config import FILE_INDEX
+from src.model.config import FILE_INDEX, FILE_ENCODING
 
 
 class Generator:
@@ -17,7 +17,7 @@ class Generator:
         return self.dct['FILE_INDEX']
 
     def get_number(self):
-        with open('config.py', "r+", encoding='UTF-8') as f:
+        with open('config.py', "r+", encoding=FILE_ENCODING) as f:
             d = f.read().rsplit('\n')[:-1]
             for i in d:
                 n = i.split(" = ")
@@ -25,6 +25,6 @@ class Generator:
                 self.dct[j] = t
 
     def save_number(self):
-        with open('config.py', 'r+', encoding='UTF-8') as f:
+        with open('config.py', 'r+', encoding=FILE_ENCODING) as f:
             for k, v in self.dct.items():
                 f.writelines(f'{k} = {v}\n')

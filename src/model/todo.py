@@ -16,7 +16,7 @@ class ToDo:
 
     def __repr__(self):
         return {
-            'user': self.user if self.user else '',
+            'user': self.user,
             'video': self.video if self.video else '',
             'course': self.course if self.course else '',
             'book': self.book if self.book else ''

@@ -1,6 +1,6 @@
 
 from src.model.book import Book
-from src.model.config import FILE_LOCATION, FILE_BOOK_NAME
+from src.model.config import FILE_LOCATION, FILE_BOOK_NAME, FILE_AUTHOR_NAME
 from src.model.respository import Repository
 
 
@@ -12,8 +12,8 @@ class BookService:
     def create(self, obj: Book):
         self.repository.create(f'{FILE_LOCATION}{FILE_BOOK_NAME}', obj)
 
-    def read_book(self, file_path: str):
-        return self.repository.find_all(file_path)
+    def read_book(self):
+        return self.repository.find_all(f'{FILE_LOCATION}{FILE_AUTHOR_NAME}')
 
     def update(self, obj: Book, key: str):
         self.repository.update(f'{FILE_LOCATION}{FILE_BOOK_NAME}', obj, key)

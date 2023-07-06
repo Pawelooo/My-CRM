@@ -18,6 +18,6 @@ class Course:
             'name': self.name,
             'category': self.category,
             'author': self.author,
-            'link': self.link,
+            'link': self.link if self.topic else '',
             'topic': self.topic if self.topic else ''
         }

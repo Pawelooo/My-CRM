@@ -15,21 +15,10 @@ class Author:
 
     def __repr__(self):
         return {
-            'name': self.name if self.name is not None else '',
-            'surname': self.surname if self.surname is not None else '',
+            'name': self.name,
+            'surname': self.surname,
             'website': self.website if self.website is not None else '',
             'country': self.country if self.country is not None else '',
             'topic': self.topic if self.topic is not None else '',
             'id': str(self.id)
         }
-
-
-
-# return '{ ' + \
-#     (' "name": "' + self.name + '",' if self.name is not None else '') + \
-#     (' "surname": "' + self.surname + '",' if self.surname is not None else '') + \
-#     (' "website": "' + self.website + '",' if self.website is not None else '') + \
-#     (' "country": "' + self.country + '",' if self.country is not None else '') + \
-#     (' "topic": "' + self.topic + '",' if self.topic is not None else '') + \
-#     '"id": ' + str(self.id) + \
-#     ' }'
