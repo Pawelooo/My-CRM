@@ -1,4 +1,3 @@
-
 FILE_FORMAT = '.json'
 FILE_AUTHOR_NAME = 'db_author' + FILE_FORMAT
 FILE_BOOK_NAME = 'db_book' + FILE_FORMAT
@@ -10,6 +9,7 @@ FILE_TODO_NAME = 'db_todo' + FILE_FORMAT
 FILE_VIDEO_NAME = 'db_video' + FILE_FORMAT
 FILE_MODEL = 'db_model' + FILE_FORMAT
 FILE_LOCATION = '../../resources/data/'
+FILE_CONFIG_LOCATION = 'My-CRM/src/model/config.py'
 FILE_ENCODING = 'UTF-8'
-FILE_INDEX = 54
+FILE_INDEX = 86
 IDENTIFIER = 'id'
