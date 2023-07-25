@@ -14,14 +14,14 @@ class BookValidator(Validator):
 
     def create_validation(self, obj: dict[Book]):
         obj = list(obj.values())
-        return True if all([obj[i] for i in range(-1, 2)]) else False
+        return True if all([obj[i] for i in range(-1, 3)]) else False
 
     def update_validation(self, obj: dict[Book]):
         obj = list(obj.values())
-        return True if all([obj[i] for i in range(-1, 2)]) else False
+        return True if all([obj[i] for i in range(-1, 3)]) else False
 
     def delete_validation(self, obj: dict[Book]):
         obj = list(obj.values())
-        return True if all([obj[i] for i in range(-1, 2)]) else False
+        return True if all([obj[i] for i in range(-1, 3)]) else False
 
 
