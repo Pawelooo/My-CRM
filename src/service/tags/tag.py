@@ -1,6 +1,6 @@
 import json
 
-from src.model.config import FILE_ENCODING, FILE_TAG, FILE_LOCATION_TAG
+from src.model.config import FILE_ENCODING, FILE_LOCATION_TAG
 
 
 class Tag:
