@@ -11,9 +11,9 @@ class Repository:
         with open(file_path, 'w+', encoding=FILE_ENCODING) as f:
             f.seek(0)
             file_content.append(obj.__repr__())
-            json.dumps(file_content, indent=4)
+            json.dumps(file_content, indent=2)
             f.seek(0)
-            json.dump(file_content, f)
+            json.dump(file_content, f, indent=4)
 
     def update(self, file_path: str, obj_new, key: str):
         file_content = self.find_all(file_path)
@@ -31,7 +31,10 @@ class Repository:
 
     def find_all(self, file_path: str):
         with open(file_path, 'r', encoding=FILE_ENCODING) as f:
-            return json.load(f)
+            try:
+                return json.load(f)
+            except:
+                return []
 
     def save_all(self, file_path: str, objects: list[Author]):
         with open(file_path, 'w+', encoding=FILE_ENCODING) as f:
