@@ -19,3 +19,4 @@ FILE_LOCATION_TAG = '../../../resources/data/'
 FILE_ENCODING = 'UTF-8'
 FILE_INDEX = 86
 IDENTIFIER = 'id'
+FORMAT_DATE = '%d.%m.%Y'

@@ -1,5 +1,7 @@
 from datetime import datetime
 
+from src.model.config import FORMAT_DATE
+
 
 class Roadmap:
 
@@ -19,7 +21,7 @@ class Roadmap:
             'title': self.title,
             'priority': self.priority,
             'complexity': self.complexity,
-            'goal completion': self.goal_completion.strftime('%d.%m.%Y'),
+            'goal completion': self.goal_completion.strftime(FORMAT_DATE),
             'added': self.added.strftime('%d.%m.%Y'),
             'user id': self.user_id
         }
