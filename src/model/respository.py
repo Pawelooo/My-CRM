@@ -18,17 +18,15 @@ class Repository:
 
     def update(self, file_path: str, obj_new, key: str):
         file_content = self.find_all(file_path)
-        for idx, obj in enumerate(file_content):
-            if obj[IDENTIFIER] == key:
-                file_content[idx] = obj_new.__repr__()
-        self.save_all(file_path, file_content)
+        self.save_all(file_path, [obj_new.__repr__() if obj[IDENTIFIER] == key
+                                  else obj for idx, obj in
+                                  enumerate(file_content)])
 
     def delete(self, file_path: str, key: str):
         file_content = self.find_all(file_path)
-        for idx, obj in enumerate(file_content):
-            if obj[IDENTIFIER] == key:
-                del file_content[idx]
-        self.save_all(file_path, file_content)
+        self.save_all(file_path,
+                      [obj for idx, obj in enumerate(file_content)
+                       if obj[IDENTIFIER] != key])
 
     def find_all(self, file_path: str):
         with open(file_path, 'r', encoding=FILE_ENCODING) as f:
@@ -38,14 +36,9 @@ class Repository:
                 return []
 
     def find_limit(self, file_path: str, limit: int, priority: str):
-        lst = []
-        all_objs = self.find_all(file_path)
-        for obj in all_objs:
-            if obj['priority'] is not None and obj['priority'].lower() == priority.lower():
-                lst.append(obj)
-            if limit == len(lst):
-                break
-        return lst
+        return list(filter(lambda x: (x['priority'].lower() == priority
+                                      or x['priority'] is not None),
+                           self.find_all(file_path)))[:limit]
 
     def save_all(self, file_path: str, objects: list[Author]):
         with open(file_path, 'w+', encoding=FILE_ENCODING) as f:
