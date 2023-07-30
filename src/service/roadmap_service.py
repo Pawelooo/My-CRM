@@ -23,3 +23,7 @@ class RoadmapService:
     def read_limit(self, limit: int, priority):
         return self.repository.find_limit(f'{FILE_LOCATION}{FILE_ROADMAP}',
                                           limit, priority)
+
+    def delete(self, key: str):
+        self.repository.delete(f'{FILE_LOCATION}{FILE_ROADMAP}', key)
+
