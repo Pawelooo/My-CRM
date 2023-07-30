@@ -6,7 +6,7 @@ from src.model.config import FILE_ENCODING, FILE_LOCATION_TAG
 class Tag:
     def __init__(self, file_name: str):
         self.file_name = file_name
-        self.values = []  # the db should be updated accordingly
+        self.values = []
 
     def find_all(self):
         self.get_all()
@@ -22,7 +22,7 @@ class Tag:
                     return element
             except StopIteration:
                 break
-        self.values.append(value)  # the db should be updated accordingly
+        self.values.append(value)
         self.save()
         return self.get(value)
 
