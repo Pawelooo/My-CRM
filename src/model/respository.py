@@ -1,7 +1,8 @@
 import json
 
 from src.model.author import Author
-from src.model.config import FILE_USER_NAME, FILE_LOCATION, FILE_ENCODING, FILE_AUTHOR_NAME, IDENTIFIER
+from src.model.config import FILE_USER_NAME, FILE_LOCATION, FILE_ENCODING, \
+    FILE_AUTHOR_NAME, IDENTIFIER
 
 
 class Repository:
@@ -32,6 +33,18 @@ class Repository:
     def find_all(self, file_path: str):
         with open(file_path, 'r', encoding=FILE_ENCODING) as f:
             return json.load(f)
+
+    def find_limit(self, file_path: str, limit: int, priority: str):
+        lst = []
+        all_objs = self.find_all(file_path)
+        for obj in all_objs:
+            if obj['priority'].lower() == priority.lower():
+                print('tak')
+                lst.append(obj)
+            if limit == len(lst):
+                break
+
+        return lst
 
     def save_all(self, file_path: str, objects: list[Author]):
         with open(file_path, 'w+', encoding=FILE_ENCODING) as f:
