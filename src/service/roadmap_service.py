@@ -17,4 +17,9 @@ class RoadmapService:
         self.repository.update(f'{FILE_LOCATION}{FILE_ROADMAP}', obj, key)
 
 
+    def read(self):
+        return self.repository.find_all(f'{FILE_LOCATION}{FILE_ROADMAP}')
 
+    def read_limit(self, limit: int, priority):
+        return self.repository.find_limit(f'{FILE_LOCATION}{FILE_ROADMAP}',
+                                          limit, priority)

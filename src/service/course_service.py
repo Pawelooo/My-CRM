@@ -11,7 +11,7 @@ class CourseService:
     def create(self, obj: Course):
         self.repository.create(f'{FILE_LOCATION}{FILE_COURSE_NAME}', obj)
 
-    def read(self, ):
+    def read(self):
         return self.repository.find_all(f'{FILE_LOCATION}{FILE_AUTHOR_NAME}')
 
     def update(self, obj: Course, key: str):
