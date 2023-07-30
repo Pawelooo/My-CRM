@@ -49,6 +49,18 @@ class Repository:
 
         return lst
 
+    def find_limit(self, file_path: str, limit: int, priority: str):
+        lst = []
+        all_objs = self.find_all(file_path)
+        for obj in all_objs:
+            if obj['priority'].lower() == priority.lower():
+                print('tak')
+                lst.append(obj)
+            if limit == len(lst):
+                break
+
+        return lst
+
     def save_all(self, file_path: str, objects: list[Author]):
         with open(file_path, 'w+', encoding=FILE_ENCODING) as f:
             f.seek(0)
