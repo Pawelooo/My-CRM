@@ -4,7 +4,8 @@ from src.model.config import FILE_ENCODING, FILE_LOCATION_TAG
 
 
 class Tag:
-    def __init__(self, file_name: str):
+    def __init__(self, file_name: str, location: str = FILE_LOCATION_TAG):
+        self.location = location
         self.file_name = file_name
         self.values = []
 
@@ -27,7 +28,7 @@ class Tag:
         return self.get(value)
 
     def get_all(self):
-        with open(f'{FILE_LOCATION_TAG}{self.file_name}', 'r+',
+        with open(f'{self.location}{self.file_name}', 'r+',
                   encoding=FILE_ENCODING) as f:
             self.values = json.load(f)
 
