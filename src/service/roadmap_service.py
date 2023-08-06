@@ -1,5 +1,3 @@
-import datetime
-
 from src.model.roadmap import Roadmap
 from src.model.config import FILE_LOCATION, FILE_ROADMAP
 from src.model.respository import Repository
@@ -16,7 +14,6 @@ class RoadmapService:
     def update(self, obj: Roadmap, key: str):
         self.repository.update(f'{FILE_LOCATION}{FILE_ROADMAP}', obj, key)
 
-
     def read(self):
         return self.repository.find_all(f'{FILE_LOCATION}{FILE_ROADMAP}')
 
@@ -26,5 +23,3 @@ class RoadmapService:
 
     def delete(self, key: str):
         self.repository.delete(f'{FILE_LOCATION}{FILE_ROADMAP}', key)
-
-

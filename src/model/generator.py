@@ -24,7 +24,6 @@ class Generator:
             d = f.read().rsplit('\n')[:-1]
             for i in d:
                 n = i.split(" = ")
-                print(n)
                 j, t = n[0], n[1]
                 self.dct[j] = t
 
