@@ -25,7 +25,3 @@ class RoadmapService:
 
     def delete(self, key: str):
         self.repository.delete(f'{FILE_LOCATION}{FILE_ROADMAP}', key)
-
-    def delete(self, key: str):
-        self.repository.delete(f'{FILE_LOCATION}{FILE_ROADMAP}', key)
-
