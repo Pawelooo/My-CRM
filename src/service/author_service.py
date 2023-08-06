@@ -11,7 +11,6 @@ class AuthorService:
         self.validator = AuthorValidator()
 
     def create(self, obj: Author):
-        print(self.validator.validate(obj.__repr__(), 'create'))
         self.repository.create(f'{FILE_LOCATION}{FILE_AUTHOR_NAME}',
                                obj.__repr__())
 
