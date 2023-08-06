@@ -1,5 +1,3 @@
-import datetime
-
 from src.model.roadmap import Roadmap
 from src.model.config import FILE_LOCATION, FILE_ROADMAP
 from src.model.respository import Repository
