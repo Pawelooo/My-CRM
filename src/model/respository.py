@@ -29,6 +29,7 @@ class Repository:
                        if obj[IDENTIFIER] != key])
 
     def find_all(self, file_path: str):
+        print(file_path)
         with open(file_path, 'r', encoding=FILE_ENCODING) as f:
             try:
                 return json.load(f)
