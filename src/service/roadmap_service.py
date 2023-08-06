@@ -16,7 +16,6 @@ class RoadmapService:
     def update(self, obj: Roadmap, key: str):
         self.repository.update(f'{FILE_LOCATION}{FILE_ROADMAP}', obj, key)
 
-
     def read(self):
         return self.repository.find_all(f'{FILE_LOCATION}{FILE_ROADMAP}')
 
