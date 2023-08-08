@@ -5,7 +5,6 @@ from src.model.respository import Repository
 from src.service.tags.tag import Tag
 
 
-
 class QuestionService:
 
     def __init__(self):
@@ -23,14 +22,15 @@ class QuestionService:
 
     def delete(self, key: str):
         self.repository.delete(f'{FILE_LOCATION}{FILE_QUESTION}', key)
-        
+
     def get_random_question(self):
         return random.choice(self.repository.find_all(f'{FILE_LOCATION}'
                                                       f'{FILE_QUESTION}'))
-      
+
     def get_unique_question(self):
-        questions = self.repository.find_all(f'{FILE_LOCATION}{FILE_QUESTION}')
-        questions = list({question['name']: question for question in questions}.values())
+        questions = list({question['name']: question for question
+                          in self.repository.find_all(
+                f'{FILE_LOCATION}{FILE_QUESTION}')}.values())
         while True:
             rd_question = random.choice(questions)
             if rd_question not in self.used_questions:
