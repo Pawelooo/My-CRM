@@ -30,4 +30,9 @@ class QuestionService:
       
     def get_unique_question(self):
         questions = self.repository.find_all(f'{FILE_LOCATION}{FILE_QUESTION}')
-        return list({question['name']: question for question in questions}.values())
+        questions = list({question['name']: question for question in questions}.values())
+        while True:
+            rd_question = random.choice(questions)
+            if rd_question not in self.used_questions:
+                self.used_questions.append(rd_question)
+                return rd_question
