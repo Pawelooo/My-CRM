@@ -28,12 +28,3 @@ class JsonFromService:
         return images
 
 
-def main() -> None:
-    # print(FOLDER_IMAGES)
-    # print(os.getcwd())
-    j1 = JsonFromService()
-    j1.compress()
-
-
-if __name__ == '__main__':
-    main()
