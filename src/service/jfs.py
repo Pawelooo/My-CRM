@@ -47,15 +47,7 @@ class JsonFromService:
 
     def get_zipped_files(self, name_zip: str):
         all_links = self.get_all_links()
-        print(all_links)
         self.get_all_files(all_links)
         self.pack_files(os.path.join(FILES_ZIPPED, name_zip))
 
 
-def main() -> None:
-    j1 = JsonFromService()
-    j1.get_zipped_files('all_files.zip')
-
-
-if __name__ == '__main__':
-    main()
