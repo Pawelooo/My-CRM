@@ -21,3 +21,5 @@ FILE_ENCODING = 'UTF-8'
 FILE_INDEX = 100
 IDENTIFIER = 'id'
 ORMAT_DATE = '%d.%m.%Y'
+FOLDER_IMAGES = '../../img/'
+FOLDER_IMAGES_SAVE = '../../img/opt-img/'
