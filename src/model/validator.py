@@ -1,7 +1,5 @@
 from abc import ABC, abstractmethod
 
-from src.model.author import Author
-
 
 class Validator(ABC):
 
