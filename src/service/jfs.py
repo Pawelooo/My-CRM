@@ -1,10 +1,10 @@
 import json
 from ast import literal_eval
-
 import requests
 
-from src.model.config import FILE_LOCATION, INT_JFSCF_TENANT_NAME, \
-    INT_JFSCF_URL
+from src.model.config import FILE_LOCATION, FILE_QUESTION, FILE_ROADMAP, \
+    INT_JFSCF_URL, INT_JFSCF_TENANT_NAME
+
 
 
 class JsonFromService:
@@ -39,3 +39,4 @@ class JsonFromService:
                                 headers=self.headers)
         response_con = literal_eval(response.content.decode('utf-8'))
         return [obj for obj in response_con if parametrization in obj.values()]
+
