@@ -1,5 +1,6 @@
 import json
 from ast import literal_eval
+
 import requests
 
 from src.model.config import FILE_LOCATION, INT_JFSCF_TENANT_NAME, \
