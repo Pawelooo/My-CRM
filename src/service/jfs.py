@@ -25,12 +25,3 @@ class JsonFromService:
         with open(f'{FILE_LOCATION}{name_file}', 'w') as file:
             json.dump(response_d, file)
         return response_d
-
-    def get_objects_with_parametrization(self, name_file: str, type_s: str,
-                                         parametrization: str):
-        response = requests.get(f'{self.link}{type_s}?filename={name_file}',
-                                headers=self.headers)
-        response_con = literal_eval(response.content.decode('utf-8'))
-        return [obj for obj in response_con if parametrization in obj.values()]
-
-
