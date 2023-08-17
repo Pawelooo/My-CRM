@@ -21,6 +21,12 @@ class QuestionService:
 
     def delete(self, key: str):
         self.repository.delete(f'{FILE_LOCATION}{FILE_QUESTION}', key)
+        
+    def get_random_with_parametrization(self, parametrization):
+        questions_all = self.repository.find_all(
+            f'{FILE_LOCATION}{FILE_QUESTION}')
+        return random.choice([question for question in questions_all
+                              if question['Tag'] == parametrization])
 
     def get_random_question(self):
         return random.choice(self.repository.find_all(f'{FILE_LOCATION}'
