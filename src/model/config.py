@@ -21,3 +21,5 @@ FILE_ENCODING = 'UTF-8'
 FILE_INDEX = 100
 IDENTIFIER = 'id'
 ORMAT_DATE = '%d.%m.%Y'
+INT_JFSCF_URL = 'http://89.74.210.195:8090/jfs-cloud-app-ci/v1/api/storage/'
+INT_JFSCF_TENANT_NAME ='My-CRM'
