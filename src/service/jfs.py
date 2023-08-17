@@ -2,14 +2,15 @@ import json
 from ast import literal_eval
 import requests
 
-from src.model.config import FILE_LOCATION, FILE_QUESTION, FILE_ROADMAP
+from src.model.config import FILE_LOCATION, FILE_QUESTION, FILE_ROADMAP, \
+    INT_JFSCF_URL, INT_JFSCF_TENANT_NAME
 
 
 class JsonFromService:
 
     def __init__(self):
-        self.link = 'http://89.74.210.195:8090/jfs-cloud-app-ci/v1/api/storage/'
-        self.headers = {'Tenant-Id': 'My-CRM'}
+        self.link = INT_JFSCF_URL
+        self.headers = {'Tenant-Id': INT_JFSCF_TENANT_NAME}
 
     def add_file(self, name_file: str, type_s: str):
         files = {'file': open(f'{FILE_LOCATION}{name_file}', 'rb')}
@@ -22,6 +23,9 @@ class JsonFromService:
     def read_file(self, name_file: str, type_s: str):
         response = requests.get(f'{self.link}{type_s}?filename={name_file}', headers=self.headers)
         response_d = literal_eval(response.content.decode('utf-8'))
-        with open(f'{FILE_LOCATION}{name_file}', 'w') as file:
+        with open(f'{FILE_LOCATION}{name_file}', 'w', encoding='utf-8') as file:
             json.dump(response_d, file)
         return response_d
+
+
+
