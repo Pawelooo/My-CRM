@@ -1,4 +1,5 @@
 import random
+
 from src.model.question import Question
 from src.model.config import FILE_LOCATION, FILE_QUESTION
 from src.model.respository import Repository
@@ -47,4 +48,3 @@ class QuestionService:
         questions_all = self.repository.find_all(
             f'{FILE_LOCATION}{FILE_QUESTION}')
         return random.choice([question for question in questions_all if question['Tag'] == parametrization])
-
