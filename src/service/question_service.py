@@ -48,5 +48,4 @@ class QuestionService:
     def get_random_with_parametrization(self, parametrization):
         questions_all = self.repository.find_all(
             f'{FILE_LOCATION}{FILE_QUESTION}')
-        return random.choice([question for question in questions_all if
-                              question['Tag'] == parametrization])
+        return random.choice([question for question in questions_all if question['Tag'] == parametrization])
