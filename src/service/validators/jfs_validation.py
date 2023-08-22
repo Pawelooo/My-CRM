@@ -1,3 +1,4 @@
+from ast import literal_eval
 from typing import List
 
 from src.model.status import Status
@@ -6,20 +7,19 @@ from src.model.validator import Validator
 
 class JfsValidator(Validator):
 
-    def validate(self, attributes: List[str], type_elm: str):
-        if type_elm == 'create':
-            self.create_validation(attributes)
-        if type_elm == 'update':
-            self.update_validation(attributes)
+    def validate(self, result):
+        result_status = result.status_code
+        if 200 >= result_status < 300:
+            return None
+        result_content = literal_eval(result.content.decode('utf-8'))['messages']
+        if 400 > result_status < 500:
+            return self.create_validation(result_content)
+        if result_status >= 500:
+            return self.create_validation(result_content)
 
-    def create_validation(self, attributes: List[str]):
-        return True if all([True if isinstance(obj, str) else False for obj in attributes]) else False
-
-    def update_validation(self, attributes: List[str]):
-        return True if all([True if isinstance(obj, str) else False for obj in attributes]) else False
-
-    def read_validation(self, attributes: List[str]):
-        return True if all([True if isinstance(obj, str) else False for obj in attributes]) else False
+    def create_validation(self, code):
+        text = f'{code}'
+        return text
 
 
 
