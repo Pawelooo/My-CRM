@@ -1,3 +1,4 @@
+
 import json
 import requests
 
@@ -10,9 +11,11 @@ from PIL import Image
 import os
 
 
+
 class JsonFromService:
 
     def __init__(self):
+
         self.link = INT_JFSCF_URL
         self.headers = {'Tenant-Id': INT_JFSCF_TENANT_NAME}
         self.validation = JfsValidator()
@@ -61,8 +64,8 @@ class JsonFromService:
         for image in images:
             image_n = Image.open(f'{FOLDER_IMAGES}/{image}')
             image_n.thumbnail((SIZE_IMAGE, SIZE_IMAGE))
-            image_n.save(f'{FOLDER_IMAGES}{image}', quality=QUALITY_IMAGE,
-                         progressive=True)
+            image_n.save(f'{FOLDER_IMAGES}{image}', quality=QUALITY_IMAGE, progressive=True)
+
 
     def get_images(self):
         images = []
