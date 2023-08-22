@@ -11,7 +11,7 @@ class JfsValidator(Validator):
         if 200 >= result_status < 400:
             return None
         result_content = literal_eval(result.content.decode(CONTENT_ENCODE))['messages']
-        if 400 > result_status < 500:
+        if 400 >= result_status < 500:
             return self.create_validation(result_content)
         if result_status >= 500:
             return self.create_validation(result_content)
