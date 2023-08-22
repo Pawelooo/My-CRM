@@ -1,15 +1,13 @@
-
 import json
 import requests
 
 from ast import literal_eval
 from src.model.config import FILE_LOCATION, INT_JFSCF_URL, \
-    INT_JFSCF_TENANT_NAME, FILE_ENCODING, SIZE_IMAGE
+    INT_JFSCF_TENANT_NAME, FILE_ENCODING, SIZE_IMAGE, FOLDER_IMAGES, \
+    QUALITY_IMAGE
 from src.service.validators.jfs_validation import JfsValidator
 from PIL import Image
 import os
-from src.model.config import FOLDER_IMAGES
-
 
 
 class JsonFromService:
@@ -22,7 +20,7 @@ class JsonFromService:
     def add_file(self, name_file: str, type_s: str):
         files = {'file': open(f'{FILE_LOCATION}{name_file}', 'rb')}
         res = requests.post(f'{self.link}{type_s}', headers=self.headers,
-                             files=files)
+                            files=files)
         if (result := self.validation.validate(res)) is None:
             return res.status_code
         return result
@@ -30,7 +28,7 @@ class JsonFromService:
     def update_file(self, name_file: str, type_s: str):
         files = {'file': open(f'{FILE_LOCATION}{name_file}', 'rb')}
         res = requests.post(f'{self.link}{type_s}', headers=self.headers,
-                             files=files)
+                            files=files)
         if (result := self.validation.validate(res)) is None:
             return res.status_code
         return result
@@ -53,7 +51,8 @@ class JsonFromService:
                                 headers=self.headers)
         if (res := self.validation.validate(response)) is None:
             response_con = literal_eval(response.content.decode(FILE_ENCODING))
-            return [obj for obj in response_con if parametrization in obj.values()]
+            return [obj for obj in response_con if
+                    parametrization in obj.values()]
         return res
 
     def compress(self):
@@ -73,6 +72,7 @@ class JsonFromService:
                 continue
             images.append(file)
         return images
+
 
 def main() -> None:
     j1 = JsonFromService()
