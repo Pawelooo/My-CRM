@@ -1,10 +1,15 @@
+
 import json
-from ast import literal_eval
 import requests
 
+from ast import literal_eval
 from src.model.config import FILE_LOCATION, INT_JFSCF_URL, \
-    INT_JFSCF_TENANT_NAME, FILE_ENCODING
+    INT_JFSCF_TENANT_NAME, FILE_ENCODING, SIZE_IMAGE
 from src.service.validators.jfs_validation import JfsValidator
+from PIL import Image
+import os
+from src.model.config import FOLDER_IMAGES
+
 
 
 class JsonFromService:
@@ -50,3 +55,29 @@ class JsonFromService:
             response_con = literal_eval(response.content.decode(FILE_ENCODING))
             return [obj for obj in response_con if parametrization in obj.values()]
         return res
+
+    def compress(self):
+        images = self.get_images()
+        os.makedirs(FOLDER_IMAGES, exist_ok=True)
+        for image in images:
+            image_n = Image.open(f'{FOLDER_IMAGES}/{image}')
+            image_n.thumbnail((SIZE_IMAGE, SIZE_IMAGE))
+            image_n.save(f'{FOLDER_IMAGES}{image}', quality=QUALITY_IMAGE,
+                         progressive=True)
+
+    def get_images(self):
+        images = []
+        for file in os.listdir(FOLDER_IMAGES):
+            path = os.path.join(FOLDER_IMAGES, file)
+            if os.path.isdir(path):
+                continue
+            images.append(file)
+        return images
+
+def main() -> None:
+    j1 = JsonFromService()
+    j1.compress()
+
+
+if __name__ == '__main__':
+    main()
