@@ -1,8 +1,10 @@
 import random
 
 from src.model.config import FILE_LOCATION, FILE_QUESTION
+
 from src.model.question import Question
 from src.model.respository import Repository
+
 
 
 class QuestionService:

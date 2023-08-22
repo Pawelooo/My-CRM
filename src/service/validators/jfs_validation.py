@@ -1,7 +1,4 @@
 from ast import literal_eval
-from typing import List
-
-from src.model.status import Status
 from src.model.validator import Validator
 
 
@@ -20,8 +17,3 @@ class JfsValidator(Validator):
     def create_validation(self, code):
         text = f'{code}'
         return text
-
-
-
-
-
