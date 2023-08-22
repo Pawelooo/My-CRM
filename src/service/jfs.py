@@ -74,10 +74,3 @@ class JsonFromService:
         return images
 
 
-def main() -> None:
-    j1 = JsonFromService()
-    j1.compress()
-
-
-if __name__ == '__main__':
-    main()
