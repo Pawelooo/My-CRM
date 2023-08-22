@@ -1,7 +1,8 @@
 import random
 
-from src.model.question import Question
 from src.model.config import FILE_LOCATION, FILE_QUESTION
+
+from src.model.question import Question
 from src.model.respository import Repository
 
 
@@ -23,7 +24,7 @@ class QuestionService:
 
     def delete(self, key: str):
         self.repository.delete(f'{FILE_LOCATION}{FILE_QUESTION}', key)
-        
+
     def get_random_with_parametrization(self, parametrization):
         questions_all = self.repository.find_all(
             f'{FILE_LOCATION}{FILE_QUESTION}')
