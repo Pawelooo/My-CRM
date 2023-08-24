@@ -26,4 +26,7 @@ INT_JFSCF_TENANT_NAME = 'My-CRM'
 FOLDER_IMAGES = '../../img/'
 SIZE_IMAGE = 200
 QUALITY_IMAGE = 85
-
+FILE_ZIP = '../../resources/temp/'
+FILES_ZIPPED = '../../resources/ZIPPED/'
+FILES_DOWNLOAD_ALL = 'download/all/'
+GET_FILE = 'download'

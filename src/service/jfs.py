@@ -1,13 +1,21 @@
 import json
-import requests
 
-from ast import literal_eval
 from src.model.config import FILE_LOCATION, INT_JFSCF_URL, \
     INT_JFSCF_TENANT_NAME, FILE_ENCODING, SIZE_IMAGE, FOLDER_IMAGES, \
     QUALITY_IMAGE
 from src.service.validators.jfs_validation import JfsValidator
 from PIL import Image
+
 import os
+import shutil
+import zipfile
+from ast import literal_eval
+from typing import List, Dict
+
+import requests
+
+from src.model.config import FILE_ZIP, FILES_ZIPPED, FILES_DOWNLOAD_ALL, \
+    GET_FILE
 
 
 class JsonFromService:
@@ -64,7 +72,39 @@ class JsonFromService:
         images = []
         for file in os.listdir(FOLDER_IMAGES):
             path = os.path.join(FOLDER_IMAGES, file)
-            if os.path.isdir(path):
-                continue
-            images.append(file)
+            if not os.path.isdir(path):
+                images.append(file)
         return images
+
+    def get_all_links(self):
+        response = requests.get(f'{self.link}{FILES_DOWNLOAD_ALL}',
+                                headers=self.headers)
+        response_d = literal_eval(response.content.decode(FILE_ENCODING))
+        return [obj for obj in response_d if obj['name'].startswith('db_')]
+
+    def get_object(self, name_file: str):
+
+        return literal_eval(requests.get(f'{self.link}{GET_FILE}?filename={name_file}', headers=self.headers).content.decode(FILE_ENCODING))
+
+    def get_all_files(self, name_files: List[Dict[str, str]]):
+        if not os.path.exists(FILE_ZIP):
+            os.makedirs(FILE_ZIP)
+        for obj in name_files:
+            with open(f'{FILE_ZIP}{obj["name"]}', 'w+', ) as f:
+                json.dump(self.get_object(obj['name']), f)
+
+    def pack_files(self, path_file: str):
+        with zipfile.ZipFile(path_file, 'w') as zipf:
+            for folder, _, files in os.walk(FILE_ZIP):
+                for file in files:
+                    path_file = os.path.join(folder, file)
+                    name_zip = os.path.relpath(path_file, FILE_ZIP)
+                    zipf.write(path_file, name_zip)
+        shutil.rmtree(FILE_ZIP)
+
+    def get_zipped_files(self, name_zip: str):
+        all_links = self.get_all_links()
+        self.get_all_files(all_links)
+        self.pack_files(os.path.join(FILES_ZIPPED, name_zip))
+
+
