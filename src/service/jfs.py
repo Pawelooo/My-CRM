@@ -72,22 +72,19 @@ class JsonFromService:
         images = []
         for file in os.listdir(FOLDER_IMAGES):
             path = os.path.join(FOLDER_IMAGES, file)
-            if os.path.isdir(path):
-                continue
-            images.append(file)
+            if not os.path.isdir(path):
+                images.append(file)
         return images
 
     def get_all_links(self):
         response = requests.get(f'{self.link}{FILES_DOWNLOAD_ALL}',
                                 headers=self.headers)
-        response_d = literal_eval(response.content.decode('utf-8'))
+        response_d = literal_eval(response.content.decode(FILE_ENCODING))
         return [obj for obj in response_d if obj['name'].startswith('db_')]
 
     def get_object(self, name_file: str):
-        response = requests.get(f'{self.link}{GET_FILE}?filename={name_file}',
-                                headers=self.headers)
-        response_d = literal_eval(response.content.decode('utf-8'))
-        return response_d
+
+        return literal_eval(requests.get(f'{self.link}{GET_FILE}?filename={name_file}', headers=self.headers).content.decode(FILE_ENCODING))
 
     def get_all_files(self, name_files: List[Dict[str, str]]):
         if not os.path.exists(FILE_ZIP):
