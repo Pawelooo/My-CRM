@@ -1,4 +1,3 @@
-
 import json
 import requests
 
@@ -11,11 +10,9 @@ from PIL import Image
 import os
 
 
-
 class JsonFromService:
 
     def __init__(self):
-
         self.link = INT_JFSCF_URL
         self.headers = {'Tenant-Id': INT_JFSCF_TENANT_NAME}
         self.validation = JfsValidator()
@@ -24,17 +21,13 @@ class JsonFromService:
         files = {'file': open(f'{FILE_LOCATION}{name_file}', 'rb')}
         res = requests.post(f'{self.link}{type_s}', headers=self.headers,
                             files=files)
-        if (result := self.validation.validate(res)) is None:
-            return res.status_code
-        return result
+        return res.status_code if (result := self.validation.validate(res)) is None else result
 
     def update_file(self, name_file: str, type_s: str):
         files = {'file': open(f'{FILE_LOCATION}{name_file}', 'rb')}
         res = requests.post(f'{self.link}{type_s}', headers=self.headers,
                             files=files)
-        if (result := self.validation.validate(res)) is None:
-            return res.status_code
-        return result
+        return res.status_code if (result := self.validation.validate(res)) is None else result
 
     def read_file(self, name_file: str, type_s: str):
         response = requests.get(
@@ -64,8 +57,8 @@ class JsonFromService:
         for image in images:
             image_n = Image.open(f'{FOLDER_IMAGES}/{image}')
             image_n.thumbnail((SIZE_IMAGE, SIZE_IMAGE))
-            image_n.save(f'{FOLDER_IMAGES}{image}', quality=QUALITY_IMAGE, progressive=True)
-
+            image_n.save(f'{FOLDER_IMAGES}{image}', quality=QUALITY_IMAGE,
+                         progressive=True)
 
     def get_images(self):
         images = []
@@ -75,5 +68,3 @@ class JsonFromService:
                 continue
             images.append(file)
         return images
-
-
