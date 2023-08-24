@@ -1,10 +1,10 @@
 import json
+
 from src.model.config import FILE_LOCATION, INT_JFSCF_URL, \
     INT_JFSCF_TENANT_NAME, FILE_ENCODING, SIZE_IMAGE, FOLDER_IMAGES, \
     QUALITY_IMAGE
 from src.service.validators.jfs_validation import JfsValidator
 from PIL import Image
-
 
 import os
 import shutil
@@ -16,7 +16,6 @@ import requests
 
 from src.model.config import FILE_ZIP, FILES_ZIPPED, FILES_DOWNLOAD_ALL, \
     GET_FILE
-
 
 
 class JsonFromService:
@@ -82,7 +81,6 @@ class JsonFromService:
         response = requests.get(f'{self.link}{FILES_DOWNLOAD_ALL}',
                                 headers=self.headers)
         response_d = literal_eval(response.content.decode('utf-8'))
-        print(response_d)
         return [obj for obj in response_d if obj['name'].startswith('db_')]
 
     def get_object(self, name_file: str):
@@ -111,4 +109,5 @@ class JsonFromService:
         all_links = self.get_all_links()
         self.get_all_files(all_links)
         self.pack_files(os.path.join(FILES_ZIPPED, name_zip))
+
 

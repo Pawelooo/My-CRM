@@ -30,4 +30,3 @@ FILE_ZIP = '../../resources/temp/'
 FILES_ZIPPED = '../../resources/ZIPPED/'
 FILES_DOWNLOAD_ALL = 'download/all/'
 GET_FILE = 'download'
-
