@@ -1,4 +1,4 @@
-from src.model.todo import ToDo
+from src.model.item import ToDo
 from src.model.validator import Validator
 
 

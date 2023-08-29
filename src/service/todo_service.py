@@ -1,6 +1,6 @@
 from src.model.config import FILE_LOCATION, FILE_TODO_NAME, FILE_AUTHOR_NAME
 from src.model.respository import Repository
-from src.model.todo import ToDo
+from src.model.item import ToDo
 
 
 class ToDoService:
