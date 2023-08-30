@@ -26,7 +26,6 @@ class Item:
         self.status = None
         self.update_status()
 
-
     def __repr__(self):
         return {
             'id': self.id,
