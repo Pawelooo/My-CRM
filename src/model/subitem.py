@@ -1,25 +1,19 @@
 from datetime import datetime
 
-from src.model.book import Book
-from src.model.category import Category
-from src.model.course import Course
 from src.model.generator import Generator
-from src.model.user import User
-from src.model.video import Video
 
 
-class Item:
+class SubItem:
 
-    def __init__(self, name: str, title: str, description: str,
-                 deadline: datetime, category: Category, assignee: User):
+    def __init__(self, name: str, title: str, id_item: int, description: str):
         self.id = Generator().generate_number()
         self.name = name
         self.title = title
         self.description = description
-        self.deadline = deadline
-        self.category = category
+        self.id_item = id_item
         self.opened_by = self.actual_date()
-        self.assignee = assignee
+        self.deadline = None
+        self.done = False
 
     def __repr__(self):
         return {
@@ -27,12 +21,16 @@ class Item:
             'name': self.name,
             'title': self.title,
             'description': self.description,
-            'opened_by': self.opened_by,
+            'id item': self.id_item,
+            'opened by': self.opened_by,
             'deadline': self.deadline,
-            'category': self.category,
-            'assignee': self.assignee,
+            'done': self.done
         }
 
     @staticmethod
     def actual_date():
         return datetime.now()
+
+    def update_done(self):
+        self.done = True
+        self.deadline = datetime.now()
