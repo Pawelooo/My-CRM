@@ -15,6 +15,7 @@ FILE_ROADMAP_PRIORITY = 'db_roadmap_priority' + FILE_FORMAT
 FILE_ROADMAP_COMPLEXITY = 'db_roadmap_complexity' + FILE_FORMAT
 FILE_QUESTION = 'db_question' + FILE_FORMAT
 FILE_ITEM = 'db_item' + FILE_FORMAT
+FILE_SUBITEM = 'db_subitem' + FILE_FORMAT
 FILE_LOCATION = '../../resources/data/'
 FILE_CONFIG_LOCATION = 'My-CRM/src/model/config.py'
 FILE_LOCATION_TAG = '../../../resources/data/'

@@ -1,21 +1,22 @@
-from src.service.status_service import StatusService
+from src.model.config import FILE_LOCATION, FILE_SUBITEM
+from src.model.respository import Repository
+from src.model.item import Item
 
 
-class SubItem:
+class SubItemService:
 
     def __init__(self):
-        self.status_opt = StatusService()
-        self.level = 0
-        self.status = None
-        self.update_status()
+        self.repository = Repository()
 
-    def __repr__(self):
-        return {
-            'status': self.status
-        }
+    def create(self, obj: Item):
+        self.repository.create(f'{FILE_LOCATION}{FILE_SUBITEM}', obj)
 
-    def update_status(self):
-        obj = list(self.status_opt.read()[0].values())
-        self.status = obj[self.level]
-        if not self.level >= len(obj) - 1:
-            self.level += 1
+    def read(self, ):
+        return self.repository.find_all(f'{FILE_LOCATION}{FILE_SUBITEM}')
+
+    def update(self, obj: Item, key: str):
+        self.repository.update(f'{FILE_LOCATION}{FILE_SUBITEM}', obj, key)
+
+    def delete(self, key: str):
+        self.repository.delete(f'{FILE_LOCATION}{FILE_SUBITEM}', key)
+
