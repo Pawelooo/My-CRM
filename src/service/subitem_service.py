@@ -9,7 +9,6 @@ class SubItem:
         self.status = None
         self.update_status()
 
-
     def __repr__(self):
         return {
             'status': self.status
@@ -20,4 +19,3 @@ class SubItem:
         self.status = obj[self.level]
         if not self.level >= len(obj) - 1:
             self.level += 1
-
