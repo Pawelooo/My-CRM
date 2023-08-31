@@ -1,4 +1,4 @@
-from src.model.config import FILE_LOCATION, FILE_STATUS_NAME, FILE_AUTHOR_NAME
+from src.model.config import FILE_LOCATION, FILE_STATUS_NAME
 from src.model.respository import Repository
 from src.model.status import Status
 

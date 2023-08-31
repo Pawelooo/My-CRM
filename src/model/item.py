@@ -1,11 +1,8 @@
 from datetime import datetime
 
-from src.model.book import Book
 from src.model.category import Category
-from src.model.course import Course
 from src.model.generator import Generator
 from src.model.user import User
-from src.model.video import Video
 from src.service.status_service import StatusService
 
 
