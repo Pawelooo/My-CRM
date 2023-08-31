@@ -1,6 +1,4 @@
-
 from src.model.generator import Generator
-
 from src.service.status_service import StatusService
 
 
