@@ -21,7 +21,6 @@ class Item:
         self.opened_by = self.actual_date()
         self.assignee = assignee
 
-
     def __repr__(self):
         return {
             'id': self.id,

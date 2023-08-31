@@ -1,5 +1,4 @@
 from datetime import datetime
-
 from src.model.config import FORMAT_DATE
 
 
