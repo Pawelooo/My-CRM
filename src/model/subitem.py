@@ -5,13 +5,13 @@ from src.model.generator import Generator
 
 class SubItem:
 
-    def __init__(self, name: str, title: str, id_item: int, description: str):
+    def __init__(self, name: str, title: str, description: str):
         self.id = Generator().generate_number()
         self.name = name
         self.title = title
         self.description = description
-        self.id_item = id_item
-        self.opened_by = self.actual_date()
+        self.id_item = []
+        self.opened_by = None
         self.deadline = None
         self.done = False
 
@@ -26,11 +26,3 @@ class SubItem:
             'deadline': self.deadline,
             'done': self.done
         }
-
-    @staticmethod
-    def actual_date():
-        return datetime.now()
-
-    def update_done(self):
-        self.done = True
-        self.deadline = datetime.now()
