@@ -1,11 +1,8 @@
 from datetime import datetime
-
-from src.model.book import Book
 from src.model.category import Category
-from src.model.course import Course
 from src.model.generator import Generator
 from src.model.user import User
-from src.model.video import Video
+from src.service.status_service import StatusService
 
 
 class Item:
@@ -20,6 +17,10 @@ class Item:
         self.category = category
         self.opened_by = self.actual_date()
         self.assignee = assignee
+        self.status_opt = StatusService()
+        self.level = 0
+        self.status = None
+        self.update_status()
 
     def __repr__(self):
         return {
@@ -31,8 +32,15 @@ class Item:
             'deadline': self.deadline,
             'category': self.category,
             'assignee': self.assignee,
+            'status': self.status
         }
 
     @staticmethod
     def actual_date():
         return datetime.now()
+
+    def update_status(self):
+        obj = list(self.status_opt.read()[0].values())
+        self.status = obj[self.level]
+        if not self.level >= len(obj) - 1:
+            self.level += 1
