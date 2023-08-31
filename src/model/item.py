@@ -3,7 +3,6 @@ from datetime import datetime
 from src.model.category import Category
 from src.model.generator import Generator
 from src.model.user import User
-from src.service.roadmap_service import RoadmapService
 
 
 class Item:
@@ -18,8 +17,7 @@ class Item:
         self.category = category
         self.opened_by = self.actual_date()
         self.assignee = assignee
-        self.roadmap_item = None
-        self.roadmap = RoadmapService()
+        self.roadmap = None
 
     def __repr__(self):
         return {
@@ -31,20 +29,10 @@ class Item:
             'deadline': self.deadline,
             'category': self.category,
             'assignee': self.assignee,
-            'roadmap item': self.roadmap_item
+            'roadmap': self.roadmapm
         }
 
     @staticmethod
     def actual_date():
         return datetime.now()
 
-    def get_repository(self, id_roadmap: int):
-        obj = iter(self.roadmap.read())
-        while True:
-            try:
-                element = next(obj)
-            except StopIteration:
-                break
-            else:
-                if element['id'] == id_roadmap:
-                    return element
