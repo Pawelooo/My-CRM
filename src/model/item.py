@@ -1,5 +1,4 @@
 from datetime import datetime
-
 from src.model.category import Category
 from src.model.generator import Generator
 from src.model.user import User
