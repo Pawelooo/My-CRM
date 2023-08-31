@@ -39,8 +39,13 @@ class Item:
         return datetime.now()
 
     def get_repository(self, id_roadmap: int):
-        for obj in self.roadmap.read():
-            if obj['id'] == id_roadmap:
-                self.roadmap_item = obj
+        obj = iter(self.roadmap.read())
+        while True:
+            try:
+                element = next(obj)
+                if element['id'] == id_roadmap:
+                    return element
+            except StopIteration:
+                break
 
 
