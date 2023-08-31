@@ -13,8 +13,9 @@ class SubItem:
         while True:
             try:
                 element = next(obj)
-                if element['id'] == id_roadmap:
-                    return element
             except StopIteration:
                 break
+            else:
+                if element['id'] == id_roadmap:
+                    return element
 
