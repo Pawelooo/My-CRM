@@ -43,3 +43,4 @@ class Item:
         self.status = obj[self.level]
         if not self.level >= len(obj) - 1:
             self.level += 1
+
