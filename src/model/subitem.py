@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from src.model.generator import Generator
 
 
@@ -26,3 +24,4 @@ class SubItem:
             'deadline': self.deadline,
             'done': self.done
         }
+
