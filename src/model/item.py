@@ -32,7 +32,6 @@ class Item:
             'deadline': self.deadline,
             'category': self.category,
             'assignee': self.assignee,
-            'status': self.status
         }
 
     @staticmethod
