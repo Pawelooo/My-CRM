@@ -29,7 +29,7 @@ class Item:
             'deadline': self.deadline,
             'category': self.category,
             'assignee': self.assignee,
-            'roadmap': self.roadmapm
+            'roadmap': self.roadmap
         }
 
     @staticmethod
