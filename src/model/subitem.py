@@ -17,6 +17,7 @@ class SubItem:
         self.level = 0
         self.status = None
         self.update_status()
+        self.attachments = None
 
     def __repr__(self):
         return {
