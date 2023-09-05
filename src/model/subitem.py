@@ -1,8 +1,9 @@
 from src.model.generator import Generator
-from src.service.status_service import StatusService
+
 
 
 class SubItem:
+
 
     def __init__(self, name: str, title: str, description: str):
         self.id = Generator().generate_number()
@@ -13,10 +14,8 @@ class SubItem:
         self.opened_by = None
         self.deadline = None
         self.done = False
-        self.status_opt = StatusService()
-        self.level = 0
         self.status = None
-        self.update_status()
+        self.roadmap_item = None
 
     def __repr__(self):
         return {
@@ -31,9 +30,6 @@ class SubItem:
             'status': self.status
         }
 
-    def update_status(self):
-        obj = list(self.status_opt.read()[0].values())
-        self.status = obj[self.level]
-        if not self.level >= len(obj) - 1:
-            self.level += 1
+
+
 
