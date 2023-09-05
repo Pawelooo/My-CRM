@@ -2,12 +2,13 @@ from datetime import datetime
 from src.model.category import Category
 from src.model.generator import Generator
 from src.model.user import User
+from src.service.jfs import JsonFromService
 
 
 class Item:
 
     def __init__(self, name: str, title: str, description: str,
-                 deadline: datetime, category: Category, assignee: User):
+                 deadline: datetime, category: Category, assignee: User, name_file: str):
         self.id = Generator().generate_number()
         self.name = name
         self.title = title
@@ -18,7 +19,8 @@ class Item:
         self.assignee = assignee
         self.status = None
         self.roadmap = None
-        self.attachments = None
+        self.name_file = name_file
+        self.attachments = JsonFromService().add_file(self.name_file, 'upload/')
 
     def __repr__(self):
         return {
@@ -32,10 +34,13 @@ class Item:
             'assignee': self.assignee,
             'status': self.status,
             'roadmap': self.roadmap,
-
+            'name file': self.name_file,
+            'attachments': self.attachments
         }
 
     @staticmethod
     def actual_date():
         return datetime.now()
+
+
 
