@@ -1,9 +1,7 @@
 from datetime import datetime
-from src.service.status_service import StatusService
 from src.model.category import Category
 from src.model.generator import Generator
 from src.model.user import User
-
 
 
 class Item:
@@ -18,7 +16,6 @@ class Item:
         self.category = category
         self.opened_by = self.actual_date()
         self.assignee = assignee
-        self.status_opt = StatusService()
         self.status = None
         self.roadmap = None
 
