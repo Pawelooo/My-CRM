@@ -1,4 +1,8 @@
 from datetime import datetime
+<<<<<<< HEAD
+=======
+
+>>>>>>> ad189e8907f14b0751d04880b7b4ce77253b992c
 from src.model.category import Category
 from src.model.generator import Generator
 from src.model.user import User
@@ -31,6 +35,7 @@ class Item:
             'assignee': self.assignee,
             'status': self.status,
             'roadmap': self.roadmap,
+
         }
 
     @staticmethod
