@@ -20,7 +20,6 @@ class Item:
         self.roadmap = None
         self.attachments = None
 
-
     def __repr__(self):
         return {
             'id': self.id,
