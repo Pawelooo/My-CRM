@@ -21,7 +21,6 @@ class Item:
         self.roadmap = None
         self.name_file = name_file
         self.attachments = JsonFromService().add_file(self.name_file, 'upload/')
-        self.status_opt = StatusService()
         self.status = None
         self.comments = None
         self.roadmap = None
@@ -38,9 +37,8 @@ class Item:
             'category': self.category,
             'assignee': self.assignee,
             'status': self.status,
-            'roadmap': self.roadmap,
             'name file': self.name_file,
-            'attachments': self.attachments
+            'attachments': self.attachments,
             'roadmap': self.roadmap
 
         }

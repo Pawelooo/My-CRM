@@ -19,6 +19,7 @@ class SubItem:
         self.attachments = JsonFromService().add_file(self.name_file,
                                                       'upload/')
         self.status = None
+        self.status = None
         self.comments = None
         self.roadmap = None
         self.attachments = None
