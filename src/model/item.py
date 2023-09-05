@@ -21,6 +21,8 @@ class Item:
         self.roadmap = None
         self.name_file = name_file
         self.attachments = JsonFromService().add_file(self.name_file, 'upload/')
+        self.status_opt = StatusService()
+        self.status = None
         self.comments = None
 
     def __repr__(self):
@@ -37,11 +39,11 @@ class Item:
             'roadmap': self.roadmap,
             'name file': self.name_file,
             'attachments': self.attachments
+            'roadmap': self.roadmap
+
         }
 
     @staticmethod
     def actual_date():
         return datetime.now()
-
-
 
