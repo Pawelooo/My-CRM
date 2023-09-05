@@ -33,7 +33,7 @@ class Item:
             'category': self.category,
             'assignee': self.assignee,
             'status': self.status,
-            'roadmap item': self.roadmap_item,
+            'roadmap': self.roadmap,
         }
 
     @staticmethod
