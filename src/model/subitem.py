@@ -1,10 +1,7 @@
 from src.model.generator import Generator
 
 
-
 class SubItem:
-
-
 
     def __init__(self, name: str, title: str, description: str):
         self.id = Generator().generate_number()
@@ -30,6 +27,3 @@ class SubItem:
             'done': self.done,
             'status': self.status
         }
-
-
-
