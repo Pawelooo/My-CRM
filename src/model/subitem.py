@@ -18,6 +18,7 @@ class SubItem:
         self.name_file = name_file
         self.attachments = JsonFromService().add_file(self.name_file,
                                                       'upload/')
+        self.comments = None
 
     def __repr__(self):
         return {
