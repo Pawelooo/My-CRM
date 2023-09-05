@@ -18,6 +18,7 @@ class Roadmap:
 
     def __repr__(self):
         return {
+            'id': self.id,
             'type item': self.type_item,
             'title': self.title,
             'priority': self.priority,
