@@ -13,7 +13,8 @@ class SubItem:
         self.deadline = None
         self.done = False
         self.status = None
-        self.roadmap_item = None
+        self.roadmap = None
+        self.attachments = None
 
     def __repr__(self):
         return {

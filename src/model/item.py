@@ -18,6 +18,8 @@ class Item:
         self.assignee = assignee
         self.status = None
         self.roadmap = None
+        self.attachments = None
+
 
     def __repr__(self):
         return {
