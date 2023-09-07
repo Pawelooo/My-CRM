@@ -14,8 +14,8 @@ class Question:
     def __repr__(self):
         return {
             'name': self.name,
-            'number of fails': self.number_of_fails,
-            'Number of usages': self.number_of_usages,
+            'number_of_fails': self.number_of_fails,
+            'Number_of_usages': self.number_of_usages,
             'Tag': self.tag,
             'id': self.id
         }

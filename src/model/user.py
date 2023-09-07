@@ -15,7 +15,7 @@ class User:
             'name': self.name,
             'password': self.password,
             'email': self.email,
-            'full name': self.full_name if self.full_name else '',
+            'full_name': self.full_name if self.full_name else '',
             'id': self.id
         }
     
