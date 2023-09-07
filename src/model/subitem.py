@@ -1,3 +1,4 @@
+from src.model.config import FILE_SUBITEM
 from src.model.generator import Generator
 from src.service.jfs import JsonFromService
 from src.service.tags.tag import Tag
@@ -17,6 +18,8 @@ class SubItem:
         self.name_file = name_file
         self.attachments = JsonFromService().add_file(self.name_file,
                                                       'upload/')
+        self.status_opt = JsonFromService().read_file(FILE_SUBITEM, 'upload/')
+        self.level = 0
         self.status = None
         self.comments = None
         self.roadmap = None
@@ -37,3 +40,9 @@ class SubItem:
             'attachments': self.attachments,
             'tag': self.tag,
         }
+
+    def update_status(self):
+        obj = list(self.status_opt.read()[0].values())
+        self.status = obj[self.level]
+        if not self.level >= len(obj) - 1:
+            self.level += 1
