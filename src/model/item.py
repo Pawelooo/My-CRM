@@ -19,7 +19,6 @@ class Item:
         self.category = category
         self.opened_by = self.actual_date()
         self.assignee = assignee
-        self.status = None
         self.roadmap = None
         self.name_file = name_file
         self.attachments = JsonFromService().add_file(self.name_file,

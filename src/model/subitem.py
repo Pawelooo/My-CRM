@@ -14,12 +14,10 @@ class SubItem:
         self.opened_by = None
         self.deadline = None
         self.done = False
-        self.status = None
         self.roadmap = None
         self.name_file = name_file
         self.attachments = JsonFromService().add_file(self.name_file,
                                                       'upload/')
-        self.status = None
         self.status = None
         self.comments = None
         self.roadmap = None
