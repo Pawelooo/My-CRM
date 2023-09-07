@@ -14,7 +14,6 @@ class SubItem:
         self.opened_by = None
         self.deadline = None
         self.done = False
-        self.roadmap = None
         self.name_file = name_file
         self.attachments = JsonFromService().add_file(self.name_file,
                                                       'upload/')
@@ -29,13 +28,12 @@ class SubItem:
             'name': self.name,
             'title': self.title,
             'description': self.description,
-            'id item': self.id_item,
+            'id_item': self.id_item,
             'opened by': self.opened_by,
             'deadline': self.deadline,
             'done': self.done,
             'status': self.status,
-            'name file': self.name_file,
+            'name_file': self.name_file,
             'attachments': self.attachments,
             'tag': self.tag,
         }
-

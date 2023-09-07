@@ -19,7 +19,6 @@ class Item:
         self.category = category
         self.opened_by = self.actual_date()
         self.assignee = assignee
-        self.roadmap = None
         self.name_file = name_file
         self.attachments = JsonFromService().add_file(self.name_file,
                                                       'upload/')
@@ -39,7 +38,7 @@ class Item:
             'category': self.category,
             'assignee': self.assignee,
             'status': self.status,
-            'name file': self.name_file,
+            'name_file': self.name_file,
             'attachments': self.attachments,
             'roadmap': self.roadmap,
             'tag': self.tag,
@@ -48,3 +47,12 @@ class Item:
     @staticmethod
     def actual_date():
         return datetime.now()
+
+
+def main() -> None:
+    j1 = Item('a', 'b', 'c', 'db_author.json', 'e', 'f', 'g', 'h')
+    j1.__repr__()
+
+
+if __name__ == '__main__':
+    main()
