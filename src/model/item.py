@@ -3,12 +3,14 @@ from src.model.category import Category
 from src.model.generator import Generator
 from src.model.user import User
 from src.service.jfs import JsonFromService
+from src.service.tags.tag import Tag
 
 
 class Item:
 
-    def __init__(self, name: str, title: str, description: str,
-                 deadline: datetime, category: Category, assignee: User, name_file: str):
+    def __init__(self, name: str, title: str, description: str,name_file: str,
+                 deadline: datetime, category: Category, assignee: User,
+                 tag: Tag):
         self.id = Generator().generate_number()
         self.name = name
         self.title = title
@@ -24,6 +26,8 @@ class Item:
         self.status = None
         self.comments = None
         self.roadmap = None
+        self.tag = tag
+
 
     def __repr__(self):
         return {
@@ -38,8 +42,8 @@ class Item:
             'status': self.status,
             'name file': self.name_file,
             'attachments': self.attachments,
-            'roadmap': self.roadmap
-
+            'roadmap': self.roadmap,
+            'tag': self.tag,
         }
 
     @staticmethod
