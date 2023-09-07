@@ -1,10 +1,11 @@
 from src.model.generator import Generator
 from src.service.jfs import JsonFromService
+from src.service.tags.tag import Tag
 
 
 class SubItem:
 
-    def __init__(self, name: str, title: str, description: str, name_file):
+    def __init__(self, name: str, title: str, description: str, name_file, tag: Tag):
         self.id = Generator().generate_number()
         self.name = name
         self.title = title
@@ -13,15 +14,13 @@ class SubItem:
         self.opened_by = None
         self.deadline = None
         self.done = False
-        self.status = None
-        self.roadmap = None
         self.name_file = name_file
         self.attachments = JsonFromService().add_file(self.name_file,
                                                       'upload/')
         self.status = None
-        self.status = None
         self.comments = None
         self.roadmap = None
+        self.tag = tag
 
     def __repr__(self):
         return {
@@ -29,13 +28,12 @@ class SubItem:
             'name': self.name,
             'title': self.title,
             'description': self.description,
-            'id item': self.id_item,
+            'id_item': self.id_item,
             'opened by': self.opened_by,
             'deadline': self.deadline,
             'done': self.done,
             'status': self.status,
-            'name file': self.name_file,
+            'name_file': self.name_file,
             'attachments': self.attachments,
+            'tag': self.tag,
         }
-
-

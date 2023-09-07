@@ -18,13 +18,12 @@ class Roadmap:
 
     def __repr__(self):
         return {
-            'id': self.id,
-            'type item': self.type_item,
+            'type_item': self.type_item,
             'title': self.title,
             'priority': self.priority,
             'complexity': self.complexity,
-            'goal completion': self.goal_completion.strftime(FORMAT_DATE),
+            'goal_completion': self.goal_completion.strftime(FORMAT_DATE),
             'added': self.added.strftime('%d.%m.%Y'),
-            'user id': self.user_id,
+            'user_id': self.user_id,
             'id': self.id
         }
