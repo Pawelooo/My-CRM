@@ -18,6 +18,10 @@ class SubItem:
         self.name_file = name_file
         self.attachments = JsonFromService().add_file(self.name_file,
                                                       'upload/')
+        self.status = None
+        self.status = None
+        self.comments = None
+        self.roadmap = None
 
     def __repr__(self):
         return {
@@ -33,3 +37,5 @@ class SubItem:
             'name file': self.name_file,
             'attachments': self.attachments,
         }
+
+
