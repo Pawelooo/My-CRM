@@ -1,4 +1,3 @@
-
 from src.model.generator import Generator
 from src.service.jfs import JsonFromService
 from src.service.tags.tag import Tag
@@ -41,5 +40,4 @@ class SubItem:
             'attachments': self.attachments,
             'tag': self.tag,
         }
-
 

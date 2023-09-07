@@ -8,7 +8,7 @@ from src.service.tags.tag import Tag
 
 class Item:
 
-    def __init__(self, name: str, title: str, description: str,name_file: str,
+    def __init__(self, name: str, title: str, description: str, name_file: str,
                  deadline: datetime, category: Category, assignee: User,
                  tag: Tag):
         self.id = Generator().generate_number()
@@ -22,12 +22,12 @@ class Item:
         self.status = None
         self.roadmap = None
         self.name_file = name_file
-        self.attachments = JsonFromService().add_file(self.name_file, 'upload/')
+        self.attachments = JsonFromService().add_file(self.name_file,
+                                                      'upload/')
         self.status = None
         self.comments = None
         self.roadmap = None
         self.tag = tag
-
 
     def __repr__(self):
         return {
@@ -49,4 +49,3 @@ class Item:
     @staticmethod
     def actual_date():
         return datetime.now()
-
