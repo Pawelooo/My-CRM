@@ -24,7 +24,6 @@ class Item:
         self.status = None
         self.comments = None
         self.roadmap = None
-        self.attachments = None
 
     def __repr__(self):
         return {
