@@ -1,6 +1,11 @@
 from datetime import datetime
+from typing import List
+
 from src.model.category import Category
+from src.model.config import FILE_ITEM, GET_FILE, UPLOAD_FILE, FILE_SUBITEM
+
 from src.model.generator import Generator
+from src.model.subitem import SubItem
 from src.model.user import User
 from src.service.jfs import JsonFromService
 from src.service.tags.tag import Tag
@@ -21,11 +26,17 @@ class Item:
         self.assignee = assignee
         self.name_file = name_file
         self.attachments = JsonFromService().add_file(self.name_file,
-                                                      'upload/')
-        self.status = None
+                                                      UPLOAD_FILE)
+        self.status_opt = JsonFromService().read_file(FILE_ITEM, GET_FILE)
+        self.subitems = JsonFromService().read_file(FILE_SUBITEM, GET_FILE)
+        self.sub_item = []
         self.comments = None
         self.roadmap = None
         self.tag = tag
+        self.status = 'TODO'
+        self.statuses = ['TODO', 'INPROGRESS', 'DONE']
+        self.jfs = JsonFromService()
+        self.current_status = 0
 
     def __repr__(self):
         return {
@@ -48,11 +59,17 @@ class Item:
     def actual_date():
         return datetime.now()
 
+    def update_status(self):
+        self.status = self.get_next_status()
+        self.jfs.update_file(self.name_file, UPLOAD_FILE)
 
-def main() -> None:
-    j1 = Item('a', 'b', 'c', 'db_author.json', 'e', 'f', 'g', 'h')
-    j1.__repr__()
+    def get_next_status(self):
+        if self.current_status <= len(self.statuses) - 1:
+            self.current_status += 1
+        return self.statuses[self.current_status]
 
-
-if __name__ == '__main__':
-    main()
+    def check_status(self):
+        if all(obj['status'] == 'DONE' for obj in self.subitems):
+            self.update_status()
+        if any(obj['status'] == 'INPROGRESS' for obj in self.subitems):
+            self.update_status()

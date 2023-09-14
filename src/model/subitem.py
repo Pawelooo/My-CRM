@@ -1,3 +1,5 @@
+from src.model.config import FILE_SUBITEM, FILE_STATUS_NAME, UPLOAD_FILE, \
+    GET_FILE
 from src.model.generator import Generator
 from src.service.jfs import JsonFromService
 from src.service.tags.tag import Tag
@@ -5,7 +7,8 @@ from src.service.tags.tag import Tag
 
 class SubItem:
 
-    def __init__(self, name: str, title: str, description: str, name_file, tag: Tag):
+    def __init__(self, name: str, title: str, description: str, name_file,
+                 tag: Tag):
         self.id = Generator().generate_number()
         self.name = name
         self.title = title
@@ -16,11 +19,16 @@ class SubItem:
         self.done = False
         self.name_file = name_file
         self.attachments = JsonFromService().add_file(self.name_file,
-                                                      'upload/')
-        self.status = None
+                                                      UPLOAD_FILE)
+        self.status_opt = JsonFromService().read_file(FILE_STATUS_NAME,
+                                                      GET_FILE)
+        self.status = 'TODO'
         self.comments = None
         self.roadmap = None
         self.tag = tag
+        self.current_status = 0
+        self.statuses = ['TODO', 'INPROGRESS', 'DONE']
+        self.jfs = JsonFromService()
 
     def __repr__(self):
         return {
@@ -37,3 +45,14 @@ class SubItem:
             'attachments': self.attachments,
             'tag': self.tag,
         }
+
+    def update_status(self):
+        res = self.jfs.update_file(self.name_file, UPLOAD_FILE)
+        if res != 'cannot upload the same file':
+            self.status = self.get_next_status()
+            self.jfs.update_file(self.name_file, UPLOAD_FILE)
+
+    def get_next_status(self):
+        if self.current_status <= len(self.statuses) - 1:
+            self.current_status += 1
+        return self.statuses[self.current_status]

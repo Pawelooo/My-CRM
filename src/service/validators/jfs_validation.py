@@ -1,10 +1,10 @@
 from ast import literal_eval
 
 from src.model.config import FILE_ENCODING
-from src.model.validator import Validator
+from src.model.validator_status_code import ValidatorStatus
 
 
-class JfsValidator(Validator):
+class JfsValidator(ValidatorStatus):
 
     def validate(self, result):
         result_status = result.status_code
