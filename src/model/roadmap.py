@@ -1,12 +1,14 @@
 from datetime import datetime
 from src.model.config import FORMAT_DATE
 from src.model.generator import Generator
+from src.model.item import Item
 
 
 class Roadmap:
 
     def __init__(self, type_item,  title: str, priority, complexity,
-                 goal_completion: datetime, added: datetime, user_id: int):
+                 goal_completion: datetime, added: datetime, user_id: int,
+                 deadline_date: str, item: Item):
         self.id = Generator().generate_number()
         self.type_item = type_item
         self.title = title
@@ -15,6 +17,8 @@ class Roadmap:
         self.goal_completion = goal_completion
         self.added = added
         self.user_id = user_id
+        self.item = item
+        self.deadline_date = deadline_date
 
     def __repr__(self):
         return {
