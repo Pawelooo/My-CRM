@@ -10,7 +10,7 @@ class Item:
 
     def __init__(self, name: str, title: str, description: str, name_file: str,
                  deadline: datetime, category: Category, assignee: User,
-                 tag: Tag):
+                 tag: Tag, custom_status: str):
         self.id = Generator().generate_number()
         self.name = name
         self.title = title
@@ -26,6 +26,7 @@ class Item:
         self.comments = None
         self.roadmap = None
         self.tag = tag
+        self.custom_status = custom_status
 
     def __repr__(self):
         return {
@@ -42,17 +43,10 @@ class Item:
             'attachments': self.attachments,
             'roadmap': self.roadmap,
             'tag': self.tag,
+            'custom_status': self.custom_status,
         }
 
     @staticmethod
     def actual_date():
         return datetime.now()
 
-
-def main() -> None:
-    j1 = Item('a', 'b', 'c', 'db_author.json', 'e', 'f', 'g', 'h')
-    j1.__repr__()
-
-
-if __name__ == '__main__':
-    main()

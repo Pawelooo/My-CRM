@@ -5,7 +5,8 @@ from src.service.tags.tag import Tag
 
 class SubItem:
 
-    def __init__(self, name: str, title: str, description: str, name_file, tag: Tag):
+    def __init__(self, name: str, title: str, description: str, name_file, tag: Tag,
+                 custom_status: str):
         self.id = Generator().generate_number()
         self.name = name
         self.title = title
@@ -21,6 +22,7 @@ class SubItem:
         self.comments = None
         self.roadmap = None
         self.tag = tag
+        self.custom_status = custom_status
 
     def __repr__(self):
         return {
@@ -36,4 +38,5 @@ class SubItem:
             'name_file': self.name_file,
             'attachments': self.attachments,
             'tag': self.tag,
+            'custom_status': self.custom_status,
         }
