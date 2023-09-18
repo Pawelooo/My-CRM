@@ -48,11 +48,3 @@ class Item:
     def actual_date():
         return datetime.now()
 
-
-def main() -> None:
-    j1 = Item('a', 'b', 'c', 'db_author.json', 'e', 'f', 'g', 'h')
-    j1.__repr__()
-
-
-if __name__ == '__main__':
-    main()
