@@ -7,7 +7,8 @@ from src.model.item import Item
 class Roadmap:
 
     def __init__(self, type_item,  title: str, priority, complexity,
-                 goal_completion: datetime, added: datetime, user_id: int, item: Item):
+                 goal_completion: datetime, added: datetime, user_id: int,
+                 sub_item: Item):
         self.id = Generator().generate_number()
         self.type_item = type_item
         self.title = title
@@ -16,7 +17,7 @@ class Roadmap:
         self.goal_completion = goal_completion
         self.added = added
         self.user_id = user_id
-        self.item = item
+        self.sub_item = sub_item
 
     def __repr__(self):
         return {
@@ -27,9 +28,9 @@ class Roadmap:
             'goal_completion': self.goal_completion.strftime(FORMAT_DATE),
             'added': self.added.strftime('%d.%m.%Y'),
             'user_id': self.user_id,
-            'item': self.item,
+            'item': self.sub_item,
             'id': self.id
         }
 
     def update_status_item(self):
-        self.item.update_status()
+        self.sub_item.update_status()
