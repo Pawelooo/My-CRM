@@ -47,10 +47,8 @@ class SubItem:
         }
 
     def update_status(self):
-        res = self.jfs.update_file(self.name_file, UPLOAD_FILE)
-        if res != 'cannot upload the same file':
-            self.status = self.get_next_status()
-            self.jfs.update_file(self.name_file, UPLOAD_FILE)
+        self.status = self.get_next_status()
+        self.jfs.update_file(self.name_file, UPLOAD_FILE)
 
     def get_next_status(self):
         if self.current_status <= len(self.statuses) - 1:
