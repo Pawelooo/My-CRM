@@ -14,10 +14,10 @@ class Course:
         self.topic = topic
 
     def __repr__(self):
-        return {
-            'name': self.name,
-            'category': self.category,
-            'author': self.author,
-            'link': self.link if self.topic else '',
-            'topic': self.topic if self.topic else ''
-        }
+        return str({
+            "name": f"{self.name}",
+            "category": f"{self.category}",
+            "author": f"{self.author}",
+            "link": f"{self.link}" if self.link else "",
+            "topic": f"{self.topic}" if self.topic else ""
+        })

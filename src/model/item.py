@@ -26,33 +26,26 @@ class Item:
         self.comments = None
         self.roadmap = None
         self.tag = tag
+        self.status = 'TODO'
 
     def __repr__(self):
-        return {
-            'id': self.id,
-            'name': self.name,
-            'title': self.title,
-            'description': self.description,
-            'opened_by': self.opened_by,
-            'deadline': self.deadline,
-            'category': self.category,
-            'assignee': self.assignee,
-            'status': self.status,
-            'name_file': self.name_file,
-            'attachments': self.attachments,
-            'roadmap': self.roadmap,
-            'tag': self.tag,
-        }
+        return str({
+            'id': f'{self.id}',
+            'name': f'{self.name}',
+            'title': f"{self.title}",
+            'description': f'{self.description}',
+            'opened_by': f'{self.opened_by}',
+            'deadline': f"{self.deadline}",
+            'category': f'{self.category}',
+            'assignee': f'{self.assignee}',
+            'status': f"{self.status}",
+            'name_file': f'{self.name_file}',
+            'attachments': f'{self.attachments}',
+            'roadmap': f'{self.roadmap}',
+            'tag': f"{self.tag}",
+        })
+
 
     @staticmethod
     def actual_date():
         return datetime.now()
-
-
-def main() -> None:
-    j1 = Item('a', 'b', 'c', 'db_author.json', 'e', 'f', 'g', 'h')
-    j1.__repr__()
-
-
-if __name__ == '__main__':
-    main()

@@ -11,7 +11,7 @@ class ItemService:
     def create(self, obj: Item):
         self.repository.create(f'{FILE_LOCATION}{FILE_ITEM}', obj)
 
-    def read(self, ):
+    def read(self):
         return self.repository.find_all(f'{FILE_LOCATION}{FILE_ITEM}')
 
     def update(self, obj: Item, key: str):
