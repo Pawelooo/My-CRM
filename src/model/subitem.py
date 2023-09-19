@@ -1,5 +1,8 @@
+from collections import Counter
+
 from src.model.generator import Generator
 from src.service.jfs import JsonFromService
+from src.service.subitem_service import SubItemService
 from src.service.tags.tag import Tag
 
 
@@ -37,3 +40,13 @@ class SubItem:
             'attachments': self.attachments,
             'tag': self.tag,
         }
+
+    def amount_tag_items(self):
+        subitem = SubItemService().read()
+        cnt = Counter()
+        for obj in subitem:
+            if obj['roadmap'].id == self.id:
+                for key, value in obj.items():
+                    if key == "tag":
+                        cnt[value] += 1
+        return dict(cnt)

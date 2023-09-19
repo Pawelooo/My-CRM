@@ -1,7 +1,11 @@
+from collections import Counter
 from datetime import datetime
+
+
 from src.model.category import Category
 from src.model.generator import Generator
 from src.model.user import User
+from src.service.item_service import ItemService
 from src.service.jfs import JsonFromService
 from src.service.tags.tag import Tag
 
@@ -48,11 +52,12 @@ class Item:
     def actual_date():
         return datetime.now()
 
-
-def main() -> None:
-    j1 = Item('a', 'b', 'c', 'db_author.json', 'e', 'f', 'g', 'h')
-    j1.__repr__()
-
-
-if __name__ == '__main__':
-    main()
+    def amount_tag_items(self):
+        item = ItemService().read()
+        cnt = Counter()
+        for obj in item:
+            if obj['roadmap'].id == self.id:
+                for key, value in obj.items():
+                    if key == "tag":
+                        cnt[value] += 1
+        return dict(cnt)
