@@ -26,6 +26,7 @@ class Item:
         self.comments = None
         self.roadmap = None
         self.tag = tag
+        self.done = False
 
     def __repr__(self):
         return {
@@ -48,11 +49,5 @@ class Item:
     def actual_date():
         return datetime.now()
 
-
-def main() -> None:
-    j1 = Item('a', 'b', 'c', 'db_author.json', 'e', 'f', 'g', 'h')
-    j1.__repr__()
-
-
-if __name__ == '__main__':
-    main()
+    def close_item(self):
+        self.done = True

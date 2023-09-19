@@ -37,3 +37,7 @@ class SubItem:
             'attachments': self.attachments,
             'tag': self.tag,
         }
+
+    def close_item(self):
+        self.done = True
+        self.status = 'DONE'
