@@ -16,7 +16,7 @@ class Item:
 
     def __init__(self, name: str, title: str, description: str, name_file: str,
                  deadline: datetime, category: Category, assignee: User,
-                 tag: Tag):
+                 tag: Tag, custom_status: str):
         self.id = Generator().generate_number()
         self.name = name
         self.title = title
@@ -37,6 +37,7 @@ class Item:
         self.status = JsonFromService().read_file(FILE_STATUS_NAME, GET_FILE)
         self.jfs = JsonFromService()
         self.current_status = 0
+        self.custom_status = custom_status
 
     def __repr__(self):
         return {
@@ -53,6 +54,7 @@ class Item:
             'attachments': self.attachments,
             'roadmap': self.roadmap,
             'tag': self.tag,
+            'custom_status': self.custom_status,
         }
 
     @staticmethod

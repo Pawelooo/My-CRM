@@ -28,6 +28,7 @@ class SubItem:
         self.tag = tag
         self.current_status = 0
         self.jfs = JsonFromService()
+        self.custom_status = custom_status
 
     def __repr__(self):
         return {
@@ -43,6 +44,7 @@ class SubItem:
             'name_file': self.name_file,
             'attachments': self.attachments,
             'tag': self.tag,
+            'custom_status': self.custom_status,
         }
 
     def update_status(self):
