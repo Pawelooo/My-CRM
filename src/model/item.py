@@ -77,15 +77,10 @@ class Item:
     def add_sub_item(self, id_subitem):
         self.sub_item.append(id_subitem)
 
-    @staticmethod
-    def update_subtask_to_done(obj: dict[str, Any]):
-        obj['status'] = 'DONE'
-        return obj
-
     def move_status(self):
         if self.status == 'INPROGRESS' and any([subitem['status'].__eq__('DONE') for subitem in self.subitems]):
             for subitem in self.subitems:
                 if subitem['id'] in self.sub_item:
-                    self.update_subtask_to_done(subitem)
+                    subitem['status'] = 'DONE'
             self.update_status()
 
