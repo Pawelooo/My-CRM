@@ -35,7 +35,6 @@ class JsonFromService:
         files = {'file': open(f'{FILE_LOCATION}{name_file}', 'rb')}
         res = requests.post(f'{self.link}{type_s}', headers=self.headers,
                             files=files)
-        print(res)
         return res.status_code if (result := self.validation.validate(res)) is None else result
 
     def read_file(self, name_file: str, type_s: str):
