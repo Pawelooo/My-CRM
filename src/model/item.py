@@ -2,7 +2,8 @@ from datetime import datetime
 from typing import List, Any
 
 from src.model.category import Category
-from src.model.config import FILE_ITEM, GET_FILE, UPLOAD_FILE, FILE_SUBITEM
+from src.model.config import FILE_ITEM, GET_FILE, UPLOAD_FILE, FILE_SUBITEM, \
+    FILE_STATUS_NAME
 
 from src.model.generator import Generator
 from src.model.subitem import SubItem
@@ -33,8 +34,7 @@ class Item:
         self.comments = None
         self.roadmap = None
         self.tag = tag
-        self.status = 'TODO'
-        self.statuses = ['TODO', 'INPROGRESS', 'DONE']
+        self.status = JsonFromService().read_file(FILE_STATUS_NAME, GET_FILE)
         self.jfs = JsonFromService()
         self.current_status = 0
 
@@ -64,9 +64,9 @@ class Item:
         self.jfs.update_file(self.name_file, UPLOAD_FILE)
 
     def get_next_status(self):
-        if self.current_status <= len(self.statuses) - 1:
+        if self.current_status <= len(self.status) - 1:
             self.current_status += 1
-        return self.statuses[self.current_status]
+        return self.status[self.current_status]
 
     def check_status(self):
         if all(obj['status'] == 'DONE' for obj in self.subitems):
@@ -88,3 +88,4 @@ class Item:
                 if subitem['id'] in self.sub_item:
                     self.update_subtask_to_done(subitem)
             self.update_status()
+

@@ -22,12 +22,11 @@ class SubItem:
                                                       UPLOAD_FILE)
         self.status_opt = JsonFromService().read_file(FILE_STATUS_NAME,
                                                       GET_FILE)
-        self.status = 'TODO'
+        self.status = JsonFromService().read_file(FILE_STATUS_NAME, GET_FILE)
         self.comments = None
         self.roadmap = None
         self.tag = tag
         self.current_status = 0
-        self.statuses = ['TODO', 'INPROGRESS', 'DONE']
         self.jfs = JsonFromService()
 
     def __repr__(self):
@@ -51,6 +50,6 @@ class SubItem:
         self.jfs.update_file(self.name_file, UPLOAD_FILE)
 
     def get_next_status(self):
-        if self.current_status <= len(self.statuses) - 1:
+        if self.current_status <= len(self.status) - 1:
             self.current_status += 1
-        return self.statuses[self.current_status]
+        return self.status[self.current_status]
