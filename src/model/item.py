@@ -40,6 +40,7 @@ class Item:
         self.current_status = 0
         self.custom_status = None
 
+
     def __repr__(self):
         return {
             'id': self.id,
@@ -91,3 +92,4 @@ class Item:
         v1 = View()
         result = v1.get_attribute(CUSTOM_STATUS)
         self.custom_status = result
+
