@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import List
+from typing import List, Any
 
 from src.model.category import Category
 from src.model.config import FILE_ITEM, GET_FILE, UPLOAD_FILE, FILE_SUBITEM
@@ -29,7 +29,7 @@ class Item:
                                                       UPLOAD_FILE)
         self.status_opt = JsonFromService().read_file(FILE_ITEM, GET_FILE)
         self.subitems = JsonFromService().read_file(FILE_SUBITEM, GET_FILE)
-        self.sub_item = []
+        self.sub_item = [12, 15, 17, 18]
         self.comments = None
         self.roadmap = None
         self.tag = tag
@@ -73,3 +73,49 @@ class Item:
             self.update_status()
         if any(obj['status'] == 'INPROGRESS' for obj in self.subitems):
             self.update_status()
+
+    def add_sub_item(self, id_subitem):
+        self.sub_item.append(id_subitem)
+
+    @staticmethod
+    def update_subtask_to_done(obj: dict[str, Any]):
+        obj['status'] = 'DONE'
+        return obj
+
+    def move_status(self):
+        if self.status == 'INPROGRESS' and any([subitem['status'].__eq__('DONE') for subitem in self.subitems]):
+            for subitem in self.subitems:
+                if subitem['id'] in self.sub_item:
+                    self.update_subtask_to_done(subitem)
+            self.update_status()
+
+
+
+def main() -> None:
+    JsonFromService().update_file(FILE_SUBITEM, UPLOAD_FILE)
+    i1 = Item('a', 'fd', 'fg', 'db_item.json', 'g', 'g', 'g', 'g')
+    i1.add_sub_item(2)
+    i1.add_sub_item(3)
+    i1.add_sub_item(4)
+    i1.add_sub_item(5)
+    i1.add_sub_item(6)
+    i1.add_sub_item(7)
+    print(i1.subitems)
+    i1.subitems[0]['status'] = 'INPROGRESS'
+    print(i1.subitems)
+    i1.check_status()
+    print(i1.status)
+    # i1.move_status()
+    # item
+    # item -> add_sub_item 'TODO'
+    # item -> add_sub_item 'TODO'
+    # item -> add_sub_item 'TODO'
+    # item -> add_sub_item 'IN PROGRESS'
+    # item -> add_sub_item 'IN PROGRESS'
+    # item -> add_sub_item 'DONE'
+    # item.move_status
+
+
+if __name__ == '__main__':
+    main()
+
