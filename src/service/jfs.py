@@ -42,7 +42,9 @@ class JsonFromService:
             f'{self.link}{type_s}?filename={name_file}',
             headers=self.headers)
         if (res := self.validation.validate(response)) is None:
+
             response_d = literal_eval(response.content.decode(FILE_ENCODING))
+
             with open(f'{FILE_LOCATION}{name_file}', 'w',
                       encoding=FILE_ENCODING) as file:
                 json.dump(response_d, file)
