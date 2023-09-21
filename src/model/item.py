@@ -3,20 +3,21 @@ from typing import List, Any
 
 from src.model.category import Category
 from src.model.config import FILE_ITEM, GET_FILE, UPLOAD_FILE, FILE_SUBITEM, \
-    FILE_STATUS_NAME
+    FILE_STATUS_NAME, CUSTOM_STATUS
 
 from src.model.generator import Generator
 from src.model.subitem import SubItem
 from src.model.user import User
 from src.service.jfs import JsonFromService
 from src.service.tags.tag import Tag
+from src.view.view import View
 
 
 class Item:
 
     def __init__(self, name: str, title: str, description: str, name_file: str,
                  deadline: datetime, category: Category, assignee: User,
-                 tag: Tag, custom_status: str):
+                 tag: Tag):
         self.id = Generator().generate_number()
         self.name = name
         self.title = title
@@ -37,7 +38,7 @@ class Item:
         self.status = JsonFromService().read_file(FILE_STATUS_NAME, GET_FILE)
         self.jfs = JsonFromService()
         self.current_status = 0
-        self.custom_status = custom_status
+        self.custom_status = None
 
     def __repr__(self):
         return {
@@ -86,3 +87,7 @@ class Item:
                     subitem['status'] = 'DONE'
             self.update_status()
 
+    def get_custom_status(self):
+        v1 = View()
+        result = v1.get_attribute(CUSTOM_STATUS)
+        self.custom_status = result

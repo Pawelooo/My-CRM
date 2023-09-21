@@ -1,8 +1,9 @@
 from src.model.config import FILE_SUBITEM, FILE_STATUS_NAME, UPLOAD_FILE, \
-    GET_FILE
+    GET_FILE, CUSTOM_STATUS
 from src.model.generator import Generator
 from src.service.jfs import JsonFromService
 from src.service.tags.tag import Tag
+from src.view.view import View
 
 
 class SubItem:
@@ -28,7 +29,7 @@ class SubItem:
         self.tag = tag
         self.current_status = 0
         self.jfs = JsonFromService()
-        self.custom_status = custom_status
+        self.custom_status = None
 
     def __repr__(self):
         return {
@@ -55,3 +56,8 @@ class SubItem:
         if self.current_status <= len(self.status) - 1:
             self.current_status += 1
         return self.status[self.current_status]
+
+    def get_custom_status(self):
+        v1 = View()
+        result = v1.get_attribute(CUSTOM_STATUS)
+        self.custom_status = result

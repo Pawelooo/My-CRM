@@ -35,3 +35,4 @@ FILES_DOWNLOAD_ALL = 'download/all/'
 GET_FILE = 'download/'
 UPLOAD_FILE = 'upload/'
 MESSAGE_TO_USER = 'Your deadline date?'
+CUSTOM_STATUS = "Add custom status"
