@@ -88,34 +88,3 @@ class Item:
                 if subitem['id'] in self.sub_item:
                     self.update_subtask_to_done(subitem)
             self.update_status()
-
-
-
-def main() -> None:
-    JsonFromService().update_file(FILE_SUBITEM, UPLOAD_FILE)
-    i1 = Item('a', 'fd', 'fg', 'db_item.json', 'g', 'g', 'g', 'g')
-    i1.add_sub_item(2)
-    i1.add_sub_item(3)
-    i1.add_sub_item(4)
-    i1.add_sub_item(5)
-    i1.add_sub_item(6)
-    i1.add_sub_item(7)
-    print(i1.subitems)
-    i1.subitems[0]['status'] = 'INPROGRESS'
-    print(i1.subitems)
-    i1.check_status()
-    print(i1.status)
-    # i1.move_status()
-    # item
-    # item -> add_sub_item 'TODO'
-    # item -> add_sub_item 'TODO'
-    # item -> add_sub_item 'TODO'
-    # item -> add_sub_item 'IN PROGRESS'
-    # item -> add_sub_item 'IN PROGRESS'
-    # item -> add_sub_item 'DONE'
-    # item.move_status
-
-
-if __name__ == '__main__':
-    main()
-
