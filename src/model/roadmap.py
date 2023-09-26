@@ -2,17 +2,14 @@ from datetime import datetime
 from src.model.config import FORMAT_DATE, MESSAGE_TO_USER
 from src.model.generator import Generator
 from src.model.item import Item
-<<<<<<< HEAD
 from src.view.view import View
-=======
->>>>>>> c3384ee (#81 move the status of particular sub item on the roadmap)
 
 
 class Roadmap:
 
-    def __init__(self, type_item,  title: str, priority, complexity,
+    def __init__(self, type_item, title: str, priority, complexity,
                  goal_completion: datetime, added: datetime, user_id: int,
-                 deadline_date: datetime, item: Item):
+                 deadline_date: datetime, item: Item, sub_item: Item):
         self.id = Generator().generate_number()
         self.type_item = type_item
         self.title = title
@@ -23,6 +20,7 @@ class Roadmap:
         self.user_id = user_id
         self.item = item
         self.deadline_date = deadline_date
+        self.sub_item = sub_item
 
     def __repr__(self):
         return {
@@ -35,6 +33,7 @@ class Roadmap:
             'user_id': self.user_id,
             'item': self.item,
             'deadline date': self.deadline_date,
+            'subitem': self.sub_item,
             'id': self.id
         }
 
@@ -45,4 +44,4 @@ class Roadmap:
 
     def update_status_item(self):
         self.item.update_status()
-
+        self.sub_item.update_status()
