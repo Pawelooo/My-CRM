@@ -3,7 +3,7 @@ from typing import List, Any
 
 from src.model.category import Category
 from src.model.config import FILE_ITEM, GET_FILE, UPLOAD_FILE, FILE_SUBITEM, \
-    FILE_STATUS_NAME, CUSTOM_STATUS
+    FILE_STATUS_NAME, CUSTOM_STATUS, INPROGRESS, STATUS, DONE, TODO, ID
 
 from src.model.generator import Generator
 from src.model.subitem import SubItem
@@ -82,54 +82,32 @@ class Item:
         return self.status[self.current_status]
 
     def check_status(self):
-        if all(obj['status'] == 'DONE' for obj in self.subitems):
+        if all(obj[STATUS] == DONE for obj in self.subitems):
             self.update_status()
-        if any(obj['status'] == 'INPROGRESS' for obj in self.subitems):
+        if any(obj[STATUS] == INPROGRESS for obj in self.subitems):
             self.update_status()
 
     def add_sub_item(self, id_subitem):
         self.sub_item.append(id_subitem)
 
     def move_status(self):
-        if self.statuses == 'INPROGRESS' and any(
-                [subitem['status'].__eq__('DONE') for subitem in
+        if self.statuses == INPROGRESS and any(
+                [subitem[STATUS].__eq__(DONE) for subitem in
                  self.subitems]):
             for subitem in self.subitems:
-                if subitem['id'] in self.sub_item:
-                    subitem['status'] = 'DONE'
+                if subitem[ID] in self.sub_item:
+                    subitem[STATUS] = DONE
             self.update_status()
 
     def downgrade_status(self):
-        if self.statuses != 'TODO':
+        if self.statuses != TODO:
             self.downgrade_status_v2()
             for subitem in self.subitems:
-                if subitem['id'] in self.sub_item and subitem['status'] != 'TODO':
-                    subitem['status'] = self.statuses
+                if subitem[ID] in self.sub_item and subitem[STATUS] != TODO:
+                    subitem[STATUS] = self.statuses
 
     def get_custom_status(self):
         v1 = View()
         result = v1.get_attribute(CUSTOM_STATUS)
         self.custom_status = result
 
-
-def main() -> None:
-    JsonFromService().update_file(FILE_SUBITEM, UPLOAD_FILE)
-
-    i1 = Item('a', 'b', 'd', 'db_item.json', 'e', 'f', 'g', 't')
-    i1.add_sub_item(6)
-    i1.add_sub_item(3)
-    i1.add_sub_item(4)
-    print(i1.statuses)
-    print(i1.check_status())
-    print(i1.subitems)
-    print(i1.sub_item)
-    print(i1.statuses)
-    print('-'*25)
-    i1.downgrade_status()
-    print(i1.statuses)
-    print(i1.subitems)
-
-
-
-if __name__ == '__main__':
-    main()
