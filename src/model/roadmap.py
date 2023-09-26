@@ -2,7 +2,10 @@ from datetime import datetime
 from src.model.config import FORMAT_DATE, MESSAGE_TO_USER
 from src.model.generator import Generator
 from src.model.item import Item
+<<<<<<< HEAD
 from src.view.view import View
+=======
+>>>>>>> c3384ee (#81 move the status of particular sub item on the roadmap)
 
 
 class Roadmap:
@@ -39,3 +42,7 @@ class Roadmap:
         v1 = View()
         result = v1.get_attribute(MESSAGE_TO_USER)
         self.deadline_date = datetime.strptime(result, '%d.%m.%Y')
+
+    def update_status_item(self):
+        self.item.update_status()
+
