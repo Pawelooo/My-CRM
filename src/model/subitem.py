@@ -61,3 +61,4 @@ class SubItem:
         v1 = View()
         result = v1.get_attribute(CUSTOM_STATUS)
         self.custom_status = result
+
