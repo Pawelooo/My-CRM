@@ -2,14 +2,14 @@ import json
 
 from src.model.author import Author
 from src.model.config import FILE_USER_NAME, FILE_LOCATION, FILE_ENCODING, \
-    FILE_AUTHOR_NAME, IDENTIFIER
+    FILE_AUTHOR_NAME, IDENTIFIER, PRIORITY, WRITE_PLUS, READ
 
 
 class Repository:
 
     def create(self, file_path: str, obj):
         file_content = self.find_all(file_path)
-        with open(file_path, 'w+', encoding=FILE_ENCODING) as f:
+        with open(file_path, WRITE_PLUS, encoding=FILE_ENCODING) as f:
             f.seek(0)
             file_content.append(obj.__repr__())
             json.dumps(file_content, indent=2)
@@ -29,19 +29,19 @@ class Repository:
                        if obj[IDENTIFIER] != key])
 
     def find_all(self, file_path: str):
-        with open(file_path, 'r', encoding=FILE_ENCODING) as f:
+        with open(file_path, READ, encoding=FILE_ENCODING) as f:
             try:
                 return json.load(f)
             except:
                 return []
 
     def find_limit(self, file_path: str, limit: int, priority: str):
-        return list(filter(lambda x: (x['priority'].lower() == priority
-                                      or x['priority'] is not None),
+        return list(filter(lambda x: (x[PRIORITY].lower() == priority
+                                      or x[PRIORITY] is not None),
                            self.find_all(file_path)))[:limit]
 
     def save_all(self, file_path: str, objects: list[Author]):
-        with open(file_path, 'w+', encoding=FILE_ENCODING) as f:
+        with open(file_path, WRITE_PLUS, encoding=FILE_ENCODING) as f:
             f.seek(0)
             file_content = objects
             json.dumps(file_content, indent=4)

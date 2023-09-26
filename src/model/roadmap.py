@@ -1,5 +1,5 @@
 from datetime import datetime
-from src.model.config import FORMAT_DATE, MESSAGE_TO_USER
+from src.model.config import FORMAT_DATE, MESSAGE_TO_USER, DATE
 from src.model.generator import Generator
 from src.model.item import Item
 from src.view.view import View
@@ -28,7 +28,7 @@ class Roadmap:
             'priority': self.priority,
             'complexity': self.complexity,
             'goal_completion': self.goal_completion.strftime(FORMAT_DATE),
-            'added': self.added.strftime('%d.%m.%Y'),
+            'added': self.added.strftime(DATE),
             'user_id': self.user_id,
             'item': self.item,
             'deadline date': self.deadline_date,
@@ -38,4 +38,4 @@ class Roadmap:
     def set_deadline_date(self):
         v1 = View()
         result = v1.get_attribute(MESSAGE_TO_USER)
-        self.deadline_date = datetime.strptime(result, '%d.%m.%Y')
+        self.deadline_date = datetime.strptime(result, DATE)
