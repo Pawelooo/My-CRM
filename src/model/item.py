@@ -66,6 +66,7 @@ class Item:
         return datetime.now()
 
 
+
     def update_status(self):
         self.statuses = self.get_next_status()
         self.jfs.update_file(self.name_file, UPLOAD_FILE)
