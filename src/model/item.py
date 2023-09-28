@@ -42,7 +42,6 @@ class Item:
         self.jfs = JsonFromService()
         self.custom_status = None
 
-
     def __repr__(self):
         return {
             'id': self.id,
