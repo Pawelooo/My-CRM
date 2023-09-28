@@ -12,10 +12,10 @@ class Question:
         self.tag = tag
 
     def __repr__(self):
-        return {
-            'name': self.name,
-            'number_of_fails': self.number_of_fails,
-            'Number_of_usages': self.number_of_usages,
-            'Tag': self.tag,
-            'id': self.id
-        }
+        return str({
+            "name": f"{self.name}",
+            "number_of_fails": f"{self.number_of_fails}",
+            "Number_of_usages": f"{self.number_of_usages}",
+            "Tag": f"{self.tag}",
+            "id": f"{self.id}"
+        })

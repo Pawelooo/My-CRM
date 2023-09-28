@@ -14,11 +14,11 @@ class Author:
         self.topic = topic
 
     def __repr__(self):
-        return {
-            'name': self.name,
-            'surname': self.surname,
-            'website': self.website if self.website is not None else '',
-            'country': self.country if self.country is not None else '',
-            'topic': self.topic if self.topic is not None else '',
-            'id': str(self.id)
-        }
+        return str({
+            "name": f"{self.name}",
+            "surname": f"{self.surname}",
+            "website": f"{self.website}" if self.website is not None else "",
+            "country": f"{self.country}" if self.country is not None else "",
+            "topic": f"{self.topic}" if self.topic is not None else "",
+            "id": f"{self.id}"
+        })
