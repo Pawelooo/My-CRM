@@ -5,6 +5,7 @@ from src.model.category import Category
 from src.model.config import FILE_ITEM, GET_FILE, UPLOAD_FILE, FILE_SUBITEM, \
     FILE_STATUS_NAME, CUSTOM_STATUS, INPROGRESS, STATUS, DONE, TODO, ID
 
+from src.model.config import DONE
 from src.model.generator import Generator
 from src.model.subitem import SubItem
 from src.model.user import User
@@ -41,6 +42,7 @@ class Item:
         self.jfs = JsonFromService()
         self.custom_status = None
 
+
     def __repr__(self):
         return {
             'id': self.id,
@@ -62,6 +64,7 @@ class Item:
     @staticmethod
     def actual_date():
         return datetime.now()
+
 
 
     def update_status(self):
@@ -112,3 +115,5 @@ class Item:
         result = v1.get_attribute(CUSTOM_STATUS)
         self.custom_status = result
 
+    def close_item(self):
+        self.status = DONE
