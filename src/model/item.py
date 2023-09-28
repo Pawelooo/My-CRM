@@ -111,25 +111,3 @@ class Item:
         result = v1.get_attribute(CUSTOM_STATUS)
         self.custom_status = result
 
-
-def main() -> None:
-    JsonFromService().update_file(FILE_SUBITEM, UPLOAD_FILE)
-
-    i1 = Item('a', 'b', 'd', 'db_item.json', 'e', 'f', 'g', 't')
-    i1.add_sub_item(6)
-    i1.add_sub_item(3)
-    i1.add_sub_item(4)
-    print(i1.statuses)
-    print(i1.check_status())
-    print(i1.subitems)
-    print(i1.sub_item)
-    print(i1.statuses)
-    print('-'*25)
-    i1.downgrade_status()
-    print(i1.statuses)
-    print(i1.subitems)
-
-
-
-if __name__ == '__main__':
-    main()

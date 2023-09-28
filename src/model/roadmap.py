@@ -2,7 +2,9 @@ from datetime import datetime
 from src.model.config import FORMAT_DATE, MESSAGE_TO_USER
 from src.model.generator import Generator
 from src.model.item import Item
+
 from src.view.view import View
+
 
 
 class Roadmap:
@@ -45,3 +47,6 @@ class Roadmap:
     def update_status_item(self):
         self.item.update_status()
         self.sub_item.update_status()
+
+    def update_status_item(self):
+        self.item.update_status()
