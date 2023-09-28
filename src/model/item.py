@@ -40,6 +40,8 @@ class Item:
         self.statuses = self.status[self.current_status]
         self.jfs = JsonFromService()
         self.custom_status = None
+        self.done = False
+
 
     def __repr__(self):
         return {
@@ -111,4 +113,7 @@ class Item:
         v1 = View()
         result = v1.get_attribute(CUSTOM_STATUS)
         self.custom_status = result
+
+    def close_item(self):
+        self.status = DONE
 
