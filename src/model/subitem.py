@@ -62,3 +62,6 @@ class SubItem:
         result = v1.get_attribute(CUSTOM_STATUS)
         self.custom_status = result
 
+    def close_item(self):
+        self.done = True
+        self.status = 'DONE'
