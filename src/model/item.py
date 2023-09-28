@@ -14,6 +14,7 @@ from src.model.subitem import SubItem
 from src.model.user import User
 from src.service.item_service import ItemService
 from src.service.jfs import JsonFromService
+from src.service.subitem_service import SubItemService
 from src.service.tags.tag import Tag
 from src.view.view import View
 

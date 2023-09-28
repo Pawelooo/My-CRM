@@ -1,5 +1,5 @@
 from src.model.config import FILE_SUBITEM, FILE_STATUS_NAME, UPLOAD_FILE, \
-    GET_FILE, CUSTOM_STATUS
+    GET_FILE, CUSTOM_STATUS, TAG
 
 from src.model.config import DONE
 
@@ -92,7 +92,7 @@ class SubItem:
         for obj in subitem:
             if obj[ROADMAP].id == self.id:
                 for key, value in obj.items():
-                    if key == "tag":
+                    if key == TAG:
                         cnt[value] += 1
         self.amounts_tag = cnt
 
