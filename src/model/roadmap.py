@@ -21,6 +21,7 @@ class Roadmap:
         self.item = item
         self.deadline_date = deadline_date
 
+
     def __repr__(self):
         return {
             'type_item': self.type_item,
@@ -39,3 +40,6 @@ class Roadmap:
         v1 = View()
         result = v1.get_attribute(MESSAGE_TO_USER)
         self.deadline_date = datetime.strptime(result, '%d.%m.%Y')
+
+    def update_item_status(self):
+        self.item.update_status()
