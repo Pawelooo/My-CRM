@@ -7,6 +7,7 @@ from src.view.view import View
 
 
 
+
 class Roadmap:
 
     def __init__(self, type_item,  title: str, priority, complexity,
@@ -22,6 +23,7 @@ class Roadmap:
         self.user_id = user_id
         self.item = item
         self.deadline_date = deadline_date
+
 
 
     def __repr__(self):
