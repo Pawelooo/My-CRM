@@ -37,8 +37,8 @@ GET_FILE = 'download/'
 UPLOAD_FILE = 'upload/'
 MESSAGE_TO_USER = 'Your deadline date?'
 CUSTOM_STATUS = "Add custom status"
+
 INPROGRESS = 'inprogress'
-DONE = 'done'
 TODO = 'todo'
 STATUS = 'status'
 ID = 'id'
@@ -53,3 +53,5 @@ PRIORITY = 'priority'
 READ = 'r'
 WRITE_PLUS = 'w+'
 READ_PLUS = 'r+'
+DONE = 'DONE'
+

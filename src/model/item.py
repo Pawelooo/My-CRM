@@ -5,6 +5,7 @@ from src.model.category import Category
 from src.model.config import FILE_ITEM, GET_FILE, UPLOAD_FILE, FILE_SUBITEM, \
     FILE_STATUS_NAME, CUSTOM_STATUS, INPROGRESS, STATUS, DONE, TODO, ID
 
+from src.model.config import DONE
 from src.model.generator import Generator
 from src.model.subitem import SubItem
 from src.model.user import User
@@ -40,7 +41,6 @@ class Item:
         self.statuses = self.status[self.current_status]
         self.jfs = JsonFromService()
         self.custom_status = None
-        self.done = False
 
 
     def __repr__(self):
@@ -116,4 +116,3 @@ class Item:
 
     def close_item(self):
         self.status = DONE
-

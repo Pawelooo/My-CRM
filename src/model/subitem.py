@@ -1,5 +1,7 @@
 from src.model.config import FILE_SUBITEM, FILE_STATUS_NAME, UPLOAD_FILE, \
     GET_FILE, CUSTOM_STATUS
+
+from src.model.config import DONE
 from src.model.generator import Generator
 from src.service.jfs import JsonFromService
 from src.service.tags.tag import Tag
@@ -17,7 +19,6 @@ class SubItem:
         self.id_item = []
         self.opened_by = None
         self.deadline = None
-        self.done = False
         self.name_file = name_file
         self.attachments = JsonFromService().add_file(self.name_file,
                                                       UPLOAD_FILE)
@@ -40,7 +41,6 @@ class SubItem:
             'id_item': self.id_item,
             'opened by': self.opened_by,
             'deadline': self.deadline,
-            'done': self.done,
             'status': self.status,
             'name_file': self.name_file,
             'attachments': self.attachments,
@@ -63,5 +63,4 @@ class SubItem:
         self.custom_status = result
 
     def close_item(self):
-        self.done = True
-        self.status = 'DONE'
+        self.status = DONE
