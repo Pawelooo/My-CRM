@@ -148,6 +148,3 @@ class Item:
                     if key == TAG:
                         cnt[value] += 1
         self.amounts_tag = cnt
-
-
-

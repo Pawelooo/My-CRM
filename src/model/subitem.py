@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from src.model.config import FILE_SUBITEM, FILE_STATUS_NAME, UPLOAD_FILE, \
     GET_FILE, CUSTOM_STATUS, TAG
 
@@ -8,6 +9,7 @@ from src.model.config import STATUS, ROADMAP, UPLOAD
 
 from collections import Counter
 
+from collections import Counter
 
 from src.model.generator import Generator
 from src.service.jfs import JsonFromService
@@ -95,4 +97,3 @@ class SubItem:
                     if key == TAG:
                         cnt[value] += 1
         self.amounts_tag = cnt
-
