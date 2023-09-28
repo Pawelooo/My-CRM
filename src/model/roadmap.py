@@ -6,11 +6,9 @@ from src.model.item import Item
 from src.view.view import View
 
 
-
-
 class Roadmap:
 
-    def __init__(self, type_item,  title: str, priority, complexity,
+    def __init__(self, type_item, title: str, priority, complexity,
                  goal_completion: datetime, added: datetime, user_id: int,
                  deadline_date: datetime, item: Item):
         self.id = Generator().generate_number()
@@ -23,8 +21,6 @@ class Roadmap:
         self.user_id = user_id
         self.item = item
         self.deadline_date = deadline_date
-
-
 
     def __repr__(self):
         return {
@@ -48,3 +44,5 @@ class Roadmap:
     def update_item_status(self):
         self.item.update_status()
 
+    def update_item_status(self):
+        self.item.update_status()
