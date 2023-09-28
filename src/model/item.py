@@ -1,3 +1,4 @@
+from collections import Counter
 from datetime import datetime
 from typing import List, Any
 
@@ -6,9 +7,11 @@ from src.model.config import FILE_ITEM, GET_FILE, UPLOAD_FILE, FILE_SUBITEM, \
     FILE_STATUS_NAME, CUSTOM_STATUS, INPROGRESS, STATUS, DONE, TODO, ID
 
 from src.model.config import DONE
+from src.model.config import TODO, UPLOAD
 from src.model.generator import Generator
 from src.model.subitem import SubItem
 from src.model.user import User
+from src.service.item_service import ItemService
 from src.service.jfs import JsonFromService
 from src.service.tags.tag import Tag
 from src.view.view import View
@@ -41,6 +44,13 @@ class Item:
         self.statuses = self.status[self.current_status]
         self.jfs = JsonFromService()
         self.custom_status = None
+        self.status = None
+        self.comments = None
+        self.roadmap = None
+        self.tag = tag
+        self.status = TODO
+        self.amounts = None
+
 
     def __repr__(self):
         return str({
@@ -57,6 +67,7 @@ class Item:
             'attachments': f'{self.attachments}',
             'roadmap': f'{self.roadmap}',
             'tag': f"{self.tag}",
+            'amounts': f"{self.amounts}"
         })
 
     @staticmethod
@@ -113,3 +124,13 @@ class Item:
 
     def close_item(self):
         self.status = DONE
+    def amount_items(self):
+        item = ItemService().read()
+        cnt = Counter()
+        for obj in item:
+            if obj['roadmap'].id == self.id:
+                for key, value in obj.items():
+                    if key == "status":
+                        cnt[value] += 1
+        self.amounts = cnt
+

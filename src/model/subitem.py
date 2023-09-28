@@ -2,8 +2,13 @@ from src.model.config import FILE_SUBITEM, FILE_STATUS_NAME, UPLOAD_FILE, \
     GET_FILE, CUSTOM_STATUS
 
 from src.model.config import DONE
+
+from collections import Counter
+from src.model.config import STATUS, ROADMAP, UPLOAD
+
 from src.model.generator import Generator
 from src.service.jfs import JsonFromService
+from src.service.subitem_service import SubItemService
 from src.service.tags.tag import Tag
 from src.view.view import View
 
@@ -24,8 +29,6 @@ class SubItem:
                                                       UPLOAD_FILE)
         self.status_opt = JsonFromService().read_file(FILE_STATUS_NAME,
                                                       GET_FILE)
-        self.status = JsonFromService().read_file(FILE_STATUS_NAME, GET_FILE)
-
         self.status = None
         self.comments = None
         self.roadmap = None
@@ -33,6 +36,8 @@ class SubItem:
         self.current_status = 0
         self.jfs = JsonFromService()
         self.custom_status = None
+        self.amounts = None
+
 
     def __repr__(self):
         return str({
@@ -47,6 +52,7 @@ class SubItem:
             "name_file": f"{self.name_file}",
             "attachments": f"{self.attachments}",
             "tag": f"{self.tag}",
+            'amonuts': f"{self.amounts}"
         })
 
     def update_status(self):
@@ -65,4 +71,14 @@ class SubItem:
 
     def close_item(self):
         self.status = DONE
+
+    def amount_subitems(self):
+        subitem = SubItemService().read()
+        cnt = Counter()
+        for obj in subitem:
+            if obj[ROADMAP].id == self.id:
+                for key, value in obj.items():
+                    if key == STATUS:
+                        cnt[value] += 1
+        self.amounts = cnt
 
