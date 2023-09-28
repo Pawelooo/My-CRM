@@ -19,14 +19,14 @@ class Book:
         self.date_publish = date_publish
 
     def __repr__(self):
-        return {
-            'name': self.name,
-            'category': self.category,
-            'author': self.author,
-            'link': self.link if self.link is not None else '',
-            'topic': self.topic if self.topic is not None else '',
-            'version': self.version if self.version is not None else '',
-            'page_count': self.page_count if self.page_count is not None else '',
-            'date_publish': self.date_publish if self.date_publish is not None else '',
-            'id': str(self.id)
-        }
+        return str({
+            "name": f"{self.name}",
+            "category": f"{self.category}",
+            "author": f"{self.author}",
+            "link": f"{self.link}" if self.link is not None else "",
+            "topic": f"{self.topic}" if self.topic is not None else "",
+            "version": f"{self.version}" if self.version is not None else "",
+            "page_count": f"{self.page_count}" if self.page_count is not None else "",
+            "date_publish": f"{self.date_publish}" if self.date_publish is not None else "",
+            "id": f"{self.id}"
+        })

@@ -1,3 +1,4 @@
+from collections import Counter
 from datetime import datetime
 from typing import List, Any
 
@@ -6,9 +7,11 @@ from src.model.config import FILE_ITEM, GET_FILE, UPLOAD_FILE, FILE_SUBITEM, \
     FILE_STATUS_NAME, CUSTOM_STATUS, INPROGRESS, STATUS, DONE, TODO, ID
 
 from src.model.config import DONE
+from src.model.config import TODO, UPLOAD
 from src.model.generator import Generator
 from src.model.subitem import SubItem
 from src.model.user import User
+from src.service.item_service import ItemService
 from src.service.jfs import JsonFromService
 from src.service.tags.tag import Tag
 from src.view.view import View
@@ -41,31 +44,35 @@ class Item:
         self.statuses = self.status[self.current_status]
         self.jfs = JsonFromService()
         self.custom_status = None
+        self.status = None
+        self.comments = None
+        self.roadmap = None
+        self.tag = tag
+        self.status = TODO
+        self.amounts = None
 
 
     def __repr__(self):
-        return {
-            'id': self.id,
-            'name': self.name,
-            'title': self.title,
-            'description': self.description,
-            'opened_by': self.opened_by,
-            'deadline': self.deadline,
-            'category': self.category,
-            'assignee': self.assignee,
-            'status': self.status,
-            'name_file': self.name_file,
-            'attachments': self.attachments,
-            'roadmap': self.roadmap,
-            'tag': self.tag,
-            'custom_status': self.custom_status,
-        }
+        return str({
+            'id': f'{self.id}',
+            'name': f'{self.name}',
+            'title': f"{self.title}",
+            'description': f'{self.description}',
+            'opened_by': f'{self.opened_by}',
+            'deadline': f"{self.deadline}",
+            'category': f'{self.category}',
+            'assignee': f'{self.assignee}',
+            'status': f"{self.status}",
+            'name_file': f'{self.name_file}',
+            'attachments': f'{self.attachments}',
+            'roadmap': f'{self.roadmap}',
+            'tag': f"{self.tag}",
+            'amounts': f"{self.amounts}"
+        })
 
     @staticmethod
     def actual_date():
         return datetime.now()
-
-
 
     def update_status(self):
         self.statuses = self.get_next_status()
@@ -117,3 +124,13 @@ class Item:
 
     def close_item(self):
         self.status = DONE
+    def amount_items(self):
+        item = ItemService().read()
+        cnt = Counter()
+        for obj in item:
+            if obj['roadmap'].id == self.id:
+                for key, value in obj.items():
+                    if key == "status":
+                        cnt[value] += 1
+        self.amounts = cnt
+

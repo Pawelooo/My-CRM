@@ -8,7 +8,7 @@ class Status:
         self.name = name
 
     def __repr__(self):
-        return {
-            'name': self.name,
-            'id': self.id
-        }
+        return str({
+            'name': f"{self.name}",
+            'id': f"{self.id}"
+        })

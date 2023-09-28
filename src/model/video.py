@@ -19,14 +19,14 @@ class Video:
         self.date_publication = date_publication
 
     def __repr__(self):
-        return {
-            'name': self.name,
-            'category': self.category,
-            'author': self.author,
-            'link': self.link if self.link else '',
-            'topic': self.topic if self.topic else '',
-            'version': self.version if self.version else '',
-            'date publication': self.date_publication if self.date_publication else '',
-            'id': self.id
-        }
+        return str({
+            "name": f"{self.name}",
+            "category": f"{self.category}",
+            "author": f"{self.author}",
+            "link": f"{self.link}" if self.link else "",
+            "topic": f"{self.topic}" if self.topic else "",
+            "version": f"{self.version}" if self.version else "",
+            "date publication": f"{self.date_publication}" if self.date_publication else "",
+            "id": f"{self.id}"
+        })
         
