@@ -2,12 +2,13 @@ from datetime import datetime
 from src.model.config import FORMAT_DATE, MESSAGE_TO_USER, DATE
 from src.model.generator import Generator
 from src.model.item import Item
+
 from src.view.view import View
 
 
 class Roadmap:
 
-    def __init__(self, type_item,  title: str, priority, complexity,
+    def __init__(self, type_item, title: str, priority, complexity,
                  goal_completion: datetime, added: datetime, user_id: int,
                  deadline_date: datetime, item: Item):
         self.id = Generator().generate_number()
@@ -39,3 +40,9 @@ class Roadmap:
         v1 = View()
         result = v1.get_attribute(MESSAGE_TO_USER)
         self.deadline_date = datetime.strptime(result, DATE)
+
+    def update_item_status(self):
+        self.item.update_status()
+
+    def update_item_status(self):
+        self.item.update_status()
