@@ -5,10 +5,8 @@ from src.model.item import Item
 
 from src.model.item import Item, SubItem
 
-
 from src.model.item import Item
 from src.view.view import View
-
 
 
 class Roadmap:
