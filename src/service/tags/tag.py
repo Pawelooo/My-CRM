@@ -1,6 +1,7 @@
 import json
 
-from src.model.config import FILE_ENCODING, FILE_LOCATION_TAG
+from src.model.config import FILE_ENCODING, FILE_LOCATION_TAG, WRITE_PLUS, \
+    READ_PLUS
 
 
 class Tag:
@@ -27,12 +28,12 @@ class Tag:
         return self.get(value)
 
     def get_all(self):
-        with open(f'{FILE_LOCATION_TAG}{self.file_name}', 'r+',
+        with open(f'{FILE_LOCATION_TAG}{self.file_name}', READ_PLUS,
                   encoding=FILE_ENCODING) as f:
             self.values = json.load(f)
 
     def save(self):
-        with open(f'{FILE_LOCATION_TAG}{self.file_name}', 'w+',
+        with open(f'{FILE_LOCATION_TAG}{self.file_name}', WRITE_PLUS,
                   encoding=FILE_ENCODING) as file:
             json.dump(self.values, file)
 

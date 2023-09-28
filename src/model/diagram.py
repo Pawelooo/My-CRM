@@ -4,7 +4,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from src.model.config import GET_FILE, FILE_STATUS_NAME, FILE_ITEM, \
-    FILE_SUBITEM
+    FILE_SUBITEM, TODO, INPROGRESS, DONE, STATUS, COLOR_COLUMN, COLOR_TEXT, \
+    QUANTITY, SIZE_COLUMN, FONT_SIZE
 from src.service.jfs import JsonFromService
 
 
@@ -19,37 +20,35 @@ class Diagram:
     def get_quantity(self):
         cnt = Counter()
         for obj in self.items:
-            cnt[obj['status'].lower()] += 1
+            cnt[obj[STATUS].lower()] += 1
         for obj in self.subitems:
-            cnt[obj['status'].lower()] += 1
+            cnt[obj[STATUS].lower()] += 1
         cnt = dict(cnt)
         cnt = list(cnt.items())
         for i in range(len(cnt)):
-            if cnt[i][0] == 'todo':
+            if cnt[i][0] == TODO.lower():
                 self.values[cnt[0][0]] = cnt[0][1]
-            if cnt[i][0] == 'inprogress':
+            if cnt[i][0] == INPROGRESS.lower():
                 self.values[cnt[1][0]] = cnt[1][1]
-            if cnt[i][0] == 'done':
+            if cnt[i][0] == DONE.lower():
                 self.values[cnt[2][0]] = cnt[2][1]
 
 
     def create_diagram(self):
         height = self.values.values()
-        bars = self.values.keys()
+        bars = [text.capitalize() for text in self.values.keys()]
         y_pos = np.arange(len(height))
-        plt.figure(figsize=(10, 5))
-        plt.bar(y_pos, height, color='#268626')
+        plt.figure(figsize=(SIZE_COLUMN, SIZE_COLUMN))
+        plt.bar(y_pos, height, color=COLOR_COLUMN)
         plt.xticks(y_pos, bars)
-        plt.xlabel('Status', fontsize=15, color='#323232')
-        plt.ylabel('Quantity', fontsize=15, color='#323232')
+        plt.xlabel(STATUS.capitalize(), fontsize=FONT_SIZE, color=COLOR_TEXT)
+        plt.ylabel(QUANTITY, fontsize=FONT_SIZE, color=COLOR_TEXT)
         plt.show()
 
-
 def main() -> None:
-    d1 = Diagram()
-    d1.get_quantity()
-    d1.create_diagram()
-
+    i1 = Diagram()
+    i1.get_quantity()
+    i1.create_diagram()
 
 if __name__ == '__main__':
     main()
