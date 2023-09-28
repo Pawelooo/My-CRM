@@ -1,8 +1,12 @@
 from datetime import datetime
 from src.model.config import FORMAT_DATE, MESSAGE_TO_USER, DATE
 from src.model.generator import Generator
+
 from src.model.item import Item, SubItem
 
+from src.view.view import View
+
+from src.model.item import Item
 from src.view.view import View
 
 
@@ -23,6 +27,7 @@ class Roadmap:
         self.item = item
         self.subitem = subitem
         self.deadline_date = deadline_date
+
 
     def __repr__(self):
         return {
@@ -49,3 +54,4 @@ class Roadmap:
 
     def update_status_subitem(self):
         self.subitem.update_status()
+
