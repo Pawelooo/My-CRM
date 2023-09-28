@@ -10,6 +10,7 @@ from src.model.item import Item
 from src.view.view import View
 
 
+
 class Roadmap:
 
     def __init__(self, type_item, title: str, priority, complexity,
@@ -53,4 +54,3 @@ class Roadmap:
 
     def update_status_subitem(self):
         self.subitem.update_status()
-
