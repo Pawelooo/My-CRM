@@ -1,10 +1,11 @@
 from collections import Counter
 from datetime import datetime
-from typing import List, Any
+
 
 from src.model.category import Category
 from src.model.config import FILE_ITEM, GET_FILE, UPLOAD_FILE, FILE_SUBITEM, \
-    FILE_STATUS_NAME, CUSTOM_STATUS, INPROGRESS, STATUS, DONE, TODO, ID
+    FILE_STATUS_NAME, CUSTOM_STATUS, INPROGRESS, STATUS, DONE, TODO, ID, \
+    ROADMAP, TAG
 
 from src.model.config import DONE
 from src.model.config import TODO, UPLOAD
@@ -50,6 +51,7 @@ class Item:
         self.tag = tag
         self.status = TODO
         self.amounts = None
+        self.amounts_tag = None
 
 
     def __repr__(self):
@@ -67,7 +69,8 @@ class Item:
             'attachments': f'{self.attachments}',
             'roadmap': f'{self.roadmap}',
             'tag': f"{self.tag}",
-            'amounts': f"{self.amounts}"
+            'amounts': f"{self.amounts}",
+            'amount tag': f"{self.amounts_tag}",
         })
 
     @staticmethod
@@ -124,13 +127,26 @@ class Item:
 
     def close_item(self):
         self.status = DONE
+
     def amount_items(self):
         item = ItemService().read()
         cnt = Counter()
         for obj in item:
-            if obj['roadmap'].id == self.id:
+            if obj[ROADMAP].id == self.id:
                 for key, value in obj.items():
-                    if key == "status":
+                    if key == STATUS:
                         cnt[value] += 1
         self.amounts = cnt
+
+    def amount_tag_items(self):
+        item = ItemService().read()
+        cnt = Counter()
+        for obj in item:
+            if obj[ROADMAP].id == self.id:
+                for key, value in obj.items():
+                    if key == TAG:
+                        cnt[value] += 1
+        self.amounts_tag = cnt
+
+
 

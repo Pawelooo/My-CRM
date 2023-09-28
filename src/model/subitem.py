@@ -6,6 +6,9 @@ from src.model.config import DONE
 from collections import Counter
 from src.model.config import STATUS, ROADMAP, UPLOAD
 
+from collections import Counter
+
+
 from src.model.generator import Generator
 from src.service.jfs import JsonFromService
 from src.service.subitem_service import SubItemService
@@ -37,6 +40,7 @@ class SubItem:
         self.jfs = JsonFromService()
         self.custom_status = None
         self.amounts = None
+        self.amount_tag = None
 
     def __repr__(self):
         return str({
@@ -47,13 +51,12 @@ class SubItem:
             "id_item": f"{self.id_item}",
             "opened by": f"{self.opened_by}",
             "deadline": f"{self.deadline}",
-            "done": f"{self.done}",
-
             "status": f"{self.status}",
             "name_file": f"{self.name_file}",
             "attachments": f"{self.attachments}",
             "tag": f"{self.tag}",
-            'amonuts': f"{self.amounts}"
+            'amounts': f"{self.amounts}",
+            'amounts tag': f"{self.amounts}"
         })
 
     def update_status(self):
@@ -82,3 +85,13 @@ class SubItem:
                     if key == STATUS:
                         cnt[value] += 1
         self.amounts = cnt
+
+    def amount_tag_subitems(self):
+        subitem = SubItemService().read()
+        cnt = Counter()
+        for obj in subitem:
+            if obj[ROADMAP].id == self.id:
+                for key, value in obj.items():
+                    if key == "tag":
+                        cnt[value] += 1
+        self.amounts_tag = cnt
