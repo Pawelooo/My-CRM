@@ -6,7 +6,6 @@ from src.model.item import Item, SubItem
 
 
 from src.model.item import Item
-
 from src.view.view import View
 
 
@@ -27,6 +26,7 @@ class Roadmap:
         self.item = item
         self.subitem = subitem
         self.deadline_date = deadline_date
+
 
 
     def __repr__(self):
