@@ -38,7 +38,6 @@ class SubItem:
         self.custom_status = None
         self.amounts = None
 
-
     def __repr__(self):
         return str({
             "id": f"{self.id}",
@@ -48,6 +47,8 @@ class SubItem:
             "id_item": f"{self.id_item}",
             "opened by": f"{self.opened_by}",
             "deadline": f"{self.deadline}",
+            "done": f"{self.done}",
+
             "status": f"{self.status}",
             "name_file": f"{self.name_file}",
             "attachments": f"{self.attachments}",
@@ -81,4 +82,3 @@ class SubItem:
                     if key == STATUS:
                         cnt[value] += 1
         self.amounts = cnt
-

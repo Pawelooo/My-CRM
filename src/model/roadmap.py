@@ -24,7 +24,7 @@ class Roadmap:
 
     def __init__(self, type_item, title: str, priority, complexity,
                  goal_completion: datetime, added: datetime, user_id: int,
-                 deadline_date: datetime, item: Item, subitem: SubItem):
+                 deadline_date: datetime):
         self.id = Generator().generate_number()
         self.type_item = type_item
         self.title = title
@@ -33,9 +33,9 @@ class Roadmap:
         self.goal_completion = goal_completion
         self.added = added
         self.user_id = user_id
-        self.item = item
         self.deadline_date = deadline_date
-        self.subitem = subitem
+        self.subitem = []
+        self.item = []
 
     def __repr__(self):
         return str({
