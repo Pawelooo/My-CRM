@@ -2,7 +2,9 @@ from datetime import datetime
 from src.model.config import FORMAT_DATE, MESSAGE_TO_USER, DATE
 from src.model.generator import Generator
 from src.model.item import Item
+
 from src.view.view import View
+
 
 
 class Roadmap:
