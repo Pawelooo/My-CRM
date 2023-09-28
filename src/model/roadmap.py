@@ -13,7 +13,6 @@ from src.view.view import View
 
 class Roadmap:
 
-
     def __init__(self, type_item, title: str, priority, complexity,
                  goal_completion: datetime, added: datetime, user_id: int,
                  deadline_date: datetime, item: Item, subitem: SubItem):
@@ -28,8 +27,6 @@ class Roadmap:
         self.item = item
         self.deadline_date = deadline_date
         self.subitem = subitem
-
-
 
     def __repr__(self):
         return {
@@ -56,4 +53,3 @@ class Roadmap:
 
     def update_status_subitem(self):
         self.subitem.update_status()
-
