@@ -64,4 +64,3 @@ class SubItem:
 
     def close_item(self):
         self.status = DONE
-
