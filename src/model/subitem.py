@@ -95,3 +95,4 @@ class SubItem:
                     if key == "tag":
                         cnt[value] += 1
         self.amounts_tag = cnt
+
