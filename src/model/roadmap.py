@@ -4,12 +4,10 @@ from src.model.generator import Generator
 
 from src.model.item import Item, SubItem
 
-from src.view.view import View
 
 from src.model.item import Item
 
 from src.view.view import View
-
 
 
 class Roadmap:
@@ -53,6 +51,6 @@ class Roadmap:
     def update_item_status(self):
         self.item.update_status()
 
-
     def update_status_subitem(self):
         self.subitem.update_status()
+
