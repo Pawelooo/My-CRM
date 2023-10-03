@@ -1,7 +1,6 @@
 from collections import Counter
 from datetime import datetime
 
-
 from src.model.category import Category
 from src.model.config import FILE_ITEM, GET_FILE, UPLOAD_FILE, FILE_SUBITEM, \
     FILE_STATUS_NAME, CUSTOM_STATUS, INPROGRESS, STATUS, DONE, TODO, ID, \
@@ -54,9 +53,8 @@ class Item:
         self.amounts = None
         self.amounts_tag = None
 
-
     def __repr__(self):
-        return str({
+        return {
             'id': f'{self.id}',
             'name': f'{self.name}',
             'title': f"{self.title}",
@@ -72,7 +70,7 @@ class Item:
             'tag': f"{self.tag}",
             'amounts': f"{self.amounts}",
             'amount tag': f"{self.amounts_tag}",
-        })
+        }
 
     @staticmethod
     def actual_date():

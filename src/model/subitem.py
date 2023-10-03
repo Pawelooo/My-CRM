@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from src.model.config import FILE_SUBITEM, FILE_STATUS_NAME, UPLOAD_FILE, \
     GET_FILE, CUSTOM_STATUS, TAG
 
@@ -45,7 +44,7 @@ class SubItem:
         self.amount_tag = None
 
     def __repr__(self):
-        return str({
+        return {
             "id": f"{self.id}",
             "name": f"{self.name}",
             "title": f"{self.title}",
@@ -59,7 +58,7 @@ class SubItem:
             "tag": f"{self.tag}",
             'amounts': f"{self.amounts}",
             'amounts tag': f"{self.amounts}"
-        })
+        }
 
     def update_status(self):
         self.status = self.get_next_status()

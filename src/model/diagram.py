@@ -16,7 +16,6 @@ class Diagram:
         self.subitems = JsonFromService().read_file(FILE_SUBITEM, GET_FILE)
         self.values = {}
 
-
     def get_quantity(self):
         cnt = Counter()
         for obj in self.items:
@@ -33,7 +32,6 @@ class Diagram:
             if cnt[i][0] == DONE.lower():
                 self.values[cnt[2][0]] = cnt[2][1]
 
-
     def create_diagram(self):
         height = self.values.values()
         bars = [text.capitalize() for text in self.values.keys()]
@@ -44,11 +42,3 @@ class Diagram:
         plt.xlabel(STATUS.capitalize(), fontsize=FONT_SIZE, color=COLOR_TEXT)
         plt.ylabel(QUANTITY, fontsize=FONT_SIZE, color=COLOR_TEXT)
         plt.show()
-
-def main() -> None:
-    i1 = Diagram()
-    i1.get_quantity()
-    i1.create_diagram()
-
-if __name__ == '__main__':
-    main()

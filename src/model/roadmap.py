@@ -38,7 +38,7 @@ class Roadmap:
         self.item = []
 
     def __repr__(self):
-        return str({
+        return {
             "type_item": f"{self.type_item}",
             "title": f"{self.title}",
             "priority": f"{self.priority}",
@@ -47,7 +47,7 @@ class Roadmap:
             "added": f"{self.added.strftime('%d.%m.%Y')}",
             "user_id": f"{self.user_id}",
             "id": f"{self.id}"
-        })
+        }
 
     def set_deadline_date(self):
         v1 = View()

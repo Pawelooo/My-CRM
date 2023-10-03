@@ -19,7 +19,7 @@ class Book:
         self.date_publish = date_publish
 
     def __repr__(self):
-        return str({
+        return {
             "name": f"{self.name}",
             "category": f"{self.category}",
             "author": f"{self.author}",
@@ -29,4 +29,4 @@ class Book:
             "page_count": f"{self.page_count}" if self.page_count is not None else "",
             "date_publish": f"{self.date_publish}" if self.date_publish is not None else "",
             "id": f"{self.id}"
-        })
+        }
