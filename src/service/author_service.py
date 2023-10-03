@@ -12,12 +12,12 @@ class AuthorService:
 
     def create(self, obj: Author):
         self.repository.create(f'{FILE_LOCATION}{FILE_AUTHOR_NAME}',
-                               obj.__repr__())
+                               obj)
 
     def update(self, obj: Author, key: str):
         self.validator.validate(obj.__repr__(), 'update')
         self.repository.update(f'{FILE_LOCATION}{FILE_AUTHOR_NAME}',
-                               obj.__repr__(), key)
+                               obj, key)
 
     def read(self):
         return self.repository.find_all(f'{FILE_LOCATION}{FILE_AUTHOR_NAME}')
@@ -25,4 +25,3 @@ class AuthorService:
     def delete(self, obj: Author, key: str):
         self.validator.validate(obj.__repr__(), 'delete')
         self.repository.delete(f'{FILE_LOCATION}{FILE_USER_NAME}', key)
-

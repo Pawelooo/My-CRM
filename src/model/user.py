@@ -11,11 +11,11 @@ class User:
         self.full_name = full_name
 
     def __repr__(self):
-        return str({
+        return {
             "name": f"{self.name}",
             "password": f"{self.password}",
             "email": f"{self.email}",
             "full_name": f"{self.full_name}" if self.full_name else "",
             "id": f"{self.id}"
-        })
+        }
     
