@@ -10,7 +10,7 @@ app = Flask(__name__)
 pg_user = "postgres"
 pg_pwd = "qawsed"
 pg_port = "5432"
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://{username}:{password}@localhost:{port}/my-crm-basic".format(username=pg_user, password=pg_pwd, port=pg_port)
+app.config["SQLALCHEMY_DATABASE_URI"] = f"postgresql://{pg_user}:{pg_pwd}@localhost:{pg_port}/my-crm-basic"
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL",
 #                                                   "postgresql://localhost:5432/my-crm-basic")  # 'postgresql://postgres:postgres@<PORT>:<PORT>/<DB_NAME>'
 db = SQLAlchemy(app)
