@@ -1,6 +1,4 @@
 import unittest
-
-
 class TestAuthor(unittest.TestCase):
 
     def test_new(self):

@@ -3,7 +3,9 @@ Once data with present should be found
 """
 import os
 
-from base.src.model.config import FILE_ENCODING, FILE_INDEX_STR, READ_PLUS, FILE_CONFIG
+from base.src.model.config import FILE_INDEX, FILE_ENCODING, FILE_CONFIG_LOCATION, \
+    FILE_INDEX_STR, READ_PLUS, FILE_CONFIG
+
 
 
 class Generator:

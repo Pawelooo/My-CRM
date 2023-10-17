@@ -10,4 +10,4 @@ python main.py
 
 Or use the 'Run' button in your IDE, for PyCharm its:
 
-![img.png](img/img.png)
+![img.png](base/img/img.png)

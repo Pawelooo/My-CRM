@@ -4,6 +4,10 @@ from base.src.model.config import MESSAGE_TO_USER, DATE
 
 from base.src.view.view import View
 
+
+from typing import Self
+
+
 from base.src.model.config import FORMAT_DATE
 from base.src.model.generator import Generator
 from base.src.service.item_service import ItemService
@@ -11,7 +15,7 @@ from base.src.service.item_service import ItemService
 
 class Roadmap:
 
-    def __init__(self, type_item, title: str, priority, complexity,
+    def __init__(self, type_item: str, title: str, priority, complexity: str,
                  goal_completion: datetime, added: datetime, user_id: int,
                  deadline_date: datetime):
         self.id = Generator().generate_number()
