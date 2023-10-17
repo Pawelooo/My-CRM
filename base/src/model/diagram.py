@@ -3,7 +3,10 @@ from collections import Counter
 import numpy as np
 import matplotlib.pyplot as plt
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> dd4209d12a5419d449005abe09a2927b86221da9
 from base.src.model.config import GET_FILE, FILE_STATUS_NAME, FILE_ITEM, \
     FILE_SUBITEM, TODO, INPROGRESS, DONE, STATUS, COLOR_COLUMN, COLOR_TEXT, \
     QUANTITY, SIZE_COLUMN, FONT_SIZE

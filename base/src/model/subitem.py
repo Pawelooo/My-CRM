@@ -2,10 +2,16 @@ from base.src.model.config import FILE_SUBITEM, FILE_STATUS_NAME, UPLOAD_FILE, \
     GET_FILE, CUSTOM_STATUS, TAG
 
 from base.src.model.config import DONE
+<<<<<<< HEAD
 
 from base.src.model.config import STATUS, ROADMAP, UPLOAD
 
 
+=======
+
+from collections import Counter
+from base.src.model.config import STATUS, ROADMAP, UPLOAD
+>>>>>>> dd4209d12a5419d449005abe09a2927b86221da9
 
 from collections import Counter
 

@@ -2,7 +2,10 @@
 =======
 from abc import ABC
 
+<<<<<<< HEAD
 >>>>>>> dd4209d (#96 module 1 basic crud rest api)
+=======
+>>>>>>> dd4209d12a5419d449005abe09a2927b86221da9
 from base.src.model.author import Author
 from base.src.model.validator import Validator
 

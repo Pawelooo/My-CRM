@@ -1,11 +1,18 @@
 import json
 from typing import Any
+<<<<<<< HEAD
 
 from base.src.model.author import Author
 
 from base.src.model.config import FILE_USER_NAME, FILE_LOCATION, FILE_ENCODING, \
     FILE_AUTHOR_NAME, IDENTIFIER, PRIORITY, WRITE_PLUS, READ, READ_PLUS
 
+=======
+
+from base.src.model.author import Author
+from base.src.model.config import FILE_USER_NAME, FILE_LOCATION, FILE_ENCODING, \
+    FILE_AUTHOR_NAME, IDENTIFIER, PRIORITY, WRITE_PLUS, READ, READ_PLUS
+>>>>>>> dd4209d12a5419d449005abe09a2927b86221da9
 
 
 class Repository:

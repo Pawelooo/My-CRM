@@ -3,7 +3,6 @@ from base.src.model.config import FILE_USER_NAME, FILE_LOCATION, \
     FILE_AUTHOR_NAME, UPLOAD_FILE, GET_FILE
 from base.src.model.respository import Repository
 from base.src.service.jfs import JsonFromService
-
 from base.src.service.validators.author_validator import AuthorValidator
 
 
