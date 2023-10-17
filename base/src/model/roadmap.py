@@ -3,12 +3,11 @@ from datetime import datetime
 from base.src.model.config import MESSAGE_TO_USER, DATE
 
 from base.src.view.view import View
-<<<<<<< HEAD
-=======
+
 
 from typing import Self
 
->>>>>>> dd4209d12a5419d449005abe09a2927b86221da9
+
 from base.src.model.config import FORMAT_DATE
 from base.src.model.generator import Generator
 from base.src.service.item_service import ItemService

@@ -1,9 +1,5 @@
 from base.src.model.validator import Validator
-<<<<<<< HEAD
 
-=======
-from validator_collection import validators
->>>>>>> dd4209d12a5419d449005abe09a2927b86221da9
 
 class Validations:
 
