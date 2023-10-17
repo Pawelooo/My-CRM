@@ -1,6 +1,10 @@
 import logging
 
 from base.src.model.model import Model
+<<<<<<< HEAD
+=======
+from base.src.model.test import Test
+>>>>>>> dd4209d (#96 module 1 basic crud rest api)
 from base.src.view.view import View
 
 

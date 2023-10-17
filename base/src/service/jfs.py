@@ -26,13 +26,14 @@ class JsonFromService:
         self.validation = JfsValidator()
 
     def add_file(self, name_file: str, type_s: str):
-        files = {'file': open(f'{FILE_LOCATION}{name_file}', 'rb')}
+        files = {'file': open(f'{FILE_LOCATION}{name_file}', 'r')}
         res = requests.post(f'{self.link}{type_s}', headers=self.headers,
                             files=files)
         return res.status_code if (result := self.validation.validate(res)) is None else result
 
     def update_file(self, name_file: str, type_s: str):
         files = {'file': open(f'{FILE_LOCATION}{name_file}', 'rb')}
+
         res = requests.post(f'{self.link}{type_s}', headers=self.headers,
                             files=files)
         return res.status_code if (result := self.validation.validate(res)) is None else result
@@ -108,5 +109,6 @@ class JsonFromService:
         all_links = self.get_all_links()
         self.get_all_files(all_links)
         self.pack_files(os.path.join(FILES_ZIPPED, name_zip))
+
 
 

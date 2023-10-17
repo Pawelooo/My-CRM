@@ -1,11 +1,14 @@
-from base.src.model.config import FILE_STATUS_NAME, UPLOAD_FILE, \
+from base.src.model.config import FILE_SUBITEM, FILE_STATUS_NAME, UPLOAD_FILE, \
     GET_FILE, CUSTOM_STATUS, TAG
 
 from base.src.model.config import DONE
 
-from base.src.model.config import STATUS, ROADMAP
+from base.src.model.config import STATUS, ROADMAP, UPLOAD
+
+
 
 from collections import Counter
+
 
 from base.src.model.generator import Generator
 from base.src.service.jfs import JsonFromService

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 [
     {
         "name": "gag",
@@ -17,6 +17,4 @@
         "id": "400"
     }
 ]
-=======
-[{"name": "Takie tam", "surname": "test2", "website": "test33", "country": "", "topic": "", "id": "413"}, {"name": "Takie tam", "surname": "test2", "website": "test33", "country": "", "topic": "", "id": "414"}, {"name": "Takie tam", "surname": "test2", "website": "test33", "country": "", "topic": "", "id": "415"}]
->>>>>>> 1a1c509 (#96 module 1 basic crud rest api)
+

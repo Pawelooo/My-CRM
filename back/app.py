@@ -1,6 +1,8 @@
+
 import psycopg2
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+
 
 app = Flask(__name__)
 pg_user = "postgres"
@@ -11,6 +13,7 @@ app.config[
 db = SQLAlchemy(app)
 conn = psycopg2.connect(database='my-crm-basic', user='postgres',
                         password='qawsed')
+
 
 if __name__ == "__main__":
     app.run(debug=True)

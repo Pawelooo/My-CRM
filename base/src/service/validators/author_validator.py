@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+from abc import ABC
+
+>>>>>>> dd4209d (#96 module 1 basic crud rest api)
 from base.src.model.author import Author
 from base.src.model.validator import Validator
 
