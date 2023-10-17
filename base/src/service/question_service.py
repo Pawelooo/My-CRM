@@ -1,9 +1,9 @@
 import random
 
-from src.model.config import FILE_LOCATION, FILE_QUESTION
+from base.src.model.config import FILE_LOCATION, FILE_QUESTION
 
-from src.model.question import Question
-from src.model.respository import Repository
+from base.src.model.question import Question
+from base.src.model.respository import Repository
 
 
 

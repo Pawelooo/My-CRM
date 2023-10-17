@@ -1,6 +1,6 @@
-from src.model.config import FILE_LOCATION, FILE_STATUS_NAME
-from src.model.respository import Repository
-from src.model.status import Status
+from base.src.model.config import FILE_LOCATION, FILE_STATUS_NAME
+from base.src.model.respository import Repository
+from base.src.model.status import Status
 
 
 class StatusService:

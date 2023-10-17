@@ -1,8 +1,9 @@
 import json
+from typing import Any
 
-from src.model.author import Author
-from src.model.config import FILE_USER_NAME, FILE_LOCATION, FILE_ENCODING, \
-    FILE_AUTHOR_NAME, IDENTIFIER, PRIORITY, WRITE_PLUS, READ
+from base.src.model.author import Author
+from base.src.model.config import FILE_USER_NAME, FILE_LOCATION, FILE_ENCODING, \
+    FILE_AUTHOR_NAME, IDENTIFIER, PRIORITY, WRITE_PLUS, READ, READ_PLUS
 
 
 class Repository:
@@ -26,7 +27,7 @@ class Repository:
                        if obj[IDENTIFIER] != key])
 
     def find_all(self, file_path: str):
-        with open(file_path, READ, encoding=FILE_ENCODING) as f:
+        with open(file_path, READ_PLUS, encoding=FILE_ENCODING) as f:
             try:
                 return json.load(f)
             except:
@@ -37,7 +38,7 @@ class Repository:
                                       or x[PRIORITY] is not None),
                            self.find_all(file_path)))[:limit]
 
-    def save_all(self, file_path: str, objects: list[Author]):
+    def save_all(self, file_path: str, objects: list[Any]):
         with open(file_path, WRITE_PLUS, encoding=FILE_ENCODING) as f:
             f.seek(0)
             file_content = objects

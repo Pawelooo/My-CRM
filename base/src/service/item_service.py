@@ -1,6 +1,6 @@
-from src.model.config import FILE_LOCATION, FILE_ITEM
-from src.model.respository import Repository
-from src.model.item import Item
+from base.src.model.config import FILE_LOCATION, FILE_ITEM
+from base.src.model.respository import Repository
+from base.src.model.item import Item
 
 
 class ItemService:

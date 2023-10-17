@@ -2,7 +2,7 @@ import logging
 import os
 import pickle
 
-from src.model.config import FILE_ENCODING, FILE_MODEL
+from base.src.model.config import FILE_ENCODING, FILE_MODEL
 
 
 class Model:

@@ -1,5 +1,5 @@
-from src.model.generator import Generator
-from src.service.tags.tag import Tag
+from base.src.model.generator import Generator
+from base.src.service.tags.tag import Tag
 
 
 class Question:

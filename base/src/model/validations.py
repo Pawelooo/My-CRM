@@ -1,4 +1,4 @@
-from src.model.validator import Validator
+from base.src.model.validator import Validator
 from validator_collection import validators
 
 class Validations:

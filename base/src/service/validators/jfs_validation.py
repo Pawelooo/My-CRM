@@ -1,7 +1,7 @@
 from ast import literal_eval
 
-from src.model.config import FILE_ENCODING
-from src.model.validator_status_code import ValidatorStatus
+from base.src.model.config import FILE_ENCODING
+from base.src.model.validator_status_code import ValidatorStatus
 
 
 class JfsValidator(ValidatorStatus):

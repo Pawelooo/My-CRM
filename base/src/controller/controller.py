@@ -1,8 +1,8 @@
 import logging
 
-from src.model.model import Model
-from src.model.test import Test
-from src.view.view import View
+from base.src.model.model import Model
+from base.src.model.test import Test
+from base.src.view.view import View
 
 
 class Controller:

@@ -1,6 +1,6 @@
-from src.model.roadmap import Roadmap
-from src.model.config import FILE_LOCATION, FILE_ROADMAP
-from src.model.respository import Repository
+from base.src.model.roadmap import Roadmap
+from base.src.model.config import FILE_LOCATION, FILE_ROADMAP
+from base.src.model.respository import Repository
 
 
 class RoadmapService:

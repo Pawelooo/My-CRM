@@ -1,5 +1,5 @@
-from src.model.user import User
-from src.model.validator import Validator
+from base.src.model.user import User
+from base.src.model.validator import Validator
 
 
 class UserValidator(Validator):

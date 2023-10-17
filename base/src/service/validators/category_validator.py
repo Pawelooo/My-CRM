@@ -1,5 +1,5 @@
-from src.model.category import Category
-from src.model.validator import Validator
+from base.src.model.category import Category
+from base.src.model.validator import Validator
 
 
 class CategoryValidator(Validator):

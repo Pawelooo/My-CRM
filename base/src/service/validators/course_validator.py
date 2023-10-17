@@ -1,5 +1,5 @@
-from src.model.course import Course
-from src.model.validator import Validator
+from base.src.model.course import Course
+from base.src.model.validator import Validator
 
 
 class CourseValidator(Validator):

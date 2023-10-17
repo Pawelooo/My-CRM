@@ -1,6 +1,6 @@
-from src.model.config import FILE_LOCATION, FILE_COURSE_NAME, FILE_AUTHOR_NAME
-from src.model.course import Course
-from src.model.respository import Repository
+from base.src.model.config import FILE_LOCATION, FILE_COURSE_NAME, FILE_AUTHOR_NAME
+from base.src.model.course import Course
+from base.src.model.respository import Repository
 
 
 class CourseService:

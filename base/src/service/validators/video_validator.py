@@ -1,5 +1,5 @@
-from src.model.video import Video
-from src.model.validator import Validator
+from base.src.model.video import Video
+from base.src.model.validator import Validator
 
 
 class VideoValidator(Validator):

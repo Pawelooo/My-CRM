@@ -1,6 +1,6 @@
-from src.model.config import FILE_LOCATION, FILE_VIDEO_NAME, FILE_AUTHOR_NAME
-from src.model.respository import Repository
-from src.model.video import Video
+from base.src.model.config import FILE_LOCATION, FILE_VIDEO_NAME, FILE_AUTHOR_NAME
+from base.src.model.respository import Repository
+from base.src.model.video import Video
 
 
 class VideoService:

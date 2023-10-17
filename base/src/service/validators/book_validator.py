@@ -1,5 +1,5 @@
-from src.model.book import Book
-from src.model.validator import Validator
+from base.src.model.book import Book
+from base.src.model.validator import Validator
 
 
 class BookValidator(Validator):

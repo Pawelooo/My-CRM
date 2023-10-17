@@ -1,20 +1,20 @@
-from src.model.config import FILE_SUBITEM, FILE_STATUS_NAME, UPLOAD_FILE, \
+from base.src.model.config import FILE_SUBITEM, FILE_STATUS_NAME, UPLOAD_FILE, \
     GET_FILE, CUSTOM_STATUS, TAG
 
-from src.model.config import DONE
+from base.src.model.config import DONE
 
 from collections import Counter
-from src.model.config import STATUS, ROADMAP, UPLOAD
-
-from collections import Counter
+from base.src.model.config import STATUS, ROADMAP, UPLOAD
 
 from collections import Counter
 
-from src.model.generator import Generator
-from src.service.jfs import JsonFromService
-from src.service.subitem_service import SubItemService
-from src.service.tags.tag import Tag
-from src.view.view import View
+from collections import Counter
+
+from base.src.model.generator import Generator
+from base.src.service.jfs import JsonFromService
+from base.src.service.subitem_service import SubItemService
+from base.src.service.tags.tag import Tag
+from base.src.view.view import View
 
 
 class SubItem:

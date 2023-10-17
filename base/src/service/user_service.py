@@ -1,6 +1,6 @@
-from src.model.config import FILE_LOCATION, FILE_USER_NAME, FILE_AUTHOR_NAME
-from src.model.respository import Repository
-from src.model.user import User
+from base.src.model.config import FILE_LOCATION, FILE_USER_NAME, FILE_AUTHOR_NAME
+from base.src.model.respository import Repository
+from base.src.model.user import User
 
 
 class UserService:

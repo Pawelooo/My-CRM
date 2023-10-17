@@ -3,10 +3,10 @@ from collections import Counter
 import numpy as np
 import matplotlib.pyplot as plt
 
-from src.model.config import GET_FILE, FILE_STATUS_NAME, FILE_ITEM, \
+from base.src.model.config import GET_FILE, FILE_STATUS_NAME, FILE_ITEM, \
     FILE_SUBITEM, TODO, INPROGRESS, DONE, STATUS, COLOR_COLUMN, COLOR_TEXT, \
     QUANTITY, SIZE_COLUMN, FONT_SIZE
-from src.service.jfs import JsonFromService
+from base.src.service.jfs import JsonFromService
 
 
 class Diagram:

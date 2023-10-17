@@ -1,7 +1,7 @@
 from abc import ABC
 
-from src.model.author import Author
-from src.model.validator import Validator
+from base.src.model.author import Author
+from base.src.model.validator import Validator
 
 
 class AuthorValidator(Validator):

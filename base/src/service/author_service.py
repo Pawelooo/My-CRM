@@ -1,7 +1,9 @@
-from src.model.author import Author
-from src.model.config import FILE_USER_NAME, FILE_LOCATION, FILE_AUTHOR_NAME
-from src.model.respository import Repository
-from src.service.validators.author_validator import AuthorValidator
+from base.src.model.author import Author
+from base.src.model.config import FILE_USER_NAME, FILE_LOCATION, \
+    FILE_AUTHOR_NAME, UPLOAD_FILE, GET_FILE
+from base.src.model.respository import Repository
+from base.src.service.jfs import JsonFromService
+from base.src.service.validators.author_validator import AuthorValidator
 
 
 class AuthorService:
@@ -25,3 +27,16 @@ class AuthorService:
     def delete(self, obj: Author, key: str):
         self.validator.validate(obj.__repr__(), 'delete')
         self.repository.delete(f'{FILE_LOCATION}{FILE_USER_NAME}', key)
+
+
+def main() -> None:
+    AuthorService().create(
+        Author('Paweł', 'test333', 'test33')
+    )
+    j1 = JsonFromService()
+    j1.add_file(FILE_AUTHOR_NAME, UPLOAD_FILE)
+    a = j1.read_file(FILE_AUTHOR_NAME, GET_FILE)
+    print(a)
+
+if __name__ == '__main__':
+    main()

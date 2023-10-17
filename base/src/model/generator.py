@@ -3,7 +3,7 @@ Once data with present should be found
 """
 import os
 
-from src.model.config import FILE_INDEX, FILE_ENCODING, FILE_CONFIG_LOCATION, \
+from base.src.model.config import FILE_INDEX, FILE_ENCODING, FILE_CONFIG_LOCATION, \
     FILE_INDEX_STR, READ_PLUS, FILE_CONFIG
 
 

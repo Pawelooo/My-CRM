@@ -1,6 +1,6 @@
 import json
 
-from src.model.config import FILE_ENCODING, FILE_LOCATION_TAG, WRITE_PLUS, \
+from base.src.model.config import FILE_ENCODING, FILE_LOCATION_TAG, WRITE_PLUS, \
     READ_PLUS
 
 

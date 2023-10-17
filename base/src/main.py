@@ -1,4 +1,4 @@
-from src.controller.controller import Controller
+from base.src.controller.controller import Controller
 
 
 def main() -> None:

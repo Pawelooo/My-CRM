@@ -1,5 +1,5 @@
-from src.model.status import Status
-from src.model.validator import Validator
+from base.src.model.status import Status
+from base.src.model.validator import Validator
 
 
 class StatusValidator(Validator):

@@ -1,5 +1,5 @@
-from src.model.item import ToDo
-from src.model.validator import Validator
+from base.src.model.item import ToDo
+from base.src.model.validator import Validator
 
 
 class ToDoValidator(Validator):

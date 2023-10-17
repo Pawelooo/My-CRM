@@ -1,8 +1,8 @@
 from datetime import datetime
 
-from src.model.author import Author
-from src.model.category import Category
-from src.model.generator import Generator
+from base.src.model.author import Author
+from base.src.model.category import Category
+from base.src.model.generator import Generator
 
 
 class Video:

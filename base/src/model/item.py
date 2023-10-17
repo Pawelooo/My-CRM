@@ -1,21 +1,21 @@
 from collections import Counter
 from datetime import datetime
 
-from src.model.category import Category
-from src.model.config import FILE_ITEM, GET_FILE, UPLOAD_FILE, FILE_SUBITEM, \
+from base.src.model.category import Category
+from base.src.model.config import FILE_ITEM, GET_FILE, UPLOAD_FILE, FILE_SUBITEM, \
     FILE_STATUS_NAME, CUSTOM_STATUS, INPROGRESS, STATUS, DONE, TODO, ID, \
     ROADMAP, TAG
 
-from src.model.config import DONE
-from src.model.config import TODO, UPLOAD
-from src.model.generator import Generator
-from src.model.subitem import SubItem
-from src.model.user import User
-from src.service.item_service import ItemService
-from src.service.jfs import JsonFromService
-from src.service.subitem_service import SubItemService
-from src.service.tags.tag import Tag
-from src.view.view import View
+from base.src.model.config import DONE
+from base.src.model.config import TODO, UPLOAD
+from base.src.model.generator import Generator
+from base.src.model.subitem import SubItem
+from base.src.model.user import User
+from base.base.src.service.item_service import ItemService
+from base.src.service.jfs import JsonFromService
+from base.src.service.subitem_service import SubItemService
+from base.src.service.tags.tag import Tag
+from base.src.view.view import View
 
 
 class Item:
