@@ -13,15 +13,24 @@ class UserValidator(Validator):
             self.delete_validation(obj)
 
     def create_validation(self, obj: dict[User]):
-        obj = list(obj.values())
-        return True if all([obj[i] for i in range(-1, 3)]) else False
+        for key, value in obj.items():
+            if key in ['name', 'password', 'email', 'id']:
+                if not obj[key]:
+                    return False
+        return True
 
     def update_validation(self, obj: dict[User]):
-        obj = list(obj.values())
-        return True if all([obj[i] for i in range(-1, 3)]) else False
+        for key, value in obj.items():
+            if key in ['name', 'password', 'email', 'id']:
+                if not obj[key]:
+                    return False
+        return True
 
     def delete_validation(self, obj: dict[User]):
-        obj = list(obj.values())
-        return True if all([obj[i] for i in range(-1, 3)]) else False
+        for key, value in obj.items():
+            if key in ['name', 'password', 'email', 'id']:
+                if not obj[key]:
+                    return False
+        return True
 
 

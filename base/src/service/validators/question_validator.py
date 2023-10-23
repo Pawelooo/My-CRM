@@ -1,10 +1,11 @@
-from base.src.model.category import Category
+from back.resume.models import SubItem, Question
+from base.src.model.course import Course
 from base.src.model.validator import Validator
 
 
-class CategoryValidator(Validator):
+class QuestionValidator(Validator):
 
-    def validate(self, obj: dict[Category], type_elm: str):
+    def validate(self, obj: dict[Question], type_elm: str):
         res = None
         if type_elm == 'create':
             res = self.create_validation(obj)
@@ -14,23 +15,23 @@ class CategoryValidator(Validator):
             res = self.delete_validation(obj)
         return res
 
-    def create_validation(self, obj: dict[Category]):
+    def create_validation(self, obj: dict[Question]):
         for key, value in obj.items():
-            if key in ['name', 'id']:
+            if key in ['name', 'tag', 'id']:
                 if not obj[key]:
                     return False
         return True
 
-    def update_validation(self, obj: dict[Category]):
+    def update_validation(self, obj: dict[Question]):
         for key, value in obj.items():
-            if key in ['name', 'id']:
+            if key in ['name', 'tag', 'id']:
                 if not obj[key]:
                     return False
         return True
 
-    def delete_validation(self, obj: dict[Category]):
+    def delete_validation(self, obj: dict[Question]):
         for key, value in obj.items():
-            if key in ['name', 'id']:
+            if key in ['name', 'tag', 'id']:
                 if not obj[key]:
                     return False
         return True

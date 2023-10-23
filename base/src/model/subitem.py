@@ -1,5 +1,5 @@
 from base.src.model.config import FILE_SUBITEM, FILE_STATUS_NAME, UPLOAD_FILE, \
-    GET_FILE, CUSTOM_STATUS, TAG
+    GET_FILE, CUSTOM_STATUS, TAG, FILE_LOCATION
 
 from base.src.model.config import DONE
 
@@ -19,23 +19,23 @@ from base.src.view.view import View
 class SubItem:
 
     def __init__(self, name: str, title: str, description: str, name_file,
-                 tag: Tag):
-        self.id = Generator().generate_number()
+                 tag: Tag, id_obj: str):
+        self.id = id_obj
         self.name = name
         self.title = title
         self.description = description
+        self.name_file = name_file
+        self.tag = tag
         self.id_item = []
         self.opened_by = None
         self.deadline = None
-        self.name_file = name_file
         self.attachments = JsonFromService().add_file(self.name_file,
-                                                      UPLOAD_FILE)
+                                                      UPLOAD_FILE, FILE_LOCATION )
         self.status_opt = JsonFromService().read_file(FILE_STATUS_NAME,
                                                       GET_FILE)
         self.status = None
         self.comments = None
         self.roadmap = None
-        self.tag = tag
         self.current_status = 0
         self.jfs = JsonFromService()
         self.custom_status = None
@@ -44,7 +44,6 @@ class SubItem:
 
     def __repr__(self):
         return {
-            "id": f"{self.id}",
             "name": f"{self.name}",
             "title": f"{self.title}",
             "description": f"{self.description}",
@@ -56,7 +55,8 @@ class SubItem:
             "attachments": f"{self.attachments}",
             "tag": f"{self.tag}",
             'amounts': f"{self.amounts}",
-            'amounts tag': f"{self.amounts}"
+            'amounts tag': f"{self.amounts}",
+            "id": f"{self.id}"
         }
 
     def update_status(self):

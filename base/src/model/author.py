@@ -10,3 +10,13 @@ class Author:
         self.website = website
         self.country = country
         self.topic = topic
+
+    def __repr__(self):
+        return {
+            "name": f"{self.name}",
+            "surname": f"{self.surname}",
+            "website": f"{self.website}",
+            "country": f"{self.country}" if self.country else "",
+            "topic": f"{self.topic}" if self.topic else "",
+            'id': f"{self.id}"
+        }
