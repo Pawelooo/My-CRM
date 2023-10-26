@@ -9,7 +9,6 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, func, String, Integer, JSON, DateTime
 
-# from back.app import db
 
 app = Flask(__name__)
 pg_user = "postgres"
@@ -68,6 +67,16 @@ class Author(db.Model):
 
     def __getitem__(self, item):
         return getattr(self, item)
+
+    def __repr__(self):
+        return {
+            "name": f"{self.name}",
+            "surname": f"{self.surname}",
+            "website": f"{self.website}",
+            "country": f"{self.country}" if self.country else "",
+            "topic": f"{self.topic}" if self.topic else "",
+            'id': f"{self.id}"
+        }
 
 
 @dataclass
