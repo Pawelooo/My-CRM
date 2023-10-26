@@ -48,9 +48,9 @@ def read_all_books():
     return jsonify(books)
 
 
-@app.route('/book/upload/<name_file>/', methods=['POST'])
-def send_files_to_book(name_file: str):
-    res = jfs.add_file(name_file, UPLOAD, LOCATION_FILES)
+@app.route('/book/upload/', methods=['POST'])
+def send_files_to_book():
+    res = jfs.add_file(FILE_BOOK_NAME, UPLOAD, LOCATION_FILES)
     if isinstance(res, int):
         return {'status code': res}
     return res
@@ -223,9 +223,9 @@ def get_file_to_items():
     return jfs.get_object(FILE_ITEM)
 
 
-@app.route('/items/upload/<name_file>/', methods=['POST'])
-def send_files_to_items(name_file: str):
-    res = jfs.add_file(name_file, UPLOAD, LOCATION_FILES)
+@app.route('/items/upload/', methods=['POST'])
+def send_files_to_items():
+    res = jfs.add_file(FILE_ITEM, UPLOAD, LOCATION_FILES)
     if isinstance(res, int):
         return {'status code': res}
     return res
@@ -328,9 +328,9 @@ def get_file_to_courses():
     return jfs.get_object(FILE_COURSE_NAME)
 
 
-@app.route('/courses/upload/<name_file>/', methods=['POST'])
-def send_file_to_courses(name_file: str):
-    res = jfs.add_file(name_file, UPLOAD, LOCATION_FILES)
+@app.route('/courses/upload/', methods=['POST'])
+def send_file_to_courses():
+    res = jfs.add_file(FILE_COURSE_NAME, UPLOAD, LOCATION_FILES)
     if isinstance(res, int):
         return {'status code': res}
     return res
@@ -410,9 +410,9 @@ def get_file_to_category():
     return jfs.get_object(FILE_CATEGORY_NAME)
 
 
-@app.route('/category/upload/<name_file>/', methods=['POST'])
-def send_files_to_category(name_file: str):
-    res = jfs.add_file(name_file, UPLOAD, LOCATION_FILES)
+@app.route('/category/upload/', methods=['POST'])
+def send_files_to_category():
+    res = jfs.add_file(FILE_CATEGORY_NAME, UPLOAD, LOCATION_FILES)
     if isinstance(res, int):
         return {'status code': res}
     return res
@@ -481,8 +481,8 @@ def get_file_to_questions():
 
 
 @app.route('/questions/upload/<name_file>/', methods=['POST'])
-def send_files_to_questions(name_file: str):
-    res = jfs.add_file(name_file, UPLOAD, LOCATION_FILES)
+def send_files_to_questions():
+    res = jfs.add_file(FILE_QUESTION, UPLOAD, LOCATION_FILES)
     if isinstance(res, int):
         return {'status code': res}
     return res
@@ -562,8 +562,8 @@ def get_file_to_roadmap():
 
 
 @app.route('/roadmap/upload/<name_file>/', methods=['POST'])
-def send_files_to_roadmap(name_file: str):
-    res = jfs.add_file(name_file, UPLOAD, LOCATION_FILES)
+def send_files_to_roadmap():
+    res = jfs.add_file(FILE_ROADMAP, UPLOAD, LOCATION_FILES)
     if isinstance(res, int):
         return {'status code': res}
     return res
@@ -660,8 +660,8 @@ def get_file_to_status():
 
 
 @app.route('/status/upload/<name_file>/', methods=['POST'])
-def send_files_to_status(name_file: str):
-    res = jfs.add_file(name_file, UPLOAD, LOCATION_FILES)
+def send_files_to_status():
+    res = jfs.add_file(FILE_STATUS_NAME, UPLOAD, LOCATION_FILES)
     if isinstance(res, int):
         return {'status code': res}
     return res
@@ -731,9 +731,9 @@ def get_file_to_subitems():
     return jfs.get_object(FILE_SUBITEM)
 
 
-@app.route('/subitems/upload/<name_file>/', methods=['POST'])
-def send_files_to_subitems(name_file: str):
-    res = jfs.add_file(name_file, UPLOAD, LOCATION_FILES)
+@app.route('/subitems/upload/', methods=['POST'])
+def send_files_to_subitems():
+    res = jfs.add_file(FILE_SUBITEM, UPLOAD, LOCATION_FILES)
     if isinstance(res, int):
         return {'status code': res}
     return res
@@ -833,9 +833,9 @@ def get_file_to_users():
     return jfs.get_object(FILE_USER_NAME)
 
 
-@app.route('/users/upload/<name_file>/', methods=['POST'])
-def send_files_to_users(name_file: str):
-    res = jfs.add_file(name_file, UPLOAD, LOCATION_FILES)
+@app.route('/users/upload/', methods=['POST'])
+def send_files_to_users():
+    res = jfs.add_file(FILE_USER_NAME, UPLOAD, LOCATION_FILES)
     if isinstance(res, int):
         return {'status code': res}
     return res
@@ -914,16 +914,16 @@ def get_file_to_video():
 
 
 @app.route('/video/upload/<name_file>/', methods=['POST'])
-def send_files_to_video(name_file: str):
-    res = jfs.add_file(name_file, UPLOAD, LOCATION_FILES)
+def send_files_to_video():
+    res = jfs.add_file(FILE_VIDEO_NAME, UPLOAD, LOCATION_FILES)
     if isinstance(res, int):
         return {'status code': res}
     return res
 
 
 @app.route('/video/gets/', methods=['POST'])
-def get_all_files_to_video(name_file: str):
-    res = jfs.add_file(name_file, UPLOAD, LOCATION_FILES)
+def get_all_files_to_video(n):
+    res = jfs.add_file(FILE_VIDEO_NAME, UPLOAD, LOCATION_FILES)
     if isinstance(res, int):
         return {'status code': res}
     return res
