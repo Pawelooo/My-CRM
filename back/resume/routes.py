@@ -1,9 +1,8 @@
 from datetime import datetime
-
-from flask import jsonify, abort, request
+from flask import jsonify, abort, request, render_template
 
 from back.resume.models import generate_uuid, Category, Author, \
-    Book, Item, Course, Question, Roadmap, Status, SubItem, User, Video
+    Book, Item, Course, Question, Roadmap, Status, SubItem, User, Video, Test
 from back.resume.models import db, app
 from base.src.model.config import UPLOAD, LOCATION_FILES, CREATE, \
     FILE_BOOK_NAME, FILE_AUTHOR_NAME, FILE_ITEM, FILE_COURSE_NAME, \
@@ -27,6 +26,13 @@ from base.src.service.validators.video_validator import VideoValidator
 book_validator = BookValidator()
 
 jfs = JsonFromService()
+
+
+
+@app.route('/v1/api/')
+def health():
+    all_name_and_pictures = Test.query.all()
+    return render_template('index.html', objects=all_name_and_pictures)
 
 
 @app.route('/images/', methods=['POST'])
@@ -94,7 +100,6 @@ def create_book():
     return jsonify(book)
 
 
-# TODO Metoda pakowanie do mniesjzego foramtowania plików(obrazów po przez funkcje wczesniejszą)
 
 
 @app.route('/book/update/<id_obj>/', methods=['PUT'])
@@ -363,7 +368,8 @@ def create_course():
             'link': link, 'topic': topic, 'id': id_obj}
     course_validator = CourseValidator().validate(data, CREATE)
     if not course_validator:
-        abort(404, f'Cannot create Course without name and category and author !')
+        abort(404,
+              f'Cannot create Course without name and category and author !')
     course = Course(id=id_obj, name=name, category=category,
                     link=link, author=author, topic=topic)
     db.session.add(course)
@@ -382,7 +388,8 @@ def update_course(id_obj):
             'link': link, 'topic': topic}
     course_validator = CourseValidator().validate(data, UPLOAD_OBJ)
     if not course_validator:
-        abort(404, f'Cannot update course without name and category and author ')
+        abort(404,
+              f'Cannot update course without name and category and author ')
     course = Course.query.filter(Course.id == id_obj).one_or_none()
     if course:
         for key, value in data.items():
@@ -437,7 +444,8 @@ def get_category(id_item):
 def create_category():
     name = request.args.get("name")
     id_obj = generate_uuid()
-    category_validator = CategoryValidator().validate({'name': name, 'id': id_obj}, CREATE)
+    category_validator = CategoryValidator().validate(
+        {'name': name, 'id': id_obj}, CREATE)
     if not category_validator:
         abort(404, f'Cannot create category without name!')
     category = Category(id=generate_uuid(), name=name)
@@ -467,7 +475,8 @@ def update_category(id_obj):
 @app.route('/category/delete/<id_obj>/', methods=['DELETE'])
 def delete_category(id_obj):
     category = Category.query.filter(Category.id == id_obj).one_or_none()
-    category_validation = CategoryValidator().validate(category.__repr__(), DELETE)
+    category_validation = CategoryValidator().validate(category.__repr__(),
+                                                       DELETE)
     if category_validation:
         db.session.delete(category)
         db.session.commit()
@@ -548,7 +557,8 @@ def update_question(id_obj):
 @app.route('/question/delete/<id_obj>/', methods=['DELETE'])
 def delete_question(id_obj):
     question = Question.query.filter(Question.id == id_obj).one_or_none()
-    question_validation = AuthorValidator().validate(question.__repr__(), DELETE)
+    question_validation = AuthorValidator().validate(question.__repr__(),
+                                                     DELETE)
     if question_validation:
         db.session.delete(question)
         db.session.commit()
@@ -597,12 +607,12 @@ def create_roadmap():
     id_obj = generate_uuid()
     data = {'type_item': type_item, 'title': title, 'priority': priority,
             'complexity': complexity, 'goal_completion': goal_completion,
-            'added': added, 'user_id': user_id, 'deadline': deadline, 'id': id_obj}
+            'added': added, 'user_id': user_id, 'deadline': deadline,
+            'id': id_obj}
     roadmap_validator = RoadmapValidator().validate(data, CREATE)
     if not roadmap_validator:
         abort(404, f'Cannot create roadmap without type_item, title, priority'
                    f'complexity, goal_completion, added, user_id')
-
 
     roadmap = Roadmap(id=generate_uuid(), type_item=type_item, title=title,
                       priority=priority, complexity=complexity,
@@ -627,7 +637,8 @@ def update_roadmap(id_obj):
     deadline = request.args.get("deadline") or None
     data = {'type_item': type_item, 'title': title, 'priority': priority,
             'complexity': complexity, 'goal_completion': goal_completion,
-            'added': added, 'user_id': user_id, 'deadline': deadline, 'id': id_obj}
+            'added': added, 'user_id': user_id, 'deadline': deadline,
+            'id': id_obj}
     roadmap_validator = BookValidator().validate(data, UPLOAD_OBJ)
     if not roadmap_validator:
         abort(404, f'Cannot upadte roadmap without type_item, title, priority'
@@ -694,7 +705,6 @@ def create_status():
     db.session.add(status)
     db.session.commit()
     return jsonify(status)
-
 
 
 @app.route('/status/update/<id_obj>/', methods=['PUT'])
@@ -770,7 +780,8 @@ def create_subitem():
     data = {'name': name, 'title': title, 'description': description,
             'id_item': id_item,
             'deadline': deadline, 'opened_by': opened_by, 'status': status,
-            'name_file': name_file, 'attachments': attachments, 'tag': tag, 'id': id_obj}
+            'name_file': name_file, 'attachments': attachments, 'tag': tag,
+            'id': id_obj}
     subitem_validator = QuestionValidator().validate(data, CREATE)
     if not subitem_validator:
         abort(404, f'Cannot create subitem without name!')
@@ -783,7 +794,6 @@ def create_subitem():
     db.session.add(subitem)
     db.session.commit()
     return jsonify(subitem)
-
 
 
 @app.route('/subitem/update/<id_obj>/', methods=['PUT'])
@@ -869,7 +879,7 @@ def create_user():
     if not user_validator:
         abort(404, f'Cannot create user without name, password and email!')
     user = User(id=id_obj, name=name, password=password,
-                      email=email, full_name=full_name)
+                email=email, full_name=full_name)
     db.session.add(user)
     db.session.commit()
     return jsonify(user)
@@ -913,7 +923,7 @@ def get_file_to_video():
     return jfs.get_object(FILE_VIDEO_NAME)
 
 
-@app.route('/video/upload/<name_file>/', methods=['POST'])
+@app.route('/video/upload/', methods=['POST'])
 def send_files_to_video():
     res = jfs.add_file(FILE_VIDEO_NAME, UPLOAD, LOCATION_FILES)
     if isinstance(res, int):
@@ -968,7 +978,6 @@ def create_video():
     return jsonify(video)
 
 
-
 @app.route('/video/update/<id_obj>/', methods=['PUT'])
 def update_video(id_obj):
     name = request.args.get("name")
@@ -1004,4 +1013,3 @@ def delete_video(id_obj):
         db.session.commit()
         return f'You success delete a video with ID:{id_obj}'
     return abort(404, 'You cannot delete this video ')
-
