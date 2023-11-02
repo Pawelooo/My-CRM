@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Awsome App</title>
+</head>
+<body>
+    <h1>{{title}}</h1>
+
+    <p>New</p>
+    <form method="POST" action=".">
+        <ul>
+            {% for obj in object %}
+                <label>Get {{obj}}</label>
+                <input type="text" name="{{obj}}">
+            {% endfor %}
+        </ul>
+        <input type="submit" value="Add new {{title}}">
+    </form>
+</body>
+</html>

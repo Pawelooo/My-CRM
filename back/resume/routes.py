@@ -1,10 +1,18 @@
 from datetime import datetime
 
-from flask import jsonify, abort, request
+from flask import jsonify, abort, request, render_template
 
 from back.resume.models import generate_uuid, Category, Author, \
-    Book, Item, Course, Question, Roadmap, Status, SubItem, User, Video
-from back.resume.models import db, app
+    Book, Item, Course, Question, Roadmap, Status, SubItem, User, Video, Test
+
+from back.app import db, app
+
+
+
+@app.route('/v1/', methods=['GET'])
+def health():
+    obj = ["new", "old"]
+    return render_template('index.html', objects=obj)
 
 
 @app.route('/books/', methods=['GET'])

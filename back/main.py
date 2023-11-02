@@ -1,4 +1,3 @@
-import os
 import uuid
 from dataclasses import dataclass
 
@@ -27,11 +26,19 @@ class Test(db.Model):
                    unique=True)
     title = db.Column(db.String(255), nullable=False)
 
+    def __iter__(self):
+        for each in list(self.__dict__.values())[1:][::-1]:
+            yield each
+
+    def name_value(self):
+        for each in list(self.__dict__.keys())[1:]:
+            yield each
 
 @app.route('/v1/api/')
 def health():
     all_name_and_pictures = Test.query.all()
-    return render_template('index.html', objects=all_name_and_pictures)
+    names = ['id', 'name']
+    return render_template('data.html', objects=all_name_and_pictures, name='Test22', names=names)
 
 
 if __name__ == '__main__':

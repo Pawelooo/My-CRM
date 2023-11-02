@@ -9,19 +9,28 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, func, String, Integer, JSON, DateTime
 
-# from back.app import db
+from back.app import db
 
-app = Flask(__name__)
-pg_user = "postgres"
-pg_pwd = "qawsed"
-pg_port = "5432"
-app.config[
-    "SQLALCHEMY_DATABASE_URI"] = f"postgresql://{pg_user}:{pg_pwd}@localhost:{pg_port}/my-crm-basic"
-db = SQLAlchemy(app)
-conn = psycopg2.connect(database='my-crm-basic', user='postgres',password='qawsed')
+# app = Flask(__name__)
+# pg_user = "postgres"
+# pg_pwd = "qawsed"
+# pg_port = "5432"
+# app.config[
+#     "SQLALCHEMY_DATABASE_URI"] = f"postgresql://{pg_user}:{pg_pwd}@localhost:{pg_port}/my-crm-basic"
+# db = SQLAlchemy(app)
+# conn = psycopg2.connect(database='my-crm-basic', user='postgres',password='qawsed')
 
 def generate_uuid():
     return str(uuid.uuid4())
+
+
+@dataclass(frozen=True)
+class Test(db.Model):
+    id: str
+    title: str
+
+    id = db.Column(db.String(36), primary_key=True, default=generate_uuid, unique=True)
+    title = db.Column(db.String(255), nullable=False)
 
 
 @dataclass
