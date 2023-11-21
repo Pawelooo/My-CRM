@@ -7,9 +7,10 @@ from base.src.model.category import Category
 from base.src.service.item_service import ItemService
 
 
-from base.src.model.config import FILE_ITEM, GET_FILE, UPLOAD_FILE, FILE_SUBITEM, \
+from base.src.model.config import FILE_ITEM, GET_FILE, UPLOAD_FILE, \
+    FILE_SUBITEM, \
     FILE_STATUS_NAME, CUSTOM_STATUS, INPROGRESS, STATUS, DONE, TODO, ID, \
-    ROADMAP, TAG
+    ROADMAP, TAG, FILE_LOCATION
 
 from base.src.model.config import DONE
 from base.src.model.config import TODO, UPLOAD
@@ -25,8 +26,8 @@ class Item:
 
     def __init__(self, name: str, title: str, description: str, name_file: str,
                  deadline: datetime, category: Category, assignee: User,
-                 tag: Tag):
-        self.id = Generator().generate_number()
+                 tag: Tag, id_generate: str):
+        self.id = id_generate
         self.name = name
         self.title = title
         self.description = description
@@ -36,7 +37,7 @@ class Item:
         self.assignee = assignee
         self.name_file = name_file
         self.attachments = JsonFromService().add_file(self.name_file,
-                                                      UPLOAD_FILE)
+                                                      UPLOAD_FILE, FILE_LOCATION)
         self.status_opt = JsonFromService().read_file(FILE_ITEM, GET_FILE)
         self.subitems = JsonFromService().read_file(FILE_SUBITEM, GET_FILE)
         self.sub_item = []
@@ -58,7 +59,6 @@ class Item:
 
     def __repr__(self):
         return {
-            'id': f'{self.id}',
             'name': f'{self.name}',
             'title': f"{self.title}",
             'description': f'{self.description}',
@@ -73,6 +73,7 @@ class Item:
             'tag': f"{self.tag}",
             'amounts': f"{self.amounts}",
             'amount tag': f"{self.amounts_tag}",
+            'id': f'{self.id}',
         }
 
     @staticmethod

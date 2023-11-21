@@ -13,15 +13,24 @@ class VideoValidator(Validator):
             self.delete_validation(obj)
 
     def create_validation(self, obj: dict[Video]):
-        obj = list(obj.values())
-        return True if all([obj[i] for i in range(-1, 3)]) else False
+        for key, value in obj.items():
+            if key in ['name', 'category', 'author', 'id']:
+                if not obj[key]:
+                    return False
+        return True
 
     def update_validation(self, obj: dict[Video]):
-        obj = list(obj.values())
-        return True if all([obj[i] for i in range(-1, 3)]) else False
+        for key, value in obj.items():
+            if key in ['name', 'category', 'author', 'id']:
+                if not obj[key]:
+                    return False
+        return True
 
     def delete_validation(self, obj: dict[Video]):
-        obj = list(obj.values())
-        return True if all([obj[i] for i in range(-1, 3)]) else False
+        for key, value in obj.items():
+            if key in ['name', 'category', 'author', 'id']:
+                if not obj[key]:
+                    return False
+        return True
 
 

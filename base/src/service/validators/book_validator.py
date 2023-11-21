@@ -6,22 +6,32 @@ class BookValidator(Validator):
 
     def validate(self, obj: dict[Book], type_elm: str):
         if type_elm == 'create':
-            self.create_validation(obj)
+            res = self.create_validation(obj)
         if type_elm == 'update':
-            self.update_validation(obj)
+            res = self.update_validation(obj)
         if type_elm == 'delete':
-            self.delete_validation(obj)
+            res = self.delete_validation(obj)
+        return res
 
     def create_validation(self, obj: dict[Book]):
-        obj = list(obj.values())
-        return True if all([obj[i] for i in range(-1, 3)]) else False
+        for key, value in obj.items():
+            if key in ['name', 'category', 'author', 'id']:
+                if not obj[key]:
+                    return False
+        return True
 
     def update_validation(self, obj: dict[Book]):
-        obj = list(obj.values())
-        return True if all([obj[i] for i in range(-1, 3)]) else False
+        for key, value in obj.items():
+            if key in ['name', 'category', 'author', 'id']:
+                if not obj[key]:
+                    return False
+        return True
 
     def delete_validation(self, obj: dict[Book]):
-        obj = list(obj.values())
-        return True if all([obj[i] for i in range(-1, 3)]) else False
+        for key, value in obj.items():
+            if key in ['name', 'category', 'author', 'id']:
+                if not obj[key]:
+                    return False
+        return True
 
 

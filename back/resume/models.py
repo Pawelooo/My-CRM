@@ -2,14 +2,12 @@ import datetime
 import uuid
 from dataclasses import dataclass
 from typing import Dict, List
-from uuid import UUID
 
 import psycopg2
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, func, String, Integer, JSON, DateTime
 
-# from back.app import db
 
 app = Flask(__name__)
 pg_user = "postgres"
@@ -20,9 +18,18 @@ app.config[
 db = SQLAlchemy(app)
 conn = psycopg2.connect(database='my-crm-basic', user='postgres',password='qawsed')
 
+
 def generate_uuid():
     return str(uuid.uuid4())
 
+
+@dataclass
+class Test(db.Model):
+    id: str
+    title: str
+
+    id = db.Column(db.String(36), primary_key=True, default=generate_uuid, unique=True)
+    title = db.Column(db.String(255), nullable=False)
 
 @dataclass
 class Book(db.Model):
@@ -68,6 +75,15 @@ class Author(db.Model):
 
     def __getitem__(self, item):
         return getattr(self, item)
+
+    def __str__(self):
+        return f"name {self.name} " \
+            f"surname {self.surname} \n" \
+            f"website {self.website} \n" \
+            f"country {self.country if self.country else None} \n" \
+            f"topic {self.topic if self.topic else None} \n" \
+            f"id {self.id} \n"
+
 
 
 @dataclass
